@@ -109,8 +109,8 @@ ul {
 } 
 #close-menu {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 25px;
+  right: 30px;
   font-size: 40px;
   cursor: pointer;
 }  
@@ -209,8 +209,14 @@ ul {
   text-align: center;
   width: 100%;
 }
+.home .container .search-bar::placeholder {
+  transition: var(--main-transition);
+}
+.home .container .search-bar:focus::placeholder {
+  opacity: 0;
+}
 .home .container .search-bar:focus {
-
+ 
  box-shadow: 0 0 9px rgb(86, 152, 217);
  outline: none;
 }
