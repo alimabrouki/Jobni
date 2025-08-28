@@ -62,16 +62,58 @@ ul {
   padding: 8px;
   font-weight: var(--main-weight);
   color: var(--main-color);
-  margin-top: 20px;
   height: 60px;
 }
-.container .logo a {
-  color: var(--main-color);
+@media (max-width: 767px) {
+  .header .container {
+  margin: 15px auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  }
+}
+.container .logo a img{
+  max-width: 100px;
+  margin-top: 7px;
 }
 .header .container .nav ul{
   display: flex;
   gap: 100px;
   position: relative;
+  margin-top: 10px;
+}
+@media (max-width:767px) {
+  .header .container .nav ul{
+     
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+ #menu.show {
+  display: block;
+}
+#navi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: none;    
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#navi.active {
+  display: flex;
+} 
+#close-menu {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 40px;
+  cursor: pointer;
+}  
 }
 .header .container .nav ul li {
   position:relative;
@@ -88,7 +130,7 @@ ul {
   position: absolute;
   height: 4px;
   width: 100%;
-  bottom: 0;
+  bottom: 10px;
   transition: var(--main-transition);
   transform: scaleX(0);
         
@@ -98,12 +140,11 @@ ul {
   transform: scaleX(1);
 }
 .container .sign-up {
-  border-radius: 13px;
   position: relative;
-  bottom: 10px;
   transition: var(--main-transition);
 }
 .container .sign-up button {
+  border-radius: 13px;
     font-size: 20px;
     border: none;
     color: var(--main-color);
@@ -111,8 +152,34 @@ ul {
     font-weight: var(--main-weight);
     cursor: pointer;
     line-height: 46px;
+    transition: var(--main-transition);
 }
-.container .sign-up:hover {
+@media (max-width: 767px) {
+  .container .sign-up button span {
+    font-size: 20px;
+    
+    border-radius: 6px;
+}
+.container .sign-up button {
+  font-size: 20px;
+  margin-right: 30px;
+  background-color:var(--hover-color);
+  padding: 0px 3px;
+}
+.container #bars {
+  font-size: 40px;
+  margin-right: 15px;
+}
+}
+@media (min-width: 768px) {
+  .container #bars  {
+  display: none;
+}
+#close-menu {
+  display: none;
+}
+}
+.container .sign-up button:hover {
   background-color:var(--hover-color);
 }
 .container .sign-up button::before{
@@ -123,25 +190,45 @@ ul {
 }
 /* End Header */
 /* Start Home */
-.home .container .search-bar {
-  border-radius: 33px;
+.home .container {
   display: flex;
   justify-content: center;
-  margin: 50px 110px;
-  height: 60px;
-  position: relative;
-  background-color: #99999932;
 }
-.home .container .search-bar a {
+.home .container .search-container {
+  position: relative;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 900px;
+}
+.home .container .search-bar {
+  background-color: #99999933;
+  border: none;
+  border-radius: 33px;
+  font-size: 25px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+.home .container .search-bar:focus {
+
+ box-shadow: 0 0 9px rgb(86, 152, 217);
+ outline: none;
+}
+.home .container .search-container span:first-of-type {
   position: absolute;
-  left: 25px;
-  top: 16px;
+  top: 50%;
+  left:30px ;
+  transform: translateY(-50%);
   font-size: 30px;
   color: var(--main-color);
 }
-.home .container .search-bar p {
-  align-content: center;
-  font-weight: var(--main-weight);
+.home .container .search-container span:last-of-type i {
+  position: absolute;
+  top: 50%;
+  right:30px ;
+  transform: translateY(-50%);
+  font-size: 30px;
   color: var(--main-color);
 }
+
 /* End Home */

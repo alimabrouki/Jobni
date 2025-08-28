@@ -17,28 +17,42 @@
   <!-- Start Header -->
    <div class="header">
     <div class="container">
-      <div class="logo"><a href="#home">JOBNI</a></div>
-      <div class="nav">
-        <ul>
-          <li><a href="#jobs">Jobs</a></li>
-          <li><a href="#community">Community</a></li>
-          <li><a href="#companies">Companies</a></li>
+      <div class="logo"><a href="#home"><img src="/imgs/logo1.png" alt=""></a></div>
+      <div class="nav" id="navi" >
+         <div id="close-menu">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        <ul id="menu">
+          <li>
+            <a href="#jobs">Jobs</a>
+          </li>
+          <li>
+            <a href="#community">Community</a>
+          </li>
+          <li>
+            <a href="#companies">Companies</a>
+          </li>
         </ul>
       </div>
       <div class="sign-up">
-          <button>Sign Up</button>
-        </div>
+          <button><span>Sign Up</span></button>
+          </div>
+          
+        <div id="bars"><i class="fa-solid fa-bars"></i></div>
+
     </div>
    </div>
    <!-- Start Home -->
    <!-- End Home -->
     <div class="home" id="home">
       <div class="container">
-        <div class="search-bar">
-          <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-          <p>Find Your Future Job</p>
+        <div class="search-container">
+          <input class="search-bar" type="text" placeholder="Find Your Future Job">
+          <span><i class="fa-solid fa-magnifying-glass"></i></span>
+          <span><a class="filter-link" href=""><i class="fa-solid fa-filter"></i></a></span>
         </div>
       </div>
     </div>
+    <script type="module" src="/js/home.js"></script>
 </body>
 </html>
