@@ -20,6 +20,10 @@ body {
     --second-color: rgb(29 57 73 / 53%);
     --hover-color:rgb(166, 199, 232);
     --main-weight: 350;
+    --company-name-color: rgba(0, 0, 0, 0.759);
+    --card-border-color: rgba(0, 0, 0, 0.203);
+    --main-border-radius: 8px;
+    --second-hover-color: rgba(0, 0, 0, 0.071);
 }
 a {
     text-decoration: none;
@@ -157,12 +161,11 @@ ul {
 @media (max-width: 767px) {
   .container .sign-up button span {
     font-size: 20px;
-    
     border-radius: 6px;
 }
 .container .sign-up button {
   font-size: 20px;
-  margin-right: 30px;
+  margin-left: 80px;
   background-color:var(--hover-color);
   padding: 0px 3px;
 }
@@ -193,6 +196,7 @@ ul {
 .home .container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .home .container .search-container {
   position: relative;
@@ -236,5 +240,82 @@ ul {
   font-size: 30px;
   color: var(--main-color);
 }
-
+.container .job-cards {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container .job-cards .cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+.container .job-cards .cards .card {
+  border: .9px solid var(--card-border-color);
+  width: 330px;
+  position: relative;
+  border-radius: 8px;
+  padding-bottom: 30px ;
+  font-family: system-ui;
+}
+.container .job-cards .cards a {
+  border-radius: var(--main-border-radius);
+  text-decoration: none;
+  color: var(--company-name-color);
+  transition: var(--main-transition);
+}
+.container .job-cards .cards a:hover {
+  background-color: var(--second-hover-color);
+}
+.container .job-cards .cards .card img {
+  max-width: 20%;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.container .job-cards .cards .card div:first-of-type {
+  display: inline;
+  position: absolute;
+  margin: 25px 15px;
+  color: var(--company-name-color);
+  font-size: 15px;
+}
+.container .job-cards .cards .card div {
+  margin-left: 35px;
+  padding: 4px 0;
+  line-height: 20px;
+}
+.container .job-cards .cards .card div:nth-child(4) {
+  color: var(--company-name-color);
+  font-weight: bold;
+}
+.container .job-cards .cards .card div:nth-child(5) {
+  color: var(--company-name-color);
+  font-size: 15px;
+}
+.container .job-cards .cards .card div:nth-child(6) {
+  color: var(--company-name-color);
+  font-size: 15px;
+}
+.container .job-cards .cards .card div:last-of-type {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  color: var(--company-name-color);
+}
+.container .job-cards .cards .card button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 19px;
+  top: 19px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.container .job-cards .find-more-btn {
+  margin-top: 30px;
+}
 /* End Home */
