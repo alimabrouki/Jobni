@@ -1,0 +1,110 @@
+/* Start Global Rules */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100%;
+    font-size: 20px;
+}
+:root {
+    --main-transition: .3s ;
+    --main-color:rgb(29, 57, 73);
+    --second-color: rgb(29 57 73 / 53%);
+    --hover-color:rgb(166, 199, 232);
+    --main-weight: 350;
+    --company-name-color: rgba(38, 35, 35, 0.759);
+    --card-border-color: rgba(0, 0, 0, 0.203);
+    --main-border-radius: 8px;
+    --second-hover-color: rgba(0, 0, 0, 0.071);
+    --main-box-shadow: 0px 1px 6px -2px;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+/* Medium */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* Large */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+/* End Global Rules */
+/* Start Jobs */
+.jobs .container {
+  display: flex;
+  flex-direction: column;
+}
+.jobs {
+  position: relative;
+  margin-top: 100px;
+  border-top: 1px solid var(--card-border-color);
+}
+.jobs  .pick {
+  position: absolute;
+  border: 1px solid var(--main-color);
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  background-color: var(--main-color);
+  padding: 19px 10px ;
+  right: 50%;
+  bottom: 60px;
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px;
+  border-bottom: none;
+  box-shadow: -4px -2px 0 0px var(--hover-color);
+}
+.jobs .pick2 {
+  position: absolute;
+  border: 1px solid var(--main-color);
+  display: inline-block;
+  color:black;
+  font-weight: bold;
+  background-color: white;
+  padding: 19px 10px ;
+  left: 55%;
+  bottom: 60px;
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px;
+  border-bottom: none;
+  box-shadow: -4px -2px 0 2px var(--hover-color);
+}
+/* .jobs .pick::before {
+  content: '';
+  position: absolute;
+  height: 50px;
+  width: 100px;
+  background-color: var(--main-color);
+  right: 50%;
+  bottom: 60px;
+  
+} */
+/* End Jobs */
