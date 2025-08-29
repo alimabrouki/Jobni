@@ -20,7 +20,7 @@ body {
     --second-color: rgb(29 57 73 / 53%);
     --hover-color:rgb(166, 199, 232);
     --main-weight: 350;
-    --company-name-color: rgba(0, 0, 0, 0.759);
+    --company-name-color: rgba(38, 35, 35, 0.759);
     --card-border-color: rgba(0, 0, 0, 0.203);
     --main-border-radius: 8px;
     --second-hover-color: rgba(0, 0, 0, 0.071);
@@ -59,7 +59,7 @@ ul {
 /* End Global Rules */
 /* Start Header */
 .header {
-  border-bottom: 2px solid var(--second-color);
+  border-bottom: 1px solid var(--second-color);
 }
 .header .container {
   display: flex;
@@ -137,8 +137,7 @@ ul {
   width: 100%;
   bottom: 10px;
   transition: var(--main-transition);
-  transform: scaleX(0);
-        
+  transform: scaleX(0);   
 }
 .header .container .nav ul li a:hover::after {
   width: 100%;
@@ -293,7 +292,7 @@ ul {
   line-height: 20px;
 }
 .container .job-cards .cards .card div:nth-child(4) {
-  color: var(--company-name-color);
+  color: black;
   font-weight: bold;
 }
 .container .job-cards .cards .card div:nth-child(5) {
@@ -338,3 +337,103 @@ ul {
   box-shadow: 2px 2px 0 0 var(--hover-color);
 }
 /* End Home */
+/* Start Footer */
+.footer {
+  border-top: 2px solid var(--second-color);
+  margin-top: 30px;
+  padding: 50px;
+}
+.footer .container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.footer .container a {
+  color: var(--company-name-color);
+}
+.footer .container .footer-menu ul li {
+  padding: 8px;
+}
+.footer .container .footer-menu ul li a {
+  position: relative;
+}
+.footer .container .footer-menu ul li a::after {
+  content: "";
+  border-bottom: 3px solid var(--main-color);
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transition: var(--main-transition);
+  transform: scaleX(0);   
+} 
+.footer .container .footer-menu ul li a:hover::after{
+  width: 100%;
+  transform: scaleX(1);
+}
+.footer .container .social-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.footer .container .social-links ul li {
+  border-radius: var(--main-border-radius);  
+}
+.footer .container .social-links ul a {
+  border-radius: var(--main-border-radius);
+  transition: var(--main-transition);  
+}
+.footer .container .social-links ul li  {
+  padding: 10px 15px;
+  box-shadow: var(--main-box-shadow);
+  transition: var(--main-transition);
+}
+.footer .container .social-links ul li i {
+  padding: 0px 7px;
+  transition: var(--main-transition);
+}
+.container .social-links ul li:hover i{
+  color: white;
+}
+.container .social-links ul li .fa-linkedin  {
+   color: #0A66C2; 
+}
+.container .social-links ul a:nth-child(3):hover{
+  background-color: #0A66C2; 
+  color: white;
+}
+.container .social-links ul li .fa-whatsapp  {
+   color: #5FFC7B; 
+}  
+.container .social-links ul a:nth-child(2):hover{
+  background-color: #5FFC7B;
+  color: white;
+}
+.container .social-links ul li .fa-facebook {
+    color: #3b5998;
+}
+.container .social-links ul a:nth-child(1):hover{
+  background-color: #3b5998;
+  color: white;
+}
+.container .social-links ul li .fa-x-twitter {
+    color: black;
+}
+.container .social-links ul a:nth-child(4):hover{
+  background-color: black;
+  color: white;
+}
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 30px;
+}
+.copyright a {
+  border-radius: var(--main-border-radius);
+  box-shadow: var(--main-box-shadow);
+  padding: 3px;
+  color: var(--main-color);
+}
+/* End Footer */
