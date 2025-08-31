@@ -37,6 +37,26 @@ interactiveBtns();
 
 function renderJobs() {
   jobs.forEach( job => {
-    const cards = document.querySelectorAll()
+    const cards = document.querySelector('.cards')
+    cards.innerHTML += `
+    
+    <a href="">
+    <div class="card">
+              <img src="/imgs/job1.webp" alt="">
+              <button>
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+              <div>${job.company}</div>
+              <div>${job.jobTitle}</div>
+              <div>${job.location}</div>
+              <div>${job.salary} $TND</div>
+              <div>${job.dateUploaded}</div>
+          </div>
+          </a>
+    `
   })
+}
+renderJobs()
+function renderJobDescription() {
+  
 }
