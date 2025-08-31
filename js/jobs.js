@@ -1,4 +1,6 @@
-const btn1 = document.querySelector('.js-btn1')
+import { jobs } from "../data/jobs-data.js";
+function interactiveBtns() {
+  const btn1 = document.querySelector('.js-btn1')
 const btn2 = document.querySelector('.js-btn2')
 
 function clickButton(active) {
@@ -30,3 +32,11 @@ window.addEventListener('DOMContentLoaded', () => {
     clickButton(saved)
   }
 } )
+}
+interactiveBtns();
+
+function renderJobs() {
+  jobs.forEach( job => {
+    const cards = document.querySelectorAll()
+  })
+}

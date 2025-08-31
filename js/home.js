@@ -1,4 +1,4 @@
-
+import { jobs } from "../data/jobs-data.js";
 const bars = document.getElementById('bars');
 const naviMenu = document.querySelector('.nav');
 const menu = document.getElementById('menu');

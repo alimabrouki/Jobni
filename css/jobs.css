@@ -58,14 +58,14 @@ ul {
 }
 /* End Global Rules */
 /* Start Jobs */
-.jobs .container {
-  display: flex;
-  flex-direction: column;
-}
+
 .jobs {
   position: relative;
   margin-top: 100px;
   border-top: 1px solid var(--card-border-color);
+}
+.btns {
+    position: relative;
 }
 .jobs  .btn1 {
   position: absolute;
@@ -76,7 +76,7 @@ ul {
   background-color: var(--main-color);
   padding: 19px 10px ;
   right: 50%;
-  bottom: 60px;
+  bottom: 0;
   border-top-right-radius: 13px;
   border-top-left-radius: 13px;
   border-bottom: none;
@@ -91,7 +91,7 @@ ul {
   background-color: white;
   padding: 19px 10px ;
   left: 55%;
-  bottom: 60px;
+  bottom: 0;
   border-top-right-radius: 13px;
   border-top-left-radius: 13px;
   border-bottom: none;
@@ -106,7 +106,7 @@ ul {
   background-color: white;
   padding: 19px 10px ;
   right: 50%;
-  bottom: 60px;
+  bottom: 0;
   border-top-right-radius: 13px;
   border-top-left-radius: 13px;
   border-bottom: none;
@@ -121,10 +121,152 @@ ul {
   background-color: var(--main-color);
   padding: 19px 10px ;
   left: 55%;
-  bottom: 60px;
+  bottom: 0;
   border-top-right-radius: 13px;
   border-top-left-radius: 13px;
   border-bottom: none;
   box-shadow: -4px -2px 0 0px var(--hover-color);
 } 
+.jobs .container {
+  display: flex;
+}
+.container .job-cards {
+    margin-top: 0;
+}
+.container .job-cards .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-right: 25px;
+    margin-top: 25px;
+}
+.container .job-cards .cards .card {
+    border: .9px solid var(--card-border-color);
+    width: 360px;
+    position: relative;
+    border-radius: 8px;
+    padding-bottom: 10px;
+    font-family: system-ui;
+    box-shadow: 0px 1px 6px -2px;
+    padding: 0 20px 7px 0px;
+}
+.jobs .container .job-description {
+    border: 1px solid var(--card-border-color);
+    border-radius: var(--main-border-radius);
+    margin-top: 25px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex: 1;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+.container  .job-description .card {
+    border-bottom: .9px solid 
+    var(--card-border-color);
+    position: relative;
+    padding-bottom: 10px;
+    font-family: system-ui;
+    padding: 0 20px 7px 0px;
+}
+.container .job-description .card img {
+    margin: 15px 0px 0px 20px;
+    max-width: 100%;
+    width: 60px;
+    border-radius: 8px;
+    box-shadow: var(--main-box-shadow);
+}
+.container .job-description .card div {
+  margin-left: 22px;
+  padding: 4px 0;
+  line-height: 20px;
+}
+.container .job-description .card div:first-of-type {
+  display: inline;
+  position: absolute;
+  margin: 25px 15px;
+  color: var(--company-name-color);
+  font-size: 25px;
+}
+.container .job-description .card div:nth-child(4) {
+  color: black;
+  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.container .job-description .card div:nth-child(5) {
+  color: var(--company-name-color);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.container .job-description .card button {
+    border: none;
+    background-color: rgb(166 199 232 / 51%);
+    position: absolute;
+    right: 19px;
+    top: 19px;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: var(--main-border-radius);
+}
+.container .job-description .job-info .info {
+margin-left: 22px;
+  padding: 4px 0;
+  line-height: 20px;
+}
+.container .job-description .job-info .about-role {
+ margin-bottom: 25px;
+ margin-top: 25px;
+}
+.about-role div {
+  font-weight: 600; 
+  margin-bottom: 25px;
+}
+.container .job-description .job-info .qualifications {
+  margin-bottom: 25px;
+}
+.qualifications div {
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.container .job-description .job-info .job-time {
+  margin-bottom: 25px;
+}
+.job-time div {
+  font-weight: 600;
+}
+.job-time i {
+  margin-bottom: 25px;
+}
+.job-description .job-info  {
+  font-size: 17px;
+}
+.job-description .job-info .fa-circle-dot  {
+  font-size: 18px;
+}
+.company-info div:first-child {
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.company-info .phone span{
+ font-weight: 600;
+}
+.company-info .phone i {
+  margin-bottom: 20px;
+}
+.company-info .phone , .phone-number {
+  display: inline;
+  margin-bottom: 10px;
+}
+.company-info .email span {
+  font-weight: 600;
+}
+.company-info .email , .email-address {
+  display: inline;
+}
+.company-info .email i {
+  margin-bottom: 20px;
+}
 /* End Jobs */
