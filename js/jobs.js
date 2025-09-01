@@ -1,4 +1,4 @@
-import { jobs } from "../data/jobs-data.js";
+import { jobs,getJobs } from "../data/jobs-data.js";
 function interactiveBtns() {
   const btn1 = document.querySelector('.js-btn1')
 const btn2 = document.querySelector('.js-btn2')
@@ -39,8 +39,8 @@ export function renderJobs(jobs) {
   const cards = document.querySelector('.cards')
  jobs.forEach( job => {
     cards.innerHTML += `
-    <a href="">
-    <div class="card">
+    <a href="#">
+    <div class="card js-job-card" data-id="${job.id}">
               <img src="/imgs/job1.webp" alt="">
               <button>
                 <i class="fa-regular fa-bookmark"></i>
@@ -55,7 +55,65 @@ export function renderJobs(jobs) {
     `
   })
 }
-renderJobs(jobs)
-function renderJobDescription() {
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderJobs(jobs)
+  renderFirstCard()
+  const jobCards = document.querySelectorAll('.js-job-card')
+  const jobDes = document.querySelector('.js-des-card')
+   
+      
   
-}
+ jobCards.forEach(card => {
+   
+      const jobId = card.getAttribute('data-id');
+    const job = getJobs(jobId);
+  card.addEventListener('click', () => {
+   
+    if (jobDes && job) {
+       jobDes.innerHTML = `
+    <div class="card" >
+        <img src="/imgs/job1.webp" alt="">
+        <button>
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <div>${job.company}</div>
+        <div>${job.jobTitle}</div>
+        <div>
+          <span>${job.location}</span> |
+          <span>${job.salary} $TND</span>
+        </div>
+        </div>
+      `; 
+    }
+  });
+});
+})
+
+function renderFirstCard() {
+  const jobDes = document.querySelector('.js-des-card');
+  const firstJob = jobs[0];
+ jobDes.innerHTML = `
+ <div class="card" data-id="${firstJob.id}">
+        <img src="/imgs/job1.webp" alt="">
+        <button>
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <div>${firstJob.company}</div>
+        <div>${firstJob.jobTitle}</div>
+        <div>
+          <span>${firstJob.location}</span> |
+          <span>${firstJob.salary} $TND</span>
+        </div>
+        </div>
+ `
+  }
+  
+
+
+  
+  
+  
+
+
+

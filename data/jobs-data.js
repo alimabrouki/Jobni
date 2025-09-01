@@ -1,3 +1,13 @@
+export function getJobs(jobId) {
+  let matchingJobs;
+  jobs.forEach( job => {
+    if (job.id === jobId) {
+      matchingJobs = job
+    }
+  })
+  return matchingJobs;
+}
+
 export const jobs = [
   {
     id: '1',
