@@ -2,7 +2,7 @@ import { jobs } from "../data/jobs-data.js";
 function interactiveBtns() {
   const btn1 = document.querySelector('.js-btn1')
 const btn2 = document.querySelector('.js-btn2')
-
+if(!btn1 || !btn2) return;
 function clickButton(active) {
   if (active === 'btn1') {
     btn1.classList.add('btn1');
@@ -33,13 +33,12 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 } )
 }
-interactiveBtns();
+interactiveBtns()
 
-function renderJobs() {
-  jobs.forEach( job => {
-    const cards = document.querySelector('.cards')
+export function renderJobs(jobs) {
+  const cards = document.querySelector('.cards')
+ jobs.forEach( job => {
     cards.innerHTML += `
-    
     <a href="">
     <div class="card">
               <img src="/imgs/job1.webp" alt="">
@@ -56,7 +55,7 @@ function renderJobs() {
     `
   })
 }
-renderJobs()
+renderJobs(jobs)
 function renderJobDescription() {
   
 }
