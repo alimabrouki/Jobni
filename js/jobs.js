@@ -1,5 +1,9 @@
 import { jobs,getJobs } from "../data/jobs-data.js";
-
+const navEntries = performance.getEntriesByType('navigation');
+const isReload = navEntries.length && navEntries[0].type === 'reload'
+if (window.location.search.includes('id=') && isReload ) {
+  window.location.replace('jobs.html')
+}
 function interactiveBtns() {
   const btn1 = document.querySelector('.js-btn1')
 const btn2 = document.querySelector('.js-btn2')
@@ -43,7 +47,7 @@ function renderSelectedCard() {
 if (jobDes && job) {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}">
-        <img src="/imgs/job1.webp" alt="">
+        <img src="${job.image}" alt="">
         <button>
           <i class="fa-regular fa-bookmark"></i>
         </button>
@@ -64,9 +68,9 @@ export function renderJobs(jobs) {
   cards.innerHTML = '';
  jobs.forEach( job => {
     cards.innerHTML += `
-    <a href="jobs.html?id=${job.id}">
-    <div class="card js-job-card" data-id="${job.id}">
-              <img src="/imgs/job1.webp" alt="">
+    <a href="#">
+    <div class="card js-job-card " data-id="${job.id}">
+              <img src="${job.image}" alt="">
               <button>
                 <i class="fa-regular fa-bookmark"></i>
               </button>
@@ -91,7 +95,7 @@ export function renderJobs(jobs) {
     if (jobDes && job) {
        jobDes.innerHTML = `
     <div class="card" >
-        <img src="/imgs/job1.webp" alt="">
+        <img src="${job.image}" alt="">
         <button>
           <i class="fa-regular fa-bookmark"></i>
         </button>
@@ -126,12 +130,23 @@ export function renderJobs(jobs) {
 //  `
 //   }
   
+function selectedCardColor() {
+  const cards = document.querySelectorAll('.js-job-card')
+  cards.forEach(card => {
+    card.addEventListener('click',() => {
+    cards.forEach(c => {
+      c.classList.remove('cardClicked')
+    })
+   card.classList.add('cardClicked')
+    })
+  });
+}
 document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs)
   renderSelectedCard()
   renderCLickedCard()
   // renderFirstCard()
- 
+  selectedCardColor()
 })
   
   

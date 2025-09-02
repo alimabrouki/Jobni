@@ -11,6 +11,7 @@ export function getJobs(jobId) {
 export const jobs = [
   {
     id: '1',
+    image: '/imgs/job1.webp',
     company: 'Facebook',
     jobTitle: 'Web developer',
     location: 'Sousse',
@@ -19,6 +20,7 @@ export const jobs = [
   },
   {
     id: '2',
+    image: '/imgs/job2.webp',
     company: 'Twitter',
     jobTitle: 'Web Designer',
     location: 'Tunis',
@@ -27,6 +29,7 @@ export const jobs = [
   },
   {
     id: '3',
+    image: '/imgs/job3.webp',
     company: 'Amazon',
     jobTitle: 'Full Stack Developer',
     location: 'Gafsa',
@@ -35,6 +38,7 @@ export const jobs = [
   },
   {
     id: '4',
+    image: '/imgs/job4.webp',
     company: 'Microsoft',
     jobTitle: 'Backend Developer',
     location: 'Sfax',
@@ -43,6 +47,7 @@ export const jobs = [
   },
   {
     id: '5',
+    image: '/imgs/job5.webp',
     company: 'Google',
     jobTitle: 'Frontend Developer',
     location: 'Tunis',
@@ -51,6 +56,7 @@ export const jobs = [
   },
   {
     id: '6',
+    image: '/imgs/job6.webp',
     company: 'Vermeg',
     jobTitle: 'Full Stack Engineer',
     location: 'Ariana',
@@ -59,6 +65,7 @@ export const jobs = [
   },
   {
     id: '7',
+    image: '/imgs/job7.webp',
     company: 'Telnet',
     jobTitle: 'Software Tester',
     location: 'Sousse',
@@ -67,6 +74,7 @@ export const jobs = [
   },
   {
     id: '8',
+    image: '/imgs/job8.webp',
     company: 'Ooredoo',
     jobTitle: 'Mobile App Developer',
     location: 'Gabès',
@@ -75,6 +83,7 @@ export const jobs = [
   },
   {
     id: '9',
+    image: '/imgs/job9.webp',
     company: 'STEG',
     jobTitle: 'Data Analyst',
     location: 'Kairouan',
@@ -83,6 +92,7 @@ export const jobs = [
   },
   {
     id: '10',
+    image: '/imgs/job10.webp',
     company: 'Orange',
     jobTitle: 'Network Engineer',
     location: 'Bizerte',
@@ -91,6 +101,7 @@ export const jobs = [
   },
   {
     id: '11',
+    image: '/imgs/job11.webp',
     company: 'SFBT',
     jobTitle: 'IT Support Specialist',
     location: 'Monastir',
@@ -99,6 +110,7 @@ export const jobs = [
   },
   {
     id: '12',
+    image: '/imgs/job12.webp',
     company: 'Amen Bank',
     jobTitle: 'Cybersecurity Analyst',
     location: 'Nabeul',
@@ -107,6 +119,7 @@ export const jobs = [
   },
   {
     id: '13',
+    image: '/imgs/job13.webp',
     company: 'Topnet',
     jobTitle: 'DevOps Engineer',
     location: 'Mahdia',
@@ -115,6 +128,7 @@ export const jobs = [
   },
   {
     id: '14',
+    image: '/imgs/job14.webp',
     company: 'Tunisie Telecom',
     jobTitle: 'System Administrator',
     location: 'Tozeur',
@@ -123,6 +137,7 @@ export const jobs = [
   },
   {
     id: '15',
+    image: '/imgs/job15.webp',
     company: 'BIAT',
     jobTitle: 'Database Administrator',
     location: 'Kasserine',
@@ -131,6 +146,7 @@ export const jobs = [
   },
   {
     id: '16',
+    image: '/imgs/job16.webp',
     company: 'STB Bank',
     jobTitle: 'Cloud Engineer',
     location: 'Sidi Bouzid',
@@ -139,6 +155,7 @@ export const jobs = [
   },
   {
     id: '17',
+    image: '/imgs/job17.webp',
     company: 'Telnet',
     jobTitle: 'Embedded Systems Engineer',
     location: 'Gafsa',
@@ -147,6 +164,7 @@ export const jobs = [
   },
   {
     id: '18',
+    image: '/imgs/job18.webp',
     company: 'OneTech',
     jobTitle: 'AI Engineer',
     location: 'Zarzis',

@@ -271,13 +271,14 @@ ul {
   transition: var(--main-transition);
 }
 .container .job-cards .cards a:hover {
-  background-color: var(--second-hover-color);
+  background-color: rgb(166 199 232 / 25%);
 }
 .container .job-cards .cards .card img {
   margin: 15px 0px 0px 20px;
   max-width: 15%;
   border-radius: 8px;
   box-shadow: var(--main-box-shadow);
+  z-index: 999;
 }
 .container .job-cards .cards .card div:first-of-type {
   display: inline;
@@ -285,6 +286,12 @@ ul {
   margin: 25px 15px;
   color: var(--company-name-color);
   font-size: 15px;
+}
+.cardClicked {
+  transform: translateY(-3px);
+  transition: var(--main-transition);
+  background-color: var(--second-hover-color);
+  box-shadow: 0px 1px 6px -2px;
 }
 .container .job-cards .cards .card div {
   margin-left: 22px;
