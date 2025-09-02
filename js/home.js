@@ -1,4 +1,4 @@
-import { jobs } from "../data/jobs-data.js";
+import { getJobs, jobs } from "../data/jobs-data.js";
 import { renderJobs } from "./jobs.js";
 function toggleMenu() {
   const bars = document.getElementById('bars');
@@ -14,12 +14,9 @@ bars.addEventListener('click', () => {
 });
 }
 toggleMenu()
-
 document.addEventListener('DOMContentLoaded',() => {
   renderJobs(jobs);
+ 
 })
-
-
-
 
 

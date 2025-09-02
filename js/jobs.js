@@ -1,4 +1,5 @@
 import { jobs,getJobs } from "../data/jobs-data.js";
+
 function interactiveBtns() {
   const btn1 = document.querySelector('.js-btn1')
 const btn2 = document.querySelector('.js-btn2')
@@ -34,12 +35,36 @@ window.addEventListener('DOMContentLoaded', () => {
 } )
 }
 interactiveBtns()
+function renderSelectedCard() {
+  const jobDes = document.querySelector('.js-des-card');
+  const param = new URLSearchParams(window.location.search);
+  const jobId = param.get('id');
+  const job = getJobs(jobId) || jobs[0];
+if (jobDes && job) {
+       jobDes.innerHTML = `
+    <div class="card js-job-card" data-id="${job.id}">
+        <img src="/imgs/job1.webp" alt="">
+        <button>
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <div>${job.company}</div>
+        <div>${job.jobTitle}</div>
+        <div>
+          <span>${job.location}</span> |
+          <span>${job.salary} $TND</span>
+        </div>
+        </div>
+      `; 
+  }
+}
+
 
 export function renderJobs(jobs) {
   const cards = document.querySelector('.cards')
+  cards.innerHTML = '';
  jobs.forEach( job => {
     cards.innerHTML += `
-    <a href="#">
+    <a href="jobs.html?id=${job.id}">
     <div class="card js-job-card" data-id="${job.id}">
               <img src="/imgs/job1.webp" alt="">
               <button>
@@ -55,21 +80,14 @@ export function renderJobs(jobs) {
     `
   })
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderJobs(jobs)
-  renderFirstCard()
-  const jobCards = document.querySelectorAll('.js-job-card')
+ function renderCLickedCard() {
+   const jobCards = document.querySelectorAll('.js-job-card')
   const jobDes = document.querySelector('.js-des-card')
-   
-      
-  
- jobCards.forEach(card => {
-   
-      const jobId = card.getAttribute('data-id');
-    const job = getJobs(jobId);
+         
+  jobCards.forEach(card => { 
+  const jobId = card.getAttribute('data-id');
+  const job = getJobs(jobId);
   card.addEventListener('click', () => {
-   
     if (jobDes && job) {
        jobDes.innerHTML = `
     <div class="card" >
@@ -88,29 +106,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-})
-
-function renderFirstCard() {
-  const jobDes = document.querySelector('.js-des-card');
-  const firstJob = jobs[0];
- jobDes.innerHTML = `
- <div class="card" data-id="${firstJob.id}">
-        <img src="/imgs/job1.webp" alt="">
-        <button>
-          <i class="fa-regular fa-bookmark"></i>
-        </button>
-        <div>${firstJob.company}</div>
-        <div>${firstJob.jobTitle}</div>
-        <div>
-          <span>${firstJob.location}</span> |
-          <span>${firstJob.salary} $TND</span>
-        </div>
-        </div>
- `
-  }
+ }
+// function renderFirstCard() {
+//   const jobDes = document.querySelector('.js-des-card');
+//   const firstJob = jobs[0];
+//  jobDes.innerHTML = `
+//  <div class="card" data-id="${firstJob.id}">
+//         <img src="/imgs/job1.webp" alt="">
+//         <button>
+//           <i class="fa-regular fa-bookmark"></i>
+//         </button>
+//         <div>${firstJob.company}</div>
+//         <div>${firstJob.jobTitle}</div>
+//         <div>
+//           <span>${firstJob.location}</span> |
+//           <span>${firstJob.salary} $TND</span>
+//         </div>
+//         </div>
+//  `
+//   }
   
-
-
+document.addEventListener('DOMContentLoaded', () => {
+  renderJobs(jobs)
+  renderSelectedCard()
+  renderCLickedCard()
+  // renderFirstCard()
+ 
+})
   
   
   
