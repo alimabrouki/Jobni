@@ -92,7 +92,7 @@ export function renderJobs(jobs) {
          
   jobCards.forEach(card => { 
   const jobId = card.getAttribute('data-id');
-  const job = getJobs(jobId);
+  const job = getJobs(jobId) ;
   card.addEventListener('click', () => {
     if (jobDes && job) {
        jobDes.innerHTML = `
@@ -113,24 +113,6 @@ export function renderJobs(jobs) {
   });
 });
  }
-// function renderFirstCard() {
-//   const jobDes = document.querySelector('.js-des-card');
-//   const firstJob = jobs[0];
-//  jobDes.innerHTML = `
-//  <div class="card" data-id="${firstJob.id}">
-//         <img src="/imgs/job1.webp" alt="">
-//         <button>
-//           <i class="fa-regular fa-bookmark"></i>
-//         </button>
-//         <div>${firstJob.company}</div>
-//         <div>${firstJob.jobTitle}</div>
-//         <div>
-//           <span>${firstJob.location}</span> |
-//           <span>${firstJob.salary} $TND</span>
-//         </div>
-//         </div>
-//  `
-//   }
   
 function selectedCardColor() {
   const cards = document.querySelectorAll('.js-job-card')
@@ -143,9 +125,13 @@ function selectedCardColor() {
     })
   });
 }
-const btn1 = document.querySelector('.js-btn1')
+
+function btnsRenderJobs() {
+  const btn1 = document.querySelector('.js-btn1')
 btn1.addEventListener('click',() => {
-  renderJobs(jobs)
+  renderJobs(jobs);
+  renderCLickedCard();
+  selectedCardColor();
 })
 const btn2 = document.querySelector('.js-btn2');
 btn2.addEventListener('click',() => {
@@ -168,17 +154,47 @@ btn2.addEventListener('click',() => {
           </a>
     `
   })
-
+   renderCLickedNewCard();
+   selectedCardColor();
 })
+}
 
+ function renderCLickedNewCard() {
+   const jobCards = document.querySelectorAll('.js-job-card')
+  const jobDes = document.querySelector('.js-des-card')
+         
+  jobCards.forEach(card => { 
+  const jobId = card.getAttribute('data-id');
+  const job = getNewJobs(jobId) ;
+  card.addEventListener('click', () => {
+    if (jobDes && job) {
+       jobDes.innerHTML = `
+    <div class="card" >
+        <img src="${job.image}" alt="">
+        <button>
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <div>${job.company}</div>
+        <div>${job.jobTitle}</div>
+        <div>
+          <span>${job.location}</span> |
+          <span>${job.salary} $TND</span>
+        </div>
+        </div>
+      `; 
+    }
+  });
+});
 
+ }
 document.addEventListener('DOMContentLoaded', () => {
-  renderJobs(jobs)
-  renderSelectedCard()
-  renderCLickedCard()
-  // renderFirstCard()
-  selectedCardColor()
-  reload()
+  renderJobs(jobs);
+  renderSelectedCard();
+  renderCLickedCard();
+  selectedCardColor();
+  reload();
+  btnsRenderJobs();
+  renderCLickedNewCard();
 })
   
   
