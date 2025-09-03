@@ -1,8 +1,10 @@
-import { jobs,getJobs } from "../data/jobs-data.js";
-const navEntries = performance.getEntriesByType('navigation');
+import { jobs,getJobs,newJobs,getNewJobs } from "../data/jobs-data.js";
+function reload() {
+  const navEntries = performance.getEntriesByType('navigation');
 const isReload = navEntries.length && navEntries[0].type === 'reload'
 if (window.location.search.includes('id=') && isReload ) {
   window.location.replace('jobs.html')
+}
 }
 function interactiveBtns() {
   const btn1 = document.querySelector('.js-btn1')
@@ -141,12 +143,42 @@ function selectedCardColor() {
     })
   });
 }
+const btn1 = document.querySelector('.js-btn1')
+btn1.addEventListener('click',() => {
+  renderJobs(jobs)
+})
+const btn2 = document.querySelector('.js-btn2');
+btn2.addEventListener('click',() => {
+  const cards = document.querySelector('.cards')
+  cards.innerHTML = '';
+ newJobs.forEach( job => {
+    cards.innerHTML += `
+    <a href="#">
+    <div class="card js-job-card " data-id="${job.id}">
+              <img src="${job.image}" alt="">
+              <button>
+                <i class="fa-regular fa-bookmark"></i>
+              </button>
+              <div>${job.company}</div>
+              <div>${job.jobTitle}</div>
+              <div>${job.location}</div>
+              <div>${job.salary} $TND</div>
+              <div>${job.dateUploaded}</div>
+          </div>
+          </a>
+    `
+  })
+
+})
+
+
 document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs)
   renderSelectedCard()
   renderCLickedCard()
   // renderFirstCard()
   selectedCardColor()
+  reload()
 })
   
   

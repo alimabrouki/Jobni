@@ -172,3 +172,151 @@ export const jobs = [
     dateUploaded: '18hrs'
   }
 ]
+
+export function getNewJobs(jobId) {
+  let matchingJobs;
+  newJobs.forEach( job => {
+    if (job.id === jobId) {
+      matchingJobs = job
+    }
+  })
+  return matchingJobs;
+}
+
+export const newJobs = [
+  {
+    id: '19',
+    image: '/imgs/job19.webp',
+    company: 'Spotify',
+    jobTitle: 'UI/UX Designer',
+    location: 'Tunis',
+    salary: 2700,
+    dateUploaded: '1d'
+  },
+  {
+    id: '20',
+    image: '/imgs/job20.webp',
+    company: 'LinkedIn',
+    jobTitle: 'Frontend Engineer',
+    location: 'Sousse',
+    salary: 3100,
+    dateUploaded: '12hrs'
+  },
+  {
+    id: '21',
+    image: '/imgs/job21.webp',
+    company: 'Adobe',
+    jobTitle: 'Product Manager',
+    location: 'Ariana',
+    salary: 4200,
+    dateUploaded: '2d'
+  },
+  {
+    id: '22',
+    image: '/imgs/job22.webp',
+    company: 'Intel',
+    jobTitle: 'Hardware Engineer',
+    location: 'Sfax',
+    salary: 4600,
+    dateUploaded: '8hrs'
+  },
+  {
+    id: '23',
+    image: '/imgs/job23.webp',
+    company: 'Dell',
+    jobTitle: 'Support Engineer',
+    location: 'Monastir',
+    salary: 2400,
+    dateUploaded: '3d'
+  },
+  {
+    id: '24',
+    image: '/imgs/job24.webp',
+    company: 'Cisco',
+    jobTitle: 'Network Security Engineer',
+    location: 'Tunis',
+    salary: 3900,
+    dateUploaded: '15hrs'
+  },
+  {
+    id: '25',
+    image: '/imgs/job25.webp',
+    company: 'HP',
+    jobTitle: 'QA Engineer',
+    location: 'Nabeul',
+    salary: 2600,
+    dateUploaded: '1d'
+  },
+  {
+    id: '26',
+    image: '/imgs/job26.webp',
+    company: 'Oracle',
+    jobTitle: 'Database Engineer',
+    location: 'Bizerte',
+    salary: 4100,
+    dateUploaded: '2d'
+  },
+  {
+    id: '27',
+    image: '/imgs/job27.webp',
+    company: 'Samsung',
+    jobTitle: 'Android Developer',
+    location: 'Gabès',
+    salary: 3300,
+    dateUploaded: '20hrs'
+  },
+  {
+    id: '28',
+    image: '/imgs/job28.webp',
+    company: 'Tesla',
+    jobTitle: 'Machine Learning Engineer',
+    location: 'Tunis',
+    salary: 5200,
+    dateUploaded: '3d'
+  },
+  {
+    id: '29',
+    image: '/imgs/job29.webp',
+    company: 'SpaceX',
+    jobTitle: 'Aerospace Software Engineer',
+    location: 'Ariana',
+    salary: 6000,
+    dateUploaded: '1d'
+  },
+  {
+    id: '30',
+    image: '/imgs/job30.webp',
+    company: 'Netflix',
+    jobTitle: 'Data Scientist',
+    location: 'Sousse',
+    salary: 5500,
+    dateUploaded: '6hrs'
+  },
+  {
+    id: '31',
+    image: '/imgs/job31.webp',
+    company: 'Airbnb',
+    jobTitle: 'Full Stack Engineer',
+    location: 'Tunis',
+    salary: 3700,
+    dateUploaded: '2d'
+  },
+  {
+    id: '32',
+    image: '/imgs/job32.webp',
+    company: 'Uber',
+    jobTitle: 'Backend Engineer',
+    location: 'Sfax',
+    salary: 3400,
+    dateUploaded: '18hrs'
+  },
+  {
+    id: '33',
+    image: '/imgs/job33.webp',
+    company: 'Stripe',
+    jobTitle: 'Payments Engineer',
+    location: 'Monastir',
+    salary: 4800,
+    dateUploaded: '3d'
+  }
+]
