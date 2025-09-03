@@ -68,53 +68,23 @@ ul {
     position: relative;
 }
 .jobs  .btn1 {
-  position: absolute;
-  border: 1px solid var(--main-color);
-  display: inline-block;
-  color: white;
-  font-weight: bold;
-  background-color: var(--main-color);
-  padding: 19px 10px ;
-  right: 50%;
-  bottom: 0;
-  border-top-right-radius: 13px;
-  border-top-left-radius: 13px;
-  border-bottom: none;
-  box-shadow: -4px -2px 0 0px var(--hover-color);
+    position: absolute;
+    border: 1px solid rgb(198 198 198);
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    padding: 19px 10px;
+    right: 50%;
+    bottom: 0px;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    border-bottom: 1px solid white;
+    box-shadow: -2px -2px 0px 2px var(--hover-color);
+    transition: var(--main-transition);
 }
 .jobs .btn2 {
   position: absolute;
-  border: 1px solid var(--main-color);
-  display: inline-block;
-  color:black;
-  font-weight: bold;
-  background-color: white;
-  padding: 19px 10px ;
-  left: 55%;
-  bottom: 0;
-  border-top-right-radius: 13px;
-  border-top-left-radius: 13px;
-  border-bottom: none;
-  box-shadow: -4px -2px 0 2px var(--hover-color);
-}
- .btn1unclicked {
-  position: absolute;
-  border: 1px solid var(--main-color);
-  display: inline-block;
-  color:black;
-  font-weight: bold;
-  background-color: white;
-  padding: 19px 10px ;
-  right: 50%;
-  bottom: 0;
-  border-top-right-radius: 13px;
-  border-top-left-radius: 13px;
-  border-bottom: none;
-  box-shadow: -4px -2px 0 2px var(--hover-color);
-}
-.btn2clicked {
-  position: absolute;
-  border: 1px solid var(--main-color);
+  border: 1px solid rgb(198 198 198);
   display: inline-block;
   color:white;
   font-weight: bold;
@@ -124,8 +94,40 @@ ul {
   bottom: 0;
   border-top-right-radius: 13px;
   border-top-left-radius: 13px;
-  border-bottom: none;
-  box-shadow: -4px -2px 0 0px var(--hover-color);
+  border-bottom: 1px solid white;
+  box-shadow: -3px -3px 0px 3px var(--hover-color);
+  transition: var(--main-transition);
+}
+.btn1unclicked {
+    position: absolute;
+    box-shadow: -3px -3px 0px 3px var(--hover-color);
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    background-color: var(--main-color);
+    padding: 19px 10px;
+    right: 50%;
+    bottom: 0;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    border-bottom: 1px solid white;
+    transition: var(--main-transition);
+}
+.btn2clicked {
+  position: absolute;
+ border: 1px solid rgb(198 198 198);
+  display: inline-block;
+  color:black;
+  font-weight: bold;
+  background-color: white;
+  padding: 19px 10px ;
+  left: 55%;
+  bottom: 0;
+  border-top-right-radius: 13px;
+  border-top-left-radius: 13px;
+  border-bottom: 1px solid white;
+  box-shadow: -2px -2px 0px 2px var(--hover-color);
+  transition: var(--main-transition);
 } 
 .jobs .container {
   display: flex;

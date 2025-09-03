@@ -23,7 +23,7 @@ function clickButton(active) {
     btn2.classList.add('btn2clicked')
     btn2.classList.remove('btn2')
   }
- localStorage.setItem('activebutton',active)
+//  localStorage.setItem('activebutton',active)
 }
 
 
@@ -33,12 +33,12 @@ btn1.addEventListener('click' ,() => {
 btn2.addEventListener('click', () => {
   clickButton('btn2')
 })
-window.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('activebutton');
-  if (saved) {
-    clickButton(saved)
-  }
-} )
+// window.addEventListener('DOMContentLoaded', () => {
+//   const saved = localStorage.getItem('activebutton');
+//   if (saved) {
+//     clickButton(saved)
+//   }
+// } )
 }
 interactiveBtns()
 function renderSelectedCard() {
@@ -131,11 +131,13 @@ function btnsRenderJobs() {
 btn1.addEventListener('click',() => {
   renderJobs(jobs);
   renderCLickedCard();
-  selectedCardColor();
+  selectedCardColor()
 })
 const btn2 = document.querySelector('.js-btn2');
+
 btn2.addEventListener('click',() => {
   const cards = document.querySelector('.cards')
+  
   cards.innerHTML = '';
  newJobs.forEach( job => {
     cards.innerHTML += `
@@ -152,11 +154,34 @@ btn2.addEventListener('click',() => {
               <div>${job.dateUploaded}</div>
           </div>
           </a>
-    `
+    `; 
+    
   })
-   renderCLickedNewCard();
+  const jobDes = document.querySelector('.js-des-card')
+  const firstJob = newJobs[0] 
+    
+  if (jobDes && firstJob) {
+       jobDes.innerHTML = `
+    <div class="card" >
+        <img src="${firstJob.image}" alt="">
+        <button>
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <div>${firstJob.company}</div>
+        <div>${firstJob.jobTitle}</div>
+        <div>
+          <span>${firstJob.location}</span> |
+          <span>${firstJob.salary} $TND</span>
+        </div>
+        </div>
+      `;
+      
+    }
+ 
+  
+  renderCLickedNewCard();
    selectedCardColor();
-})
+  })
 }
 
  function renderCLickedNewCard() {
