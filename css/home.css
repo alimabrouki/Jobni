@@ -199,23 +199,41 @@ ul {
   flex-wrap: wrap;
 }
 .home .container .search-container {
-  position: relative;
-  margin-top: 40px;
-  width: 100%;
-  max-width: 900px;
+    position: relative;
+    margin-top: 40px;
+    /* width: 50%; */
+    max-width: 900px;
+    background-color: #99999933;
+    border: none;
+    border-radius: 33px;
+    padding: 12px 70px;
+    text-align: center;
+    display: flex
+;
+    justify-content: center;
+    transition: var(--main-transition);
+}
+.search-container.active {
+ gap: 10px;
+ transition: var(--main-transition);
 }
 .home .container .search-bar {
   background-color: #99999933;
   border: none;
   border-radius: 33px;
   font-size: 25px;
-  padding: 20px;
+  padding: 12px 45px;
   text-align: center;
-  width: 100%;
+  
   box-shadow: var(--main-box-shadow);
+}
+.search-bar.active {
+  max-width: 330px;
 }
 .home .container .search-bar::placeholder {
   transition: var(--main-transition);
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
 }
 .home .container .search-bar:focus::placeholder {
   opacity: 0;
@@ -230,16 +248,43 @@ ul {
   top: 50%;
   left:30px ;
   transform: translateY(-50%);
-  font-size: 30px;
+  font-size: 25px;
   color: var(--main-color);
 }
-.home .container .search-container span:last-of-type i {
-  position: absolute;
-  top: 50%;
-  right:30px ;
-  transform: translateY(-50%);
-  font-size: 30px;
+.home .container .search-container a {
+ position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 25px;
+    color: var(--main-color);
+    padding: 11px;
+}
+.home .container .search-container a:hover {
+  background-color: rgb(166 199 232 / 25%);
+  border-radius: 50%;
+}
+.home .container .search-container a i {
   color: var(--main-color);
+}
+.search-container .search-location {
+  opacity: 0;
+  visibility: hidden;
+  background-color: #99999933;
+  border: none;
+  border-radius: 33px;
+  font-size: 25px;
+  padding: 12px 0px;
+  text-align: center;
+  width: 0px;
+  box-shadow: var(--main-box-shadow);
+  transition: all var(--main-transition) ease-in-out;
+}
+.search-location.active {
+  opacity: 1;
+  visibility: visible;
+  width: 200px;
+  transition: all var(--main-transition) ease-in-out;
 }
 .container .job-cards {
   margin-top: 60px;
