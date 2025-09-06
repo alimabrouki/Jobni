@@ -280,11 +280,27 @@ ul {
   box-shadow: var(--main-box-shadow);
   transition: all var(--main-transition) ease-in-out;
 }
+.home .container .search-location::placeholder {
+  transition: var(--main-transition);
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+}
+.home .container .search-location:focus::placeholder {
+  opacity: 0;
+}
+.home .container .search-location:focus {
+ 
+ box-shadow: 0 0 9px rgb(86, 152, 217);
+ outline: none;
+}
 .search-location.active {
   opacity: 1;
   visibility: visible;
   width: 200px;
   transition: all var(--main-transition) ease-in-out;
+}
+.search-result {
+  
 }
 .container .job-cards {
   margin-top: 60px;

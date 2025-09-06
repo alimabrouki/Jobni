@@ -132,6 +132,7 @@ btn1.addEventListener('click',() => {
   renderJobs(jobs);
   renderCLickedCard();
   selectedCardColor()
+  renderSelectedCard()
 })
 const btn2 = document.querySelector('.js-btn2');
 
@@ -210,7 +211,34 @@ btn2.addEventListener('click',() => {
     }
   });
 });
-
+}
+function searchLocation() {
+  const searchLocation = document.querySelector('.search-location')
+  const searchContainer = document.querySelector('.search-container')
+  const locationIcon = document.querySelector('.location-icon')
+  const searchBar = document.querySelector('.search-bar')
+  locationIcon.addEventListener('click',() => {
+    searchLocation.classList.add('active')
+    searchContainer.classList.add('active')
+    searchBar.classList.add('active')
+  })
+ }
+export function searchBar() {
+  const searchBar = document.querySelector('.search-bar');
+  const searchContainer = document.querySelector('.search-container')
+  const searchResult = document.querySelector('.search-result')
+  searchBar.addEventListener('focus',() => {
+    searchContainer.classList.add('active')
+  })
+  searchBar.addEventListener('input', (e) => {
+    searchResult.innerHTML = `<a href="home.html">
+    <div style="margin-left: 20px; margin-top: 10px; font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
+    `
+  })
+  document.addEventListener('mousedown', (e) => {
+    if(!searchContainer.contains(e.target)) {
+    searchContainer.classList.remove('active')
+ }})
  }
 document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
@@ -220,6 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
   reload();
   btnsRenderJobs();
   renderCLickedNewCard();
+  searchLocation()
+  searchBar()
 })
   
   

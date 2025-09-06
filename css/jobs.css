@@ -58,7 +58,25 @@ ul {
 }
 /* End Global Rules */
 /* Start Jobs */
-
+.search-container .search-location {
+  opacity: 0;
+  visibility: hidden;
+  background-color: #99999933;
+  border: none;
+  border-radius: 33px;
+  font-size: 25px;
+  padding: 12px 0px;
+  text-align: center;
+  width: 0px;
+  box-shadow: var(--main-box-shadow);
+  transition: all var(--main-transition) ease-in-out;
+}
+.search-location.active {
+  opacity: 1;
+  visibility: visible;
+  width: 200px;
+  transition: all var(--main-transition) ease-in-out;
+}
 .jobs {
   position: relative;
   margin-top: 100px;
