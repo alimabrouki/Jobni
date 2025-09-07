@@ -50,9 +50,8 @@ if (jobDes && job) {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}">
         <img src="${job.image}" alt="">
-        <button>
-          <i class="fa-regular fa-bookmark"></i>
-        </button>
+          <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
+        </i>
         <div>${job.company}</div>
         <div>${job.jobTitle}</div>
         <div>
@@ -73,9 +72,8 @@ export function renderJobs(jobs) {
     <a href="#">
     <div class="card js-job-card " data-id="${job.id}">
               <img src="${job.image}" alt="">
-              <button>
-                <i class="fa-regular fa-bookmark"></i>
-              </button>
+              <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
+        </i>
               <div>${job.company}</div>
               <div>${job.jobTitle}</div>
               <div>${job.location}</div>
@@ -98,9 +96,8 @@ export function renderJobs(jobs) {
        jobDes.innerHTML = `
     <div class="card" >
         <img src="${job.image}" alt="">
-        <button>
-          <i class="fa-regular fa-bookmark"></i>
-        </button>
+        <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
+        </i>
         <div>${job.company}</div>
         <div>${job.jobTitle}</div>
         <div>
@@ -109,9 +106,11 @@ export function renderJobs(jobs) {
         </div>
         </div>
       `; 
+      saveButton();
     }
   });
 });
+
  }
   
 function selectedCardColor() {
@@ -133,6 +132,7 @@ btn1.addEventListener('click',() => {
   renderCLickedCard();
   selectedCardColor()
   renderSelectedCard()
+  saveButton()
 })
 const btn2 = document.querySelector('.js-btn2');
 
@@ -145,9 +145,8 @@ btn2.addEventListener('click',() => {
     <a href="#">
     <div class="card js-job-card " data-id="${job.id}">
               <img src="${job.image}" alt="">
-              <button>
-                <i class="fa-regular fa-bookmark"></i>
-              </button>
+              <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
+        </i>
               <div>${job.company}</div>
               <div>${job.jobTitle}</div>
               <div>${job.location}</div>
@@ -165,9 +164,8 @@ btn2.addEventListener('click',() => {
        jobDes.innerHTML = `
     <div class="card" >
         <img src="${firstJob.image}" alt="">
-        <button>
-          <i class="fa-regular fa-bookmark"></i>
-        </button>
+        <i data-id="${firstJob.id}" class="save-button fa-regular fa-bookmark">
+        </i>
         <div>${firstJob.company}</div>
         <div>${firstJob.jobTitle}</div>
         <div>
@@ -182,6 +180,7 @@ btn2.addEventListener('click',() => {
   
   renderCLickedNewCard();
    selectedCardColor();
+   saveButton()
   })
 }
 
@@ -197,9 +196,8 @@ btn2.addEventListener('click',() => {
        jobDes.innerHTML = `
     <div class="card" >
         <img src="${job.image}" alt="">
-        <button>
-          <i class="fa-regular fa-bookmark"></i>
-        </button>
+        <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
+        </i>
         <div>${job.company}</div>
         <div>${job.jobTitle}</div>
         <div>
@@ -208,17 +206,19 @@ btn2.addEventListener('click',() => {
         </div>
         </div>
       `; 
+      saveButton()
     }
   });
 });
+
 }
-function searchLocation() {
+export function searchLocation() {
   const searchLocation = document.querySelector('.search-location')
   const searchContainer = document.querySelector('.search-container')
   const locationIcon = document.querySelector('.location-icon')
   const searchBar = document.querySelector('.search-bar')
   locationIcon.addEventListener('click',() => {
-    searchLocation.classList.add('active')
+    searchLocation.classList.toggle('active')
     searchContainer.classList.add('active')
     searchBar.classList.add('active')
   })
@@ -226,19 +226,56 @@ function searchLocation() {
 export function searchBar() {
   const searchBar = document.querySelector('.search-bar');
   const searchContainer = document.querySelector('.search-container')
-  const searchResult = document.querySelector('.search-result')
-  searchBar.addEventListener('focus',() => {
-    searchContainer.classList.add('active')
+  const jobSrchRslt = document.querySelector('.job-srch-rslt');
+  const locationSrchRslt = document.querySelector('.location-srch-rslt')
+  const locationIcon = document.querySelector('.location-icon')
+  const searchLocation = document.querySelector('.search-location')
+  locationIcon.addEventListener('click', () => {
+    jobSrchRslt.classList.add('hidden')
+    jobSrchRslt.classList.add('with')
   })
+  searchBar.addEventListener('focus',() => {
+    jobSrchRslt.classList.add('focus')
+  })
+   searchBar.addEventListener('mousedown', () => {
+    locationSrchRslt.classList.remove('focus')
+    }
+   )
+   searchLocation.addEventListener('mousedown', () => {
+    jobSrchRslt.classList.remove('focus')
+    }
+   )
   searchBar.addEventListener('input', (e) => {
-    searchResult.innerHTML = `<a href="home.html">
-    <div style="margin-left: 20px; margin-top: 10px; font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
+    jobSrchRslt.innerHTML = `<a href="home.html">
+    <div style="margin-left: 20px; margin-top: 10px; 
+    font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
+    `
+  })
+  searchLocation.addEventListener('input', (e) => {
+    locationSrchRslt.innerHTML = `<a href="home.html">
+    <div style="margin-left: 20px; margin-top: 10px; 
+    font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
     `
   })
   document.addEventListener('mousedown', (e) => {
     if(!searchContainer.contains(e.target)) {
-    searchContainer.classList.remove('active')
- }})
+    jobSrchRslt.classList.remove('focus');
+    locationSrchRslt.classList.remove('focus');
+ }
+})
+ searchLocation.addEventListener('focus', () => {
+  locationSrchRslt.classList.add('focus')
+ })
+ }
+ export function saveButton() {
+  const saveButton = document.querySelectorAll('.save-button');
+  saveButton.forEach(btn => {
+   btn.addEventListener('click',(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    btn.classList.toggle('active')
+  })
+  })
  }
 document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
@@ -248,8 +285,9 @@ document.addEventListener('DOMContentLoaded', () => {
   reload();
   btnsRenderJobs();
   renderCLickedNewCard();
-  searchLocation()
   searchBar()
+  searchLocation()
+  saveButton()
 })
   
   

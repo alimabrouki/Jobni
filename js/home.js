@@ -1,5 +1,5 @@
 import {  jobs } from "../data/jobs-data.js";
-
+import { searchLocation,searchBar,saveButton } from "./jobs.js";
 function toggleMenu() {
   const bars = document.getElementById('bars');
 const naviMenu = document.querySelector('.nav');
@@ -23,9 +23,8 @@ function renderHomeJobs(jobs) {
     <a  href="jobs.html?id=${job.id}">
     <div class="card js-job-card " data-id="${job.id}">
               <img src="${job.image}" alt="">
-              <button>
-                <i class="fa-regular fa-bookmark"></i>
-              </button>
+              <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
+        </i>
               <div>${job.company}</div>
               <div>${job.jobTitle}</div>
               <div>${job.location}</div>
@@ -39,7 +38,9 @@ function renderHomeJobs(jobs) {
 }
 document.addEventListener('DOMContentLoaded',() => {
   renderHomeJobs(jobs);
- 
+  searchLocation();
+  searchBar();
+  saveButton();
 })
 
 

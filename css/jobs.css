@@ -58,7 +58,7 @@ ul {
 }
 /* End Global Rules */
 /* Start Jobs */
-.search-container .search-location {
+/* .search-container .search-location {
   opacity: 0;
   visibility: hidden;
   background-color: #99999933;
@@ -76,7 +76,7 @@ ul {
   visibility: visible;
   width: 200px;
   transition: all var(--main-transition) ease-in-out;
-}
+} */
 .jobs {
   position: relative;
   margin-top: 100px;
@@ -228,7 +228,7 @@ ul {
   font-size: 20px;
   margin-bottom: 10px;
 }
-.container .job-description .card button {
+.job-description .card .save-button {
     border: none;
     background-color: rgb(166 199 232 / 51%);
     position: absolute;
@@ -238,6 +238,13 @@ ul {
     cursor: pointer;
     padding: 10px;
     border-radius: var(--main-border-radius);
+    z-index: 999;
+}
+
+.save-button.active  {
+ -webkit-text-stroke: 2px black;
+    font-weight: 900;
+    color: #1FF568;
 }
 .container .job-description .job-info .info {
 margin-left: 22px;

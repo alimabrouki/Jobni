@@ -25,6 +25,7 @@ body {
     --main-border-radius: 8px;
     --second-hover-color: rgba(0, 0, 0, 0.071);
     --main-box-shadow: 0px 1px 6px -2px;
+    --rslt-color:#e0e0e0;
 }
 a {
     text-decoration: none;
@@ -201,21 +202,17 @@ ul {
 .home .container .search-container {
     position: relative;
     margin-top: 40px;
-    /* width: 50%; */
     max-width: 900px;
     background-color: #99999933;
     border: none;
     border-radius: 33px;
     padding: 12px 70px;
     text-align: center;
-    display: flex
-;
+    display: flex;
     justify-content: center;
-    transition: var(--main-transition);
 }
 .search-container.active {
  gap: 10px;
- transition: var(--main-transition);
 }
 .home .container .search-bar {
   background-color: #99999933;
@@ -278,29 +275,65 @@ ul {
   text-align: center;
   width: 0px;
   box-shadow: var(--main-box-shadow);
-  transition: all var(--main-transition) ease-in-out;
+  transition: var(--main-transition);
 }
 .home .container .search-location::placeholder {
-  transition: var(--main-transition);
   font-size: 20px;
   font-family: "Roboto", sans-serif;
 }
 .home .container .search-location:focus::placeholder {
   opacity: 0;
+  transition: .1s;
 }
 .home .container .search-location:focus {
- 
  box-shadow: 0 0 9px rgb(86, 152, 217);
  outline: none;
+ transition: .1s;
 }
 .search-location.active {
   opacity: 1;
   visibility: visible;
   width: 200px;
-  transition: all var(--main-transition) ease-in-out;
+  transition: var(--main-transition);
 }
-.search-result {
-  
+.job-srch-rslt {
+  display: none;
+  position: absolute;
+    z-index: 9999;
+    background-color: var(--rslt-color);
+       height: 50vh;
+    width: 26%;
+    top: 182px;
+    border-radius: 20px;
+    transition: var(--main-transition);
+}
+.job-srch-rslt.hidden {
+  display: none;
+}
+.job-srch-rslt.focus {
+  display: block;
+  transition: var(--main-transition);
+}
+.job-srch-rslt.with {
+  width: 22%;
+  left: 32%;
+
+}
+.location-srch-rslt{
+  display: none;
+  position: absolute;
+    z-index: 9999;
+    background-color: var(--rslt-color);
+    height: 50vh;
+    width: 202px;
+    right: 32%;
+    top: 182px;
+    border-radius: 20px;
+    transition: var(--main-transition);
+}
+.location-srch-rslt.focus {
+  display: block;
+  transition: var(--main-transition);
 }
 .container .job-cards {
   margin-top: 60px;
@@ -377,14 +410,21 @@ ul {
   bottom: 6px;
   color: var(--company-name-color);
 }
-.container .job-cards .cards .card button {
+.job-cards .cards .card .save-button {
   border: none;
   background-color: transparent;
   position: absolute;
   right: 19px;
   top: 19px;
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
+  z-index: 999;
+}
+
+.save-button.active {
+ -webkit-text-stroke: 2px black;
+    font-weight: 900;
+    color: #1FF568;
 }
 .container .job-cards .find-more-btn {
   margin-top: 30px;
