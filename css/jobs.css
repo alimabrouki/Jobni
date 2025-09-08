@@ -12,19 +12,37 @@ html {
 body {
     font-family: "Roboto", sans-serif;
     min-height: 100%;
-    font-size: 20px;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
 }
 :root {
     --main-transition: .3s ;
     --main-color:rgb(29, 57, 73);
     --second-color: rgb(29 57 73 / 53%);
     --hover-color:rgb(166, 199, 232);
-    --main-weight: 350;
+    --main-weight: 400;
     --company-name-color: rgba(38, 35, 35, 0.759);
     --card-border-color: rgba(0, 0, 0, 0.203);
     --main-border-radius: 8px;
     --second-hover-color: rgba(0, 0, 0, 0.071);
     --main-box-shadow: 0px 1px 6px -2px;
+    
+    /* Typography Scale */
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 30px;
+    
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
 }
 a {
     text-decoration: none;
@@ -166,7 +184,7 @@ ul {
     position: relative;
     border-radius: 8px;
     padding-bottom: 10px;
-    font-family: system-ui;
+    font-family: "Roboto", sans-serif;
     box-shadow: 0px 1px 6px -2px;
     padding: 0 20px 7px 0px;
 }
@@ -193,7 +211,6 @@ ul {
     var(--card-border-color);
     position: relative;
     padding-bottom: 10px;
-    font-family: system-ui;
     padding: 0 20px 7px 0px;
 }
 .container .job-description .card img {
@@ -214,18 +231,20 @@ ul {
   position: absolute;
   margin: 25px 15px;
   color: var(--company-name-color);
-  font-size: 25px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
 }
 .container .job-description .card div:nth-child(4) {
   color: black;
-  font-weight: 600;
-  font-size: 30px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-2xl);
   margin-bottom: 10px;
   margin-top: 10px;
 }
 .container .job-description .card div:nth-child(5) {
   color: var(--company-name-color);
-  font-size: 20px;
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
   margin-bottom: 10px;
 }
 .job-description .card .save-button {
@@ -234,7 +253,7 @@ ul {
     position: absolute;
     right: 19px;
     top: 19px;
-    font-size: 30px;
+    font-size: var(--text-2xl);
     cursor: pointer;
     padding: 10px;
     border-radius: var(--main-border-radius);
@@ -256,37 +275,37 @@ margin-left: 22px;
  margin-top: 25px;
 }
 .about-role div {
-  font-weight: 600; 
+  font-weight: var(--font-weight-semibold); 
   margin-bottom: 25px;
 }
 .container .job-description .job-info .qualifications {
   margin-bottom: 25px;
 }
 .qualifications div {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 25px;
 }
 .container .job-description .job-info .job-time {
   margin-bottom: 25px;
 }
 .job-time div {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .job-time i {
   margin-bottom: 25px;
 }
 .job-description .job-info  {
-  font-size: 17px;
+  font-size: var(--text-base);
 }
 .job-description .job-info .fa-circle-dot  {
   font-size: 18px;
 }
 .company-info div:first-child {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 25px;
 }
 .company-info .phone span{
- font-weight: 600;
+ font-weight: var(--font-weight-semibold);
 }
 .company-info .phone i {
   margin-bottom: 20px;
@@ -296,7 +315,7 @@ margin-left: 22px;
   margin-bottom: 10px;
 }
 .company-info .email span {
-  font-weight: 600;
+ font-weight: var(--font-weight-semibold);
 }
 .company-info .email , .email-address {
   display: inline;

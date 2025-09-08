@@ -12,20 +12,38 @@ html {
 body {
     font-family: "Roboto", sans-serif;
     min-height: 100%;
-    font-size: 20px;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
 }
 :root {
     --main-transition: .3s ;
     --main-color:rgb(29, 57, 73);
     --second-color: rgb(29 57 73 / 53%);
     --hover-color:rgb(166, 199, 232);
-    --main-weight: 350;
+    --main-weight: 400;
     --company-name-color: rgba(38, 35, 35, 0.759);
     --card-border-color: rgba(0, 0, 0, 0.203);
     --main-border-radius: 8px;
     --second-hover-color: rgba(0, 0, 0, 0.071);
     --main-box-shadow: 0px 1px 6px -2px;
     --rslt-color:#e0e0e0;
+    
+    /* Typography Scale */
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 30px;
+    
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
 }
 a {
     text-decoration: none;
@@ -218,10 +236,9 @@ ul {
   background-color: #99999933;
   border: none;
   border-radius: 33px;
-  font-size: 25px;
+  font-size: var(--text-lg);
   padding: 12px 45px;
   text-align: center;
-  
   box-shadow: var(--main-box-shadow);
 }
 .search-bar.active {
@@ -229,7 +246,7 @@ ul {
 }
 .home .container .search-bar::placeholder {
   transition: var(--main-transition);
-  font-size: 20px;
+  font-size: var(--text-base);
   font-family: "Roboto", sans-serif;
 }
 .home .container .search-bar:focus::placeholder {
@@ -245,7 +262,7 @@ ul {
   top: 50%;
   left:30px ;
   transform: translateY(-50%);
-  font-size: 25px;
+  font-size: var(--text-lg);
   color: var(--main-color);
 }
 .home .container .search-container a {
@@ -253,7 +270,7 @@ ul {
     top: 50%;
     right: 15px;
     transform: translateY(-50%);
-    font-size: 25px;
+    font-size: var(--text-lg);
     color: var(--main-color);
     padding: 11px;
 }
@@ -270,7 +287,7 @@ ul {
   background-color: #99999933;
   border: none;
   border-radius: 33px;
-  font-size: 25px;
+  font-size: var(--text-lg);
   padding: 12px 0px;
   text-align: center;
   width: 0px;
@@ -278,7 +295,7 @@ ul {
   transition: var(--main-transition);
 }
 .home .container .search-location::placeholder {
-  font-size: 20px;
+  font-size: var(--text-base);
   font-family: "Roboto", sans-serif;
 }
 .home .container .search-location:focus::placeholder {
@@ -355,7 +372,7 @@ ul {
   position: relative;
   border-radius: 8px;
   padding-bottom: 30px ;
-  font-family: system-ui;
+  font-family: "Roboto", sans-serif;
   box-shadow: 0px 1px 6px -2px;
 }
 .container .job-cards .cards a {
@@ -379,7 +396,8 @@ ul {
   position: absolute;
   margin: 25px 15px;
   color: var(--company-name-color);
-  font-size: 15px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
 }
 .cardClicked {
   transform: translateY(-3px);
@@ -394,15 +412,18 @@ ul {
 }
 .container .job-cards .cards .card div:nth-child(4) {
   color: black;
-  font-weight: bold;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-xl);
 }
 .container .job-cards .cards .card div:nth-child(5) {
   color: var(--company-name-color);
-  font-size: 15px;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
 }
 .container .job-cards .cards .card div:nth-child(6) {
   color: var(--company-name-color);
-  font-size: 15px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-normal);
 }
 .container .job-cards .cards .card div:last-of-type {
   position: absolute;
@@ -416,7 +437,7 @@ ul {
   position: absolute;
   right: 19px;
   top: 19px;
-  font-size: 25px;
+  font-size: var(--text-xl);
   cursor: pointer;
   z-index: 999;
 }
@@ -430,7 +451,8 @@ ul {
   margin-top: 30px;
   background-color: var(--main-color);
   color: white;
-  font-size: 23px;
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
   margin-bottom: 30px;
   padding: 10px;
   border-radius: var(--main-border-radius);
