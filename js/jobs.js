@@ -81,6 +81,7 @@ export function renderJobs(jobs) {
               <div>${job.dateUploaded}</div>
           </div>
           </a>
+          
     `
   })
 }
@@ -277,7 +278,7 @@ export function searchBar() {
   })
   })
  }
-document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
   renderSelectedCard();
   renderCLickedCard();

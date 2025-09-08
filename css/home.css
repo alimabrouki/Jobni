@@ -447,16 +447,24 @@ ul {
 /* End Home */
 /* Start Footer */
 .footer {
-  border-top: 2px solid var(--second-color);
-  margin-top: 30px;
-  padding: 50px;
+  margin: 30px 30px 30px 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--main-color);
 }
 .footer .container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 80px;
+}
+.footer .container .logo a img {
+    max-width: 100px;
+    margin-top: 7px;
+    background: papayawhip;
+    border-radius: 5px;
 }
 .footer .container a {
-  color: var(--company-name-color);
+  color: papayawhip;
 }
 .footer .container .footer-menu ul li {
   padding: 8px;
@@ -466,7 +474,7 @@ ul {
 }
 .footer .container .footer-menu ul li a::after {
   content: "";
-  border-bottom: 3px solid var(--main-color);
+  border-bottom: 3px solid papayawhip;
   position: absolute;
   height: 4px;
   width: 100%;
@@ -490,6 +498,7 @@ ul {
 .footer .container .social-links ul a {
   border-radius: var(--main-border-radius);
   transition: var(--main-transition);  
+  color: papayawhip;
 }
 .footer .container .social-links ul li  {
   padding: 10px 15px;
@@ -536,12 +545,17 @@ ul {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  margin-bottom: 30px;
+  letter-spacing: 1px;
+  background-color: var(--main-color);
+  padding: 20px 0 0;
+  color: papayawhip;
+  margin-top: 40px;
+  border-top: 1px solid #ffefd533;
 }
 .copyright a {
   border-radius: var(--main-border-radius);
   box-shadow: var(--main-box-shadow);
   padding: 3px;
-  color: var(--main-color);
+  color: #5FFC7B;
 }
 /* End Footer */
