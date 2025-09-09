@@ -248,13 +248,13 @@ export function searchBar() {
     }
    )
   searchBar.addEventListener('input', (e) => {
-    jobSrchRslt.innerHTML = `<a href="home.html">
+    jobSrchRslt.innerHTML = `<a href="index.html">
     <div style="margin-left: 20px; margin-top: 10px; 
     font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
     `
   })
   searchLocation.addEventListener('input', (e) => {
-    locationSrchRslt.innerHTML = `<a href="home.html">
+    locationSrchRslt.innerHTML = `<a href="index.html">
     <div style="margin-left: 20px; margin-top: 10px; 
     font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
     `
