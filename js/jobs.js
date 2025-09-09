@@ -1,4 +1,5 @@
 import { jobs,getJobs,newJobs,getNewJobs } from "../data/jobs-data.js";
+import { toggleMenu } from "./home.js";
 function reload() {
   const navEntries = performance.getEntriesByType('navigation');
 const isReload = navEntries.length && navEntries[0].type === 'reload'
@@ -289,6 +290,7 @@ export function searchBar() {
   searchBar()
   searchLocation()
   saveButton()
+  toggleMenu();
 })
   
   

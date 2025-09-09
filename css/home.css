@@ -6,6 +6,13 @@
     padding: 0;
     margin: 0;
 }
+ ::before , ::after {
+  box-sizing: border-box;
+}
+h1,h2,h3 {
+  margin: 0;
+  line-height: 1.1;
+} 
 html {
     scroll-behavior: smooth;
 }
@@ -112,8 +119,17 @@ ul {
   justify-content: center;
   align-items: center;
 }
+.header .container .nav ul li {
+  padding: 13px;
+}
  #menu.show {
   display: block;
+  position: absolute;
+  top: 150px;
+  font-size: 36px;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 30px;
 }
 #navi {
   position: fixed;
@@ -126,7 +142,7 @@ ul {
   flex-direction: column; 
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 9999999;
 }
 #navi.active {
   display: flex;
@@ -183,14 +199,21 @@ ul {
     border-radius: 6px;
 }
 .container .sign-up button {
-  font-size: 20px;
   margin-left: 80px;
   background-color:var(--hover-color);
-  padding: 0px 3px;
+  padding: 3px 3px;
+  line-height: 33px;
+  margin-top: 7px;
 }
 .container #bars {
   font-size: 40px;
   margin-right: 15px;
+  position: relative;
+}
+.container #bars i {
+  position: absolute;
+  right: 0;
+  top: 7px;
 }
 }
 @media (min-width: 768px) {
@@ -229,6 +252,11 @@ ul {
     display: flex;
     justify-content: center;
 }
+@media (max-width: 767px) {
+  .home .container .search-container {
+    max-width: 380px;
+  }
+}
 .search-container.active {
  gap: 10px;
 }
@@ -240,6 +268,11 @@ ul {
   padding: 12px 45px;
   text-align: center;
   box-shadow: var(--main-box-shadow);
+}
+@media (max-width: 767px) {
+  .home .container .search-bar {
+    max-width: 250px;
+  }
 }
 .search-bar.active {
   max-width: 330px;
@@ -343,7 +376,7 @@ ul {
     background-color: var(--rslt-color);
     height: 50vh;
     width: 202px;
-    right: 32%;
+    right: 33%;
     top: 182px;
     border-radius: 20px;
     transition: var(--main-transition);
@@ -439,7 +472,7 @@ ul {
   top: 19px;
   font-size: var(--text-xl);
   cursor: pointer;
-  z-index: 999;
+  z-index: 999999;
 }
 
 .save-button.active {
@@ -478,6 +511,7 @@ ul {
   display: flex;
   justify-content: center;
   gap: 80px;
+  flex-wrap: wrap;
 }
 .footer .container .logo a img {
     max-width: 100px;

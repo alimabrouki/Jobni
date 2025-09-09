@@ -167,6 +167,7 @@ ul {
 } 
 .jobs .container {
   display: flex;
+  flex-wrap: wrap;
 }
 .container .job-cards {
     margin-top: 0;
@@ -177,6 +178,14 @@ ul {
     gap: 4px;
     margin-right: 25px;
     margin-top: 25px;
+}
+@media (max-width: 767px) {
+  .jobs .container {
+    display: block;
+}
+.container .job-cards .cards {
+  margin-right: 0px;
+}
 }
 .container .job-cards .cards .card {
     border: .9px solid var(--card-border-color);

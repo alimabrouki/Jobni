@@ -1,17 +1,19 @@
 import {  jobs } from "../data/jobs-data.js";
 import { searchLocation,searchBar,saveButton } from "./jobs.js";
-function toggleMenu() {
+export function toggleMenu() {
   const bars = document.getElementById('bars');
-const naviMenu = document.querySelector('.nav');
+const naviMenu = document.getElementById('navi');
 const menu = document.getElementById('menu');
 const closeMenu = document.getElementById('close-menu');
 
+bars.addEventListener('click', () => {
+  naviMenu.classList.add('active')
+  menu.classList.add('show')
+});
 closeMenu.addEventListener('click', () => {
   naviMenu.classList.remove('active')
 })
-bars.addEventListener('click', () => {
-  naviMenu.classList.toggle('active')
-});
+
 }
 toggleMenu()
 
