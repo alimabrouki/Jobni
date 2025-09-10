@@ -1,20 +1,6 @@
-import {  jobs } from "../data/jobs-data.js";
-import { searchLocation,searchBar,saveButton } from "./jobs.js";
-export function toggleMenu() {
-  const bars = document.getElementById('bars');
-const naviMenu = document.getElementById('navi');
-const menu = document.getElementById('menu');
-const closeMenu = document.getElementById('close-menu');
+import { jobs } from "../data/jobs-data.js";
+import { searchLocation, searchBar, saveButton, toggleMenu, searchWindow } from "./shared.js";
 
-bars.addEventListener('click', () => {
-  naviMenu.classList.add('active')
-  menu.classList.add('show')
-});
-closeMenu.addEventListener('click', () => {
-  naviMenu.classList.remove('active')
-})
-
-}
 toggleMenu()
 
 function renderHomeJobs(jobs) {
@@ -40,6 +26,7 @@ function renderHomeJobs(jobs) {
 }
 document.addEventListener('DOMContentLoaded',() => {
   renderHomeJobs(jobs);
+  searchWindow();
   searchLocation();
   searchBar();
   saveButton();

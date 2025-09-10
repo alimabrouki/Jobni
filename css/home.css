@@ -349,13 +349,14 @@ ul {
 .job-srch-rslt {
   display: none;
   position: absolute;
-    z-index: 9999;
-    background-color: var(--rslt-color);
-       height: 50vh;
-    width: 26%;
-    top: 182px;
-    border-radius: 20px;
-    transition: var(--main-transition);
+  z-index: 9999;
+  background-color: var(--rslt-color);
+  height: 50vh;
+  width: 67%;
+  top: 74px;
+  border-radius: 20px;
+  transition: var(--main-transition);
+  z-index: 99999999;
 }
 .job-srch-rslt.hidden {
   display: none;
@@ -365,25 +366,130 @@ ul {
   transition: var(--main-transition);
 }
 .job-srch-rslt.with {
-  width: 22%;
-  left: 32%;
-
+  width: 47%;
+  left: 10%;
 }
 .location-srch-rslt{
   display: none;
   position: absolute;
-    z-index: 9999;
-    background-color: var(--rslt-color);
-    height: 50vh;
-    width: 202px;
-    right: 33%;
-    top: 182px;
-    border-radius: 20px;
-    transition: var(--main-transition);
+  z-index: 9999;
+  background-color: var(--rslt-color);
+  height: 50vh;
+  width: 202px;
+  right: 11%;
+  top: 74px;
+  border-radius: 20px;
+  transition: var(--main-transition);
 }
 .location-srch-rslt.focus {
   display: block;
   transition: var(--main-transition);
+}
+@media (min-width: 768px) {
+  .search-window {
+  display: none;
+}
+}
+@media (max-width: 767px) {
+  .job-wind-rslt {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  background-color: var(--rslt-color);
+  height: 35vh;
+  width: 64%;
+  border-radius: 20px;
+  transition: var(--main-transition);
+  left: 97px;
+  top: 154px;
+ }
+ .job-wind-rslt.focus{
+  display: flex;
+ }
+ .location-wind-rslt {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  background-color: var(--rslt-color);
+  height: 35vh;
+  width: 64%;
+  border-radius: 20px;
+  transition: var(--main-transition);
+  left: 97px;
+  top: 221px;
+ }
+ .location-wind-rslt.focus{
+  display: flex;
+ }
+  .search-window.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0px);
+  }
+  .search-window {
+    transform: translateY(40px);
+    visibility: hidden;
+    opacity: 0;
+    transition: opactity 0.3s ;
+    pointer-events: none;
+    position: fixed;
+    top: 83px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    z-index: 9999999;
+    border-top: 1px solid;
+    box-shadow: 0 0px 15px 3px;
+    color: black;
+    gap: 21px;
+    transition: .1s ;
+  }
+  .search-window .close-window {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  .srch-job-window {
+    margin-top: 100px;
+    background-color: #99999933;
+  border: none;
+  border-radius: 33px;
+  font-size: var(--text-lg);
+  padding: 12px 45px;
+  text-align: center;
+  box-shadow: var(--main-box-shadow);
+  }
+ .srch-location-window {
+  background-color: #99999933;
+  border: none;
+  border-radius: 33px;
+  font-size: var(--text-lg);
+  padding: 12px 45px;
+  text-align: center;
+  box-shadow: var(--main-box-shadow);
+}
+.srch-job i , .srch-location  i  {
+font-size: 24px;
+    position: relative;
+    left: -15px;
+}
+.srch-location-window:focus::placeholder , .srch-job-window:focus::placeholder{
+  opacity: 0;
+  transition: .1s;
+}
+.srch-job-window:focus , .srch-location-window:focus {
+ box-shadow: 0 0 9px rgb(86, 152, 217);
+ outline: none;
+ transition: .1s;
+}
 }
 .container .job-cards {
   margin-top: 60px;

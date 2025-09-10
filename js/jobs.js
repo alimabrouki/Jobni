@@ -1,5 +1,5 @@
-import { jobs,getJobs,newJobs,getNewJobs } from "../data/jobs-data.js";
-import { toggleMenu } from "./home.js";
+import { jobs, getJobs, newJobs, getNewJobs } from "../data/jobs-data.js";
+import { toggleMenu, searchLocation, searchBar, saveButton, searchWindow } from "./shared.js";
 function reload() {
   const navEntries = performance.getEntriesByType('navigation');
 const isReload = navEntries.length && navEntries[0].type === 'reload'
@@ -214,71 +214,6 @@ btn2.addEventListener('click',() => {
 });
 
 }
-export function searchLocation() {
-  const searchLocation = document.querySelector('.search-location')
-  const searchContainer = document.querySelector('.search-container')
-  const locationIcon = document.querySelector('.location-icon')
-  const searchBar = document.querySelector('.search-bar')
-  locationIcon.addEventListener('click',() => {
-    searchLocation.classList.toggle('active')
-    searchContainer.classList.add('active')
-    searchBar.classList.add('active')
-  })
- }
-export function searchBar() {
-  const searchBar = document.querySelector('.search-bar');
-  const searchContainer = document.querySelector('.search-container')
-  const jobSrchRslt = document.querySelector('.job-srch-rslt');
-  const locationSrchRslt = document.querySelector('.location-srch-rslt')
-  const locationIcon = document.querySelector('.location-icon')
-  const searchLocation = document.querySelector('.search-location')
-  locationIcon.addEventListener('click', () => {
-    jobSrchRslt.classList.add('hidden')
-    jobSrchRslt.classList.add('with')
-  })
-  searchBar.addEventListener('focus',() => {
-    jobSrchRslt.classList.add('focus')
-  })
-   searchBar.addEventListener('mousedown', () => {
-    locationSrchRslt.classList.remove('focus')
-    }
-   )
-   searchLocation.addEventListener('mousedown', () => {
-    jobSrchRslt.classList.remove('focus')
-    }
-   )
-  searchBar.addEventListener('input', (e) => {
-    jobSrchRslt.innerHTML = `<a href="index.html">
-    <div style="margin-left: 20px; margin-top: 10px; 
-    font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
-    `
-  })
-  searchLocation.addEventListener('input', (e) => {
-    locationSrchRslt.innerHTML = `<a href="index.html">
-    <div style="margin-left: 20px; margin-top: 10px; 
-    font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
-    `
-  })
-  document.addEventListener('mousedown', (e) => {
-    if(!searchContainer.contains(e.target)) {
-    jobSrchRslt.classList.remove('focus');
-    locationSrchRslt.classList.remove('focus');
- }
-})
- searchLocation.addEventListener('focus', () => {
-  locationSrchRslt.classList.add('focus')
- })
- }
- export function saveButton() {
-  const saveButton = document.querySelectorAll('.save-button');
-  saveButton.forEach(btn => {
-   btn.addEventListener('click',(e) => {
-      e.preventDefault();
-      e.stopPropagation();
-    btn.classList.toggle('active')
-  })
-  })
- }
  document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
   renderSelectedCard();
@@ -287,9 +222,10 @@ export function searchBar() {
   reload();
   btnsRenderJobs();
   renderCLickedNewCard();
-  searchBar()
-  searchLocation()
-  saveButton()
+  searchWindow();
+  searchBar();
+  searchLocation();
+  saveButton();
   toggleMenu();
 })
   
