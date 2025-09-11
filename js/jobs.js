@@ -42,7 +42,7 @@ btn2.addEventListener('click', () => {
 // } )
 }
 interactiveBtns()
-function renderSelectedCard() {
+export function renderSelectedCard() {
   const jobDes = document.querySelector('.js-des-card');
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id');
@@ -86,7 +86,7 @@ export function renderJobs(jobs) {
     `
   })
 }
- function renderCLickedCard() {
+export function renderCLickedCard() {
    const jobCards = document.querySelectorAll('.js-job-card')
   const jobDes = document.querySelector('.js-des-card')
          
@@ -212,8 +212,18 @@ btn2.addEventListener('click',() => {
     }
   });
 });
-
 }
+export function descriptionWindow() {
+  const card = document.querySelectorAll('.card')
+    card.forEach( c => {
+      c.addEventListener('click' , () => {
+        const jobId = c.getAttribute('data-id');
+       if (window.matchMedia('(max-width: 767px)').matches){
+        window.open(`des-window.html?id=${jobId}`,'_blank')
+       }
+      })
+  })
+  }
  document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
   renderSelectedCard();
@@ -227,6 +237,7 @@ btn2.addEventListener('click',() => {
   searchLocation();
   saveButton();
   toggleMenu();
+  descriptionWindow();
 })
   
   

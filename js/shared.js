@@ -1,4 +1,3 @@
-// Shared functions for both home.js and jobs.js
 
 export function toggleMenu() {
   const bars = document.getElementById('bars');
@@ -23,6 +22,7 @@ export function searchLocation() {
   const searchContainer = document.querySelector('.search-container')
   const locationIcon = document.querySelector('.location-icon')
   const searchBar = document.querySelector('.search-bar')
+
   
   if (!searchLocation || !searchContainer || !locationIcon || !searchBar) return;
   
@@ -44,11 +44,13 @@ export function searchBar() {
   const srchLocationWindow = document.querySelector('.srch-location-window')
   const jobWindRslt = document.querySelector('.job-wind-rslt')
   const locationWindRslt = document.querySelector('.location-wind-rslt')
+  const searchWindow = document.querySelector('.search-window');
   if (!searchBar || !searchContainer || !jobSrchRslt || !locationSrchRslt || !locationIcon || !searchLocation || !srchJobWindow || !srchLocationWindow) return;
   
   locationIcon.addEventListener('click', () => {
     jobSrchRslt.classList.add('hidden')
     jobSrchRslt.classList.add('with')
+    searchWindow.classList.add('active')
   })
   
   srchJobWindow.addEventListener('input', () => {
@@ -131,7 +133,6 @@ export function searchWindow() {
   const searchBar = document.querySelector('.search-bar');
   const closeMenu = document.querySelector('.close-window')
   
-  // Only add event listeners if all required elements exist
   if (!searchWindow || !searchBar || !closeMenu) return;
   
   searchBar.addEventListener('click', () => {
