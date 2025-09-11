@@ -92,6 +92,11 @@ export function searchBar() {
     <div style="margin-left: 20px; margin-top: 10px; 
     font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
     `
+      if (searchLocation.value.trim() !== '') {
+    locationSrchRslt.classList.add('focus');
+  } else {
+    locationSrchRslt.classList.remove('focus');
+  }
   })
   
   document.addEventListener('mousedown', (e) => {
@@ -107,9 +112,7 @@ export function searchBar() {
     }
   })
   
-  searchLocation.addEventListener('focus', () => {
-    locationSrchRslt.classList.add('focus')
-  })
+  
 }
 
 export function saveButton() {

@@ -55,6 +55,8 @@ ul {
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
+    max-width: 100%;
 }
 /* Small */
 @media (min-width: 768px) {
@@ -182,14 +184,34 @@ ul {
 @media (max-width: 767px) {
   .jobs .container {
     display: block;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .container .job-cards .cards {
   margin-right: 0px;
+  gap: 15px;
 }
+.container .job-cards .cards .card {
+  max-width: 100%;
+  margin: 0 auto;
+}
+}
+@media (max-width: 480px) {
+  .jobs .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .container .job-cards .cards .card {
+    padding: 0 10px 7px 0px;
+  }
+  .jobs .btn1, .jobs .btn2, .btn1unclicked, .btn2clicked {
+    padding: 15px 8px;
+    font-size: 14px;
+  }
 }
 .container .job-cards .cards .card {
     border: .9px solid var(--card-border-color);
-    width: 360px;
+    max-width: 360px;
     position: relative;
     border-radius: 8px;
     padding-bottom: 10px;
@@ -214,6 +236,14 @@ ul {
     flex: 1;
     overflow-y: auto;
     scroll-behavior: smooth;
+}
+
+@media (max-width: 767px) {
+  .jobs .container .job-description {
+    position: static;
+    height: auto;
+    margin-top: 15px;
+  }
 }
 .container  .job-description .card {
     border-bottom: .9px solid 

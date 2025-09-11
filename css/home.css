@@ -182,28 +182,26 @@ ul {
   position: relative;
   transition: var(--main-transition);
 }
-.container .sign-up button {
+.container .sign-up a{
   border-radius: 13px;
-    font-size: 20px;
-    border: none;
-    color: var(--main-color);
-    background: none;
-    font-weight: var(--main-weight);
-    cursor: pointer;
-    line-height: 46px;
-    transition: var(--main-transition);
+  font-size: 20px;
+  border: none;
+  color: var(--main-color);
+  background: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  line-height: 52px;
+  transition: var(--main-transition);
+  padding: 8px 3px;
 }
 @media (max-width: 767px) {
-  .container .sign-up button span {
+  .container .sign-up a span {
     font-size: 20px;
     border-radius: 6px;
 }
-.container .sign-up button {
-  margin-left: 80px;
+.container .sign-up a {
   background-color:var(--hover-color);
-  padding: 3px 3px;
-  line-height: 33px;
-  margin-top: 7px;
+  padding: 8px 3px;
 }
 .container #bars {
   font-size: 40px;
@@ -224,10 +222,10 @@ ul {
   display: none;
 }
 }
-.container .sign-up button:hover {
+.container .sign-up a:hover {
   background-color:var(--hover-color);
 }
-.container .sign-up button::before{
+.container .sign-up a::before{
   font-family: "Font Awesome 5 Free";
   content: '\f2f6';
   font-weight: 900;
@@ -254,7 +252,7 @@ ul {
 }
 @media (max-width: 767px) {
   .home .container .search-container {
-    max-width: 380px;
+    max-width: 325px;
   }
 }
 .search-container.active {
@@ -271,7 +269,7 @@ ul {
 }
 @media (max-width: 767px) {
   .home .container .search-bar {
-    max-width: 250px;
+    max-width: 208px;
   }
 }
 .search-bar.active {
@@ -391,16 +389,19 @@ ul {
 }
 }
 @media (max-width: 767px) {
+  .srch-job , .srch-location {
+    position: relative;
+  }
   .job-wind-rslt {
   display: none;
   position: absolute;
   z-index: 9999;
   background-color: var(--rslt-color);
   height: 35vh;
-  width: 64%;
+  width: 90%;
   border-radius: 20px;
   transition: var(--main-transition);
-  left: 97px;
+  left: 28px;
   top: 154px;
  }
  .job-wind-rslt.focus{
@@ -415,8 +416,8 @@ ul {
   width: 64%;
   border-radius: 20px;
   transition: var(--main-transition);
-  left: 97px;
-  top: 221px;
+  left: 27px;
+  top: 53px;
  }
  .location-wind-rslt.focus{
   display: flex;
