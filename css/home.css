@@ -202,6 +202,7 @@ ul {
 .container .sign-up a {
   background-color:var(--hover-color);
   padding: 8px 3px;
+  font-size: 18px;
 }
 .container #bars {
   font-size: 40px;
@@ -401,7 +402,7 @@ ul {
   width: 90%;
   border-radius: 20px;
   transition: var(--main-transition);
-  left: 28px;
+  left: 26px;
   top: 154px;
  }
  .job-wind-rslt.focus{
@@ -413,10 +414,10 @@ ul {
   z-index: 9999;
   background-color: var(--rslt-color);
   height: 35vh;
-  width: 64%;
+  width: 90%;
   border-radius: 20px;
   transition: var(--main-transition);
-  left: 27px;
+  left: 26px;
   top: 53px;
  }
  .location-wind-rslt.focus{
@@ -453,13 +454,12 @@ ul {
   }
   .search-window .close-window {
     position: absolute;
-    top: 25px;
     right: 30px;
     font-size: 40px;
     cursor: pointer;
   }
   .srch-job-window {
-    margin-top: 100px;
+    margin-top: 70px;
     background-color: #99999933;
   border: none;
   border-radius: 33px;
@@ -467,6 +467,7 @@ ul {
   padding: 12px 45px;
   text-align: center;
   box-shadow: var(--main-box-shadow);
+  max-width: 255px;
   }
  .srch-location-window {
   background-color: #99999933;
@@ -476,6 +477,7 @@ ul {
   padding: 12px 45px;
   text-align: center;
   box-shadow: var(--main-box-shadow);
+  max-width: 255px;
 }
 .srch-job i , .srch-location  i  {
 font-size: 24px;
