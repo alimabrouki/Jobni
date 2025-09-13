@@ -46,7 +46,7 @@ export function renderSelectedCard() {
   const jobDes = document.querySelector('.js-des-card');
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id');
-  const job = getJobs(jobId) || jobs[0];
+  const job = getJobs(jobId) || getNewJobs(jobId) || jobs[0];
 if (jobDes && job) {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}">
@@ -135,6 +135,7 @@ btn1.addEventListener('click',() => {
   selectedCardColor()
   renderSelectedCard()
   saveButton()
+  descriptionWindow()
 })
 const btn2 = document.querySelector('.js-btn2');
 
@@ -157,7 +158,7 @@ btn2.addEventListener('click',() => {
           </div>
           </a>
     `; 
-    
+    descriptionWindow()
   })
   const jobDes = document.querySelector('.js-des-card')
   const firstJob = newJobs[0] 
@@ -186,7 +187,7 @@ btn2.addEventListener('click',() => {
   })
 }
 
- function renderCLickedNewCard() {
+export function renderCLickedNewCard() {
    const jobCards = document.querySelectorAll('.js-job-card')
   const jobDes = document.querySelector('.js-des-card')
          
@@ -221,8 +222,10 @@ export function descriptionWindow() {
        if (window.matchMedia('(max-width: 767px)').matches){
         window.open(`des-window.html?id=${jobId}`,'_blank')
        }
+       
       })
   })
+  
   }
  document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);

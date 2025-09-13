@@ -240,9 +240,7 @@ ul {
 
 @media (max-width: 767px) {
   .jobs .container .job-description {
-    position: static;
-    height: auto;
-    margin-top: 15px;
+    display: none;
   }
 }
 .container  .job-description .card {
