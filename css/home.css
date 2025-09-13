@@ -24,7 +24,7 @@ body {
     line-height: 1.5;
 }
 :root {
-    --main-transition: .3s ;
+    --main-transition: .2s ;
     --main-color:rgb(29, 57, 73);
     --second-color: rgb(29 57 73 / 53%);
     --hover-color:rgb(166, 199, 232);
@@ -137,15 +137,19 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  background: white;
-  display: none;    
+  background: white;   
   flex-direction: column; 
   justify-content: center;
   align-items: center;
   z-index: 9999999;
+  transform: translateX(415px);
+  transition: var(--main-transition);
+  visibility: hidden;
 }
 #navi.active {
   display: flex;
+  visibility: visible;
+  transform: translateX(0px);
 } 
 #close-menu {
   position: absolute;

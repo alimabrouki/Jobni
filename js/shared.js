@@ -4,17 +4,21 @@ export function toggleMenu() {
   const naviMenu = document.getElementById('navi');
   const menu = document.getElementById('menu');
   const closeMenu = document.getElementById('close-menu');
+  const body = document.querySelector('body')
 
   if (!bars || !naviMenu || !menu || !closeMenu) return;
 
   bars.addEventListener('click', () => {
     naviMenu.classList.add('active')
     menu.classList.add('show')
+    bodyScrollLockUpgrade.disableBodyScroll(body);
   });
   
   closeMenu.addEventListener('click', () => {
     naviMenu.classList.remove('active')
+    bodyScrollLockUpgrade.enableBodyScroll(body);
   })
+ 
 }
 
 export function searchLocation() {
