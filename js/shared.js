@@ -121,8 +121,6 @@ export function searchBar() {
   
 }
 
-
-
 export function searchWindow() {
   const searchWindow = document.querySelector('.search-window');
   const searchBar = document.querySelector('.search-bar');
