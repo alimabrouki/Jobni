@@ -1,6 +1,6 @@
 import { jobs } from "../data/jobs-data.js";
-import { searchLocation, searchBar, saveButton, toggleMenu, searchWindow,} from "./shared.js";
-
+import { searchLocation, searchBar, toggleMenu, searchWindow,} from "./shared.js";
+import { saveButton } from "./jobs.js";
 toggleMenu()
 
 function renderHomeJobs(jobs) {

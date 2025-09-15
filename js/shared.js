@@ -121,16 +121,7 @@ export function searchBar() {
   
 }
 
-export function saveButton() {
-  const saveButton = document.querySelectorAll('.save-button');
-  saveButton.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      btn.classList.toggle('active')
-    })
-  })
-}
+
 
 export function searchWindow() {
   const searchWindow = document.querySelector('.search-window');
