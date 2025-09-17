@@ -171,7 +171,7 @@ export const jobs = [
     salary: 2800,
     dateUploaded: '18hrs'
   }
-]
+];
 
 export function getNewJobs(jobId) {
   let matchingJobs;
@@ -319,4 +319,27 @@ export const newJobs = [
     salary: 4800,
     dateUploaded: '3d'
   }
-]
+];
+
+export const locations = [
+  { location: "Tunis, Tunisia" },
+  { location: "Sousse, Tunisia" },
+  { location: "Sfax, Tunisia" },
+  { location: "Gabès, Tunisia" },
+  { location: "Kairouan, Tunisia" },
+  { location: "Bizerte, Tunisia" },
+  { location: "Gafsa, Tunisia" },
+  { location: "Tozeur, Tunisia" },
+  { location: "Nabeul, Tunisia" },
+  { location: "Monastir, Tunisia" },
+  { location: "Paris, France" },
+  { location: "Berlin, Germany" },
+  { location: "London, UK" },
+  { location: "Rome, Italy" },
+  { location: "Madrid, Spain" },
+  { location: "New York, USA" },
+  { location: "San Francisco, USA" },
+  { location: "Tokyo, Japan" },
+  { location: "Dubai, UAE" },
+  { location: "Toronto, Canada" }
+];

@@ -1,4 +1,4 @@
-import { jobs, getJobs, newJobs, getNewJobs } from "../data/jobs-data.js";
+import { jobs, getJobs, newJobs, getNewJobs, locations } from "../data/jobs-data.js";
 import { toggleMenu, searchLocation, searchWindow } from "./shared.js";
 function reload() {
   const navEntries = performance.getEntriesByType('navigation');
@@ -222,7 +222,6 @@ export function descriptionWindow() {
   
   locationIcon.addEventListener('click', () => {
     jobSrchRslt.classList.add('hidden');
-    jobSrchRslt.classList.add('with');
     searchWindow.classList.add('active');
   })
   
@@ -244,6 +243,7 @@ export function descriptionWindow() {
 
   searchBar.addEventListener('mousedown', () => {
     locationSrchRslt.classList.remove('focus')
+    searchLocation.classList.add('active')
   })
   
   searchLocation.addEventListener('mousedown', () => {
@@ -283,41 +283,136 @@ export function descriptionWindow() {
       
     </a>
         `).join('');
+        resetHighlight();
       jobSrchRslt.classList.add('focus')
     } else {
-      jobSrchRslt.innerHTML = `<div style="
-      position: absolute;
-      right: 140px;
-      font-size: var(--text-xl);
-      color: var(--main-color);
-      padding: 11px;">No Jobs Found</div>`
+      jobSrchRslt.innerHTML = `<div class="srch-result">
+         
+            <i style="font-size: 16px; margin-left:10px" class="fa-solid fa-magnifying-glass"></i>
+      No Jobs Found
+        
+        </div>`
+      resetHighlight();
     jobSrchRslt.classList.add('focus')
     }
   })
+
+  let currentIndex = -1;
+  searchBar.addEventListener('keydown', (e) => {
+    const results = jobSrchRslt.querySelectorAll('.srch-result');
+    if (!results.length) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      currentIndex = (currentIndex + 1) % results.length;
+      results.forEach((el, i) => {
+        el.classList.toggle('highlight', i === currentIndex);
+      });
+      if (results[currentIndex]) {
+        searchBar.value = results[currentIndex].textContent.trim();
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentIndex = (currentIndex - 1  + results.length) % results.length;
+      results.forEach((el, i) => {
+        el.classList.toggle('highlight', i === currentIndex);
+      });
+      if (results[currentIndex]) {
+        searchBar.value = results[currentIndex].textContent.trim();
+      }
+    } 
+     else if (e.key === 'Enter' ) {
+      jobSrchRslt.classList.remove('focus')
+      searchLocation.focus();
+    }
+  });
   
-  
-  searchLocation.addEventListener('input', (e) => {
-    locationSrchRslt.innerHTML = `<a href="index.html">
-    <div style="margin-left: 20px; margin-top: 10px; 
-    font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
-    `
-      if (searchLocation.value.trim() !== '') {
-    locationSrchRslt.classList.add('focus');
-  } else {
-    locationSrchRslt.classList.remove('focus');
+  function resetHighlight() {
+    currentIndex = -1;
+    const results = jobSrchRslt.querySelectorAll('.srch-result') || locationSrchRslt.querySelectorAll('.srch-result');
+    results.forEach(el => el.classList.remove('highlight'));
   }
+  searchLocation.addEventListener('input', (e) => {
+   const input = e.target.value.trim().toLowerCase();
+   const allJobs = [...jobs , ...newJobs];
+   if (input === '') {
+    locationSrchRslt.classList.remove('focus');
+    locationSrchRslt.innerHTML = '';
+    return;
+   }
+   
+  const matchedJobs = allJobs.filter(job =>
+    job.location.toLowerCase().includes(input)
+  );
+
+  if (matchedJobs.length > 0) {
+    locationSrchRslt.innerHTML = matchedJobs.slice(0,10).map(job => `
+      <a href="jobs.html?id=${job.id}">
+        <div class="srch-result">
+          <i style="font-size:16px; margin-left:10px" class="fa-solid fa-location-dot"></i>
+          ${job.location}
+        </div>
+      </a>
+    `).join('');
+    resetHighlight();
+    locationSrchRslt.classList.add('focus');
+   } else {
+    locationSrchRslt.innerHTML = `
+    <div class="srch-result">
+         
+            <i style="font-size: 16px; margin-left:10px" class="fa-solid fa-location-dot"></i>
+      
+          No Location Found
+        </div>
+    `
+    resetHighlight();
+    locationSrchRslt.classList.add('focus');
+   }
   })
   
+  searchLocation.addEventListener('keydown', (e) => {
+    const results = locationSrchRslt.querySelectorAll('.srch-result');
+    
+    if (!results.length) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      currentIndex = (currentIndex + 1) % results.length;
+      results.forEach((el, i) => {
+      el.classList.toggle('highlight', i === currentIndex);
+      });
+      if (results[currentIndex]) {
+        searchLocation.value = results[currentIndex].textContent.trim();
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentIndex = (currentIndex - 1  + results.length) % results.length;
+      results.forEach((el, i) => {
+        el.classList.toggle('highlight', i === currentIndex);
+      });
+      if (results[currentIndex]) {
+        searchLocation.value = results[currentIndex].textContent.trim();
+      }
+    } 
+     else if (e.key === 'Enter' && currentIndex >= 0) {
+       const link = results[currentIndex].closest('a');
+  if (link) {
+    window.location.href = link.href; // redirect to the job page
+  }
+      
+      locationSrchRslt.classList.remove('focus')
+    }
+  });
   document.addEventListener('mousedown', (e) => {
     if (!searchContainer.contains(e.target)) {
       jobSrchRslt.classList.remove('focus');
       locationSrchRslt.classList.remove('focus');
     }
     if(!srchJobWindow.contains(e.target)) {
-      jobWindRslt.classList.remove('focus')
+      jobWindRslt.classList.remove('focus');
     }
     if (!srchLocationWindow.contains(e.target)) {
-      locationWindRslt.classList.remove('focus')
+      locationWindRslt.classList.remove('focus');
     }
   })
   

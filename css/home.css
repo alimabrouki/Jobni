@@ -254,6 +254,7 @@ ul {
     text-align: center;
     display: flex;
     justify-content: center;
+    gap: 10px;
 }
 @media (max-width: 767px) {
   .home .container .search-container {
@@ -355,7 +356,8 @@ ul {
   z-index: 9999;
   background-color: var(--rslt-color);
   height: auto;
-  width: 67%;
+ width: 47%;
+  left: 10%;
   top: 74px;
   border-radius: 20px;
   transition: var(--main-transition);
@@ -369,16 +371,12 @@ ul {
   display: block;
   transition: var(--main-transition);
 }
-.job-srch-rslt.with {
-  width: 47%;
-  left: 10%;
-}
 .location-srch-rslt{
   display: none;
   position: absolute;
   z-index: 9999;
   background-color: var(--rslt-color);
-  height: 50vh;
+  height: auto;
   width: 202px;
   right: 11%;
   top: 74px;
@@ -401,6 +399,9 @@ ul {
   text-align: start;
 }
 .srch-result:hover {
+  background-color: var(--hover-color);
+}
+.srch-result.highlight {
   background-color: var(--hover-color);
 }
 @media (min-width: 768px) {
