@@ -1,55 +1,45 @@
 import { jobs, getJobs, newJobs, getNewJobs } from "../data/jobs-data.js";
-import { toggleMenu, searchLocation, searchBar, searchWindow } from "./shared.js";
+import { toggleMenu, searchLocation, searchWindow } from "./shared.js";
 function reload() {
   const navEntries = performance.getEntriesByType('navigation');
-const isReload = navEntries.length && navEntries[0].type === 'reload'
+const isReload = navEntries.length && navEntries[0].type === 'reload';
 if (window.location.search.includes('id=') && isReload ) {
-  window.location.replace('jobs.html')
-}
-}
+  window.location.replace('jobs.html');
+};
+};
 function interactiveBtns() {
-  const btn1 = document.querySelector('.js-btn1')
-const btn2 = document.querySelector('.js-btn2')
-if(!btn1 || !btn2) return;
-function clickButton(active) {
+  const btn1 = document.querySelector('.js-btn1');
+  const btn2 = document.querySelector('.js-btn2');
+  if(!btn1 || !btn2) return;
+  function clickButton(active) {
   if (active === 'btn1') {
     btn1.classList.add('btn1');
     btn1.classList.remove('btn1unclicked');
     btn2.classList.add('btn2');
     btn2.classList.remove('btn1unclicked')
-
   } else  {
     btn1.classList.add('btn1unclicked');
     btn1.classList.remove('btn1');
     btn2.classList.add('btn2clicked')
     btn2.classList.remove('btn2')
-  }
-//  localStorage.setItem('activebutton',active)
-}
-
-
+  };
+};
 btn1.addEventListener('click' ,() => {
-   clickButton('btn1')
-   saveButton()
-})
+   clickButton('btn1');
+   saveButton();
+});
 btn2.addEventListener('click', () => {
-  clickButton('btn2')
-  saveButton()
-})
-// window.addEventListener('DOMContentLoaded', () => {
-//   const saved = localStorage.getItem('activebutton');
-//   if (saved) {
-//     clickButton(saved)
-//   }
-// } )
-}
-interactiveBtns()
+  clickButton('btn2');
+  saveButton();
+});
+};
+interactiveBtns();
 export function renderSelectedCard() {
   const jobDes = document.querySelector('.js-des-card');
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id');
   const job = getJobs(jobId) || getNewJobs(jobId) || jobs[0];
-if (jobDes && job) {
+  if (jobDes && job) {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}">
         <img src="${job.image}" alt="">
@@ -63,16 +53,13 @@ if (jobDes && job) {
         </div>
         </div>
       `; 
-  }
-}
-
-
+  };
+};
 export function renderJobs(jobs) {
-  const cards = document.querySelector('.cards')
+  const cards = document.querySelector('.cards');
   cards.innerHTML = '';
  jobs.forEach( job => {
     cards.innerHTML += `
-   
     <div class="card js-job-card " data-id="${job.id}">
               <img src="${job.image}" alt="">
               <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
@@ -83,19 +70,15 @@ export function renderJobs(jobs) {
               <div>${job.salary} $TND</div>
               <div>${job.dateUploaded}</div>
           </div>
-         
-          
-    `
-    
-  })
-}
+         `;
+  });
+};
 export function renderCLickedCard() {
-   const jobCards = document.querySelectorAll('.js-job-card')
-  const jobDes = document.querySelector('.js-des-card')
-         
+  const jobCards = document.querySelectorAll('.js-job-card');
+  const jobDes = document.querySelector('.js-des-card');
   jobCards.forEach(card => { 
   const jobId = card.getAttribute('data-id');
-  const job = getJobs(jobId) || getNewJobs(jobId) ;
+  const job = getJobs(jobId) || getNewJobs(jobId);
   card.addEventListener('click', () => {
     if (jobDes && job) {
        jobDes.innerHTML = `
@@ -111,40 +94,35 @@ export function renderCLickedCard() {
         </div>
         </div>
       `; 
-      // Ensure the newly injected save button is wired
       saveButton();
     }
   });
 });
-
- }
-  
+ };
 function selectedCardColor() {
-  const cards = document.querySelectorAll('.js-job-card')
+  const cards = document.querySelectorAll('.js-job-card');
   cards.forEach(card => {
     card.addEventListener('click',() => {
     cards.forEach(c => {
       c.classList.remove('cardClicked')
-    })
-   card.classList.add('cardClicked')
-    })
+    });
+   card.classList.add('cardClicked');
+    });
   });
-}
-
+};
 function btnsRenderJobs() {
   const btn1 = document.querySelector('.js-btn1')
-btn1.addEventListener('click',() => {
+  btn1.addEventListener('click',() => {
   renderJobs(jobs);
   renderCLickedCard();
-  selectedCardColor()
-  renderSelectedCard()
-  saveButton()
-  descriptionWindow()
-})
+  selectedCardColor();
+  renderSelectedCard();
+  saveButton();
+  descriptionWindow();
+});
 const btn2 = document.querySelector('.js-btn2');
-
 btn2.addEventListener('click',() => {
-  const cards = document.querySelector('.cards')
+  const cards = document.querySelector('.cards');
   
   cards.innerHTML = '';
  newJobs.forEach( job => {
@@ -162,11 +140,10 @@ btn2.addEventListener('click',() => {
           </div>
          
     `; 
-    descriptionWindow()
-  })
-  const jobDes = document.querySelector('.js-des-card')
-  const firstJob = newJobs[0] 
-    
+    descriptionWindow();
+  });
+  const jobDes = document.querySelector('.js-des-card');
+  const firstJob = newJobs[0];  
   if (jobDes && firstJob) {
        jobDes.innerHTML = `
     <div class="card" >
@@ -180,62 +157,174 @@ btn2.addEventListener('click',() => {
           <span>${firstJob.salary} $TND</span>
         </div>
         </div>
-      `;
-      
-    }
- 
-  saveButton()
+      ` 
+    };
+  saveButton();
   renderCLickedCard();
-   selectedCardColor();
-   
-  })
-}
+  selectedCardColor();
+  });
+};
 export function saveButton() {
     const saveButtons = document.querySelectorAll('.save-button');
-    let savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [] ;
+    let savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
     saveButtons.forEach(btn => {
      const jobId = btn.getAttribute('data-id');
      if (savedJobs.includes(jobId)) {
       btn.classList.add('active');
      } else {
       btn.classList.remove('active');
-     }
-    })
+     };
+    });
   saveButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
-     const jobId = btn.getAttribute('data-id');
+    const jobId = btn.getAttribute('data-id');
     const descBtn = document.querySelector('.js-des-card .save-button[data-id="' + jobId + '"]');
     const isActive = btn.classList.toggle('active');
-     if(descBtn) {
+    if(descBtn) {
     descBtn.classList.toggle('active' , isActive);
-     } 
+     };
      if (isActive) {
       if(!savedJobs.includes(jobId)) savedJobs.push(jobId);
      } else {
       savedJobs = savedJobs.filter(id => id !== jobId);
-     }
-     localStorage.setItem('savedJobs', JSON.stringify(savedJobs))
-    })
-  })
-}
+     };
+     localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
+    });
+  });
+};
 export function descriptionWindow() {
-  const card = document.querySelectorAll('.card')
+  const card = document.querySelectorAll('.card');
     card.forEach( c => {
       c.addEventListener('click' , () => {
         const jobId = c.getAttribute('data-id');
        if (window.matchMedia('(max-width: 767px)').matches){
         window.open(`des-window.html?id=${jobId}`,'_blank')
-       }
+       };
        saveButton();
-      })
+      });
+  });
+  };
+  export function searchBar() {
+  const searchBar = document.querySelector('.search-bar');
+  const searchContainer = document.querySelector('.search-container');
+  const jobSrchRslt = document.querySelector('.job-srch-rslt');
+  const locationSrchRslt = document.querySelector('.location-srch-rslt');
+  const locationIcon = document.querySelector('.location-icon');
+  const searchLocation = document.querySelector('.search-location');
+  const srchJobWindow = document.querySelector('.srch-job-window');
+  const srchLocationWindow = document.querySelector('.srch-location-window');
+  const jobWindRslt = document.querySelector('.job-wind-rslt');
+  const locationWindRslt = document.querySelector('.location-wind-rslt');
+  const searchWindow = document.querySelector('.search-window');
+  if (!searchBar || !searchContainer || !jobSrchRslt || !locationSrchRslt || !locationIcon || !searchLocation || !srchJobWindow || !srchLocationWindow) return;
+  
+  locationIcon.addEventListener('click', () => {
+    jobSrchRslt.classList.add('hidden');
+    jobSrchRslt.classList.add('with');
+    searchWindow.classList.add('active');
   })
   
+  srchJobWindow.addEventListener('input', () => {
+    if (srchJobWindow.value.trim() !== '') {
+    jobWindRslt.classList.add('focus');
+  } else {
+    jobWindRslt.classList.remove('focus');
   }
+  });
+
+  srchLocationWindow.addEventListener('input' , () => {
+    if (srchLocationWindow.value.trim() !== '') {
+    locationWindRslt.classList.add('focus');
+  } else {
+    locationWindRslt.classList.remove('focus');
+  };
+  });
+
+  searchBar.addEventListener('mousedown', () => {
+    locationSrchRslt.classList.remove('focus')
+  })
+  
+  searchLocation.addEventListener('mousedown', () => {
+    jobSrchRslt.classList.remove('focus')
+  })
+  
+  searchBar.addEventListener('input', (e) => {
+    const input = e.target.value.trim().toLowerCase();
+    if (input === '') {
+      jobSrchRslt.classList.remove('focus');
+      jobSrchRslt.innerHTML = '';
+      return;
+    };
+    const allJobs = [...jobs , ...newJobs];
+
+    const startWithJobs = (allJobs).filter(job => 
+      
+      job.jobTitle.toLowerCase().startsWith(input)  
+    );
+    const includesJobs = (allJobs).filter(job => 
+      !job.jobTitle.toLowerCase().startsWith(input) &&
+      job.jobTitle.toLowerCase().includes(input)
+    );
+
+    const filteredJobs = [...startWithJobs,...includesJobs].slice(0,10);
+     if (filteredJobs.length > 0 ) {
+      jobSrchRslt.innerHTML = filteredJobs.map(job => 
+        `
+        <a  href="jobs.html?id=${job.id}">
+         
+         <div class="srch-result">
+         
+            <i style="font-size: 16px; margin-left:10px" class="fa-solid fa-magnifying-glass"></i>
+      
+          ${job.jobTitle}
+        </div>
+      
+    </a>
+        `).join('');
+      jobSrchRslt.classList.add('focus')
+    } else {
+      jobSrchRslt.innerHTML = `<div style="
+      position: absolute;
+      right: 140px;
+      font-size: var(--text-xl);
+      color: var(--main-color);
+      padding: 11px;">No Jobs Found</div>`
+    jobSrchRslt.classList.add('focus')
+    }
+  })
+  
+  
+  searchLocation.addEventListener('input', (e) => {
+    locationSrchRslt.innerHTML = `<a href="index.html">
+    <div style="margin-left: 20px; margin-top: 10px; 
+    font-size: 25px; font-weight: 600;">${e.target.value}</div> </a>
+    `
+      if (searchLocation.value.trim() !== '') {
+    locationSrchRslt.classList.add('focus');
+  } else {
+    locationSrchRslt.classList.remove('focus');
+  }
+  })
+  
+  document.addEventListener('mousedown', (e) => {
+    if (!searchContainer.contains(e.target)) {
+      jobSrchRslt.classList.remove('focus');
+      locationSrchRslt.classList.remove('focus');
+    }
+    if(!srchJobWindow.contains(e.target)) {
+      jobWindRslt.classList.remove('focus')
+    }
+    if (!srchLocationWindow.contains(e.target)) {
+      locationWindRslt.classList.remove('focus')
+    }
+  })
+  
+  
+}
  document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
-  
   renderSelectedCard();
   renderCLickedCard();
   selectedCardColor();
@@ -247,7 +336,7 @@ export function descriptionWindow() {
   saveButton();
   toggleMenu();
   descriptionWindow();
-})
+});
   
   
   

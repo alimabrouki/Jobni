@@ -110,7 +110,6 @@ ul {
 }
 .jobs  .btn1 {
   position: absolute;
-  /* border: 1px solid var(--hover-color); */
   display: inline-block;
   color: black;
   font-weight: bold;
@@ -118,13 +117,13 @@ ul {
   right: 50%;
   bottom: -22px;
   border-radius: 13px;
-  box-shadow: -1px 1px 1px 3px var(--hover-color);
   transition: var(--main-transition);
-  background-color: white;
+  background-color: rgb(217, 217, 217);
+  box-shadow: 2px 2px 0 0 var(--hover-color);
+  transform: translate(2px,2px);
 }
 .jobs .btn2 {
   position: absolute;
-  
   display: inline-block;
   color: white;
   font-weight: bold;
@@ -133,13 +132,12 @@ ul {
   left: 55%;
   bottom: -22px;
   border-radius: 13px;
-  box-shadow: -3px 2px 1px 3px var(--hover-color);
   transition: var(--main-transition);
+  border: 1px solid var(--hover-color);
+  box-shadow: 4px 4px 0 0 var(--hover-color);
 }
 .btn1unclicked {
-   position: absolute;
-  
-  box-shadow: -3px 2px 1px 3px var(--hover-color);
+  position: absolute;
   display: inline-block;
   color: white;
   font-weight: bold;
@@ -149,20 +147,22 @@ ul {
   bottom: -22px;
   border-radius: 13px;
   transition: var(--main-transition);
+  border: 1px solid var(--hover-color);
+  box-shadow: 4px 4px 0 0 var(--hover-color);
 }
 .btn2clicked {
   position: absolute;
-  /* border: 1px solid var(--hover-color); */
   display: inline-block;
   color: black;
   font-weight: bold;
-  background-color: white;
   padding: 19px 10px;
   left: 55%;
   bottom: -22px;
   border-radius: 13px;
-  box-shadow: -1px 1px 1px 3px var(--hover-color);
   transition: var(--main-transition);
+  background-color: rgb(217, 217, 217);
+  box-shadow: 2px 2px 0 0 var(--hover-color);
+  transform: translate(2px,2px);
 } 
 .jobs .container {
   display: flex;

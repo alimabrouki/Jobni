@@ -301,7 +301,7 @@ ul {
   font-size: var(--text-lg);
   color: var(--main-color);
 }
-.home .container .search-container a {
+.home .container .search-container .location-icon {
  position: absolute;
     top: 50%;
     right: 15px;
@@ -310,7 +310,7 @@ ul {
     color: var(--main-color);
     padding: 11px;
 }
-.home .container .search-container a:hover {
+.home .container .search-container .location-icon:hover {
   background-color: rgb(166 199 232 / 25%);
   border-radius: 50%;
 }
@@ -354,12 +354,13 @@ ul {
   position: absolute;
   z-index: 9999;
   background-color: var(--rslt-color);
-  height: 50vh;
+  height: auto;
   width: 67%;
   top: 74px;
   border-radius: 20px;
   transition: var(--main-transition);
   z-index: 99999999;
+  padding: 22px 0 0 0;
 }
 .job-srch-rslt.hidden {
   display: none;
@@ -383,10 +384,24 @@ ul {
   top: 74px;
   border-radius: 20px;
   transition: var(--main-transition);
+  z-index: 9999999;
 }
 .location-srch-rslt.focus {
   display: block;
   transition: var(--main-transition);
+}
+.srch-result  {
+  font-size: var(--text-xl);
+  color: var(--main-color);
+  padding: 7px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: start;
+}
+.srch-result:hover {
+  background-color: var(--hover-color);
 }
 @media (min-width: 768px) {
   .search-window {
