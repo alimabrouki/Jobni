@@ -36,6 +36,7 @@ btn2.addEventListener('click', () => {
 interactiveBtns();
 export function renderSelectedCard() {
   const jobDes = document.querySelector('.js-des-card');
+  
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id');
   const job = getJobs(jobId) || getNewJobs(jobId) || jobs[0];
@@ -52,7 +53,8 @@ export function renderSelectedCard() {
           <span>${job.salary} $TND</span>
         </div>
         </div>
-      `; 
+      `;
+
   };
 };
 export function renderJobs(jobs) {
@@ -78,11 +80,11 @@ export function renderCLickedCard() {
   const jobDes = document.querySelector('.js-des-card');
   jobCards.forEach(card => { 
   const jobId = card.getAttribute('data-id');
-  const job = getJobs(jobId) || getNewJobs(jobId);
+  const job = getJobs(jobId) || getNewJobs(jobId) || jobs[0];
   card.addEventListener('click', () => {
     if (jobDes && job) {
        jobDes.innerHTML = `
-    <div class="card" >
+    <div class="card js-job-card" data-id="${job.id}" >
         <img src="${job.image}" alt="">
         <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
@@ -95,7 +97,9 @@ export function renderCLickedCard() {
         </div>
       `; 
       saveButton();
+       
     }
+   
   });
 });
  };
@@ -244,6 +248,7 @@ export function descriptionWindow() {
   searchBar.addEventListener('mousedown', () => {
     locationSrchRslt.classList.remove('focus')
     searchLocation.classList.add('active')
+
   })
   
   searchLocation.addEventListener('mousedown', () => {
@@ -394,13 +399,37 @@ export function descriptionWindow() {
         searchLocation.value = results[currentIndex].textContent.trim();
       }
     } 
-     else if (e.key === 'Enter' && currentIndex >= 0) {
-       const link = results[currentIndex].closest('a');
-  if (link) {
-    window.location.href = link.href; // redirect to the job page
-  }
+    if (e.key === 'Enter') {
+      const jobInput = searchBar.value.trim().toLowerCase();
+      const locInput = searchLocation.value.trim().toLowerCase();
+      const allJobs = [...jobs,...newJobs];
+
+      let match = allJobs.find(job => 
+        job.jobTitle.toLowerCase() === jobInput && 
+        job.location.toLowerCase() === locInput
+      );
+
+      if (!match) {
+        match = allJobs.find(job => 
+          job.jobTitle.toLowerCase() === jobInput
+        )
+      }
+      if (match) {
+        window.location.href = `jobs.html?id=${match.id}`
+      } else {
+       let alertDiv = document.querySelector('.home .alert');
+       if (!alertDiv) {
+         alertDiv = document.createElement('div');
+         alertDiv.classList.add('alert')
+        document.querySelector('.home').appendChild(alertDiv);
+       }
+        alertDiv.innerHTML = `The Search <span> ${jobInput}/${locInput}</span> Did Not Match Any Jobs Please Try Again`;
+        locationSrchRslt.classList.remove('focus')
+        setTimeout(() => {
+          if (alertDiv) alertDiv.remove()
+        }, 5000);
+      }
       
-      locationSrchRslt.classList.remove('focus')
     }
   });
   document.addEventListener('mousedown', (e) => {

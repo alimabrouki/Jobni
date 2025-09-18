@@ -404,6 +404,18 @@ ul {
 .srch-result.highlight {
   background-color: var(--hover-color);
 }
+.alert {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #df0101;
+  font-size: 16px;
+  font-weight: 700;
+}
+.alert span {
+  color: black;
+  font-size: 22px;
+}
 @media (min-width: 768px) {
   .search-window {
   display: none;
