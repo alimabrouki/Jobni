@@ -272,23 +272,70 @@ export function descriptionWindow() {
       !job.jobTitle.toLowerCase().startsWith(input) &&
       job.jobTitle.toLowerCase().includes(input)
     );
-
+    
     const filteredJobs = [...startWithJobs,...includesJobs].slice(0,10);
      if (filteredJobs.length > 0 ) {
       jobSrchRslt.innerHTML = filteredJobs.map(job => 
         `
-        <a  href="jobs.html?id=${job.id}">
-         
-         <div class="srch-result">
-         
+        <a  href="jobs.html?id=${job.id}" class="search-result-link">
+         <div class="srch-result" data-id="${job.id}">
             <i style="font-size: 16px; margin-left:10px" class="fa-solid fa-magnifying-glass"></i>
-      
           ${job.jobTitle}
-        </div>
-      
-    </a>
-        `).join('');
-        resetHighlight();
+        </div>    
+        `
+    ).join('');
+      const searchResultLinks = jobSrchRslt.querySelectorAll('.search-result-link');
+      searchResultLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (searchResultLinks[currentIndex]) {
+            searchBar.value = searchResultLinks[currentIndex].textContent.trim();
+          }
+          
+          const resultdiv = link.querySelector('.srch-result');
+          const jobId = resultdiv.getAttribute('data-id');
+          const job = getJobs(jobId) || getNewJobs(jobId);
+          if (job) {
+            const jobDes = document.querySelector('.js-des-card');
+            if(jobDes) {
+              jobDes.innerHTML = `
+              <div class="card js-job-card" data-id="${job.id}">
+            <img src="${job.image}" alt="">
+            <i data-id="${job.id}" class="save-button fa-regular fa-bookmark"></i>
+            <div>${job.company}</div>
+            <div>${job.jobTitle}</div>
+            <div>
+              <span>${job.location}</span> |
+              <span>${job.salary} $TND</span>
+            </div>
+          </div>
+              `
+        }
+        const cardsContainer = document.querySelector('.cards');
+        const allCards = document.querySelectorAll('.cards .js-job-card');
+        const targetCard = [...allCards].find(card => card.getAttribute('data-id') === jobId)
+        if (targetCard && cardsContainer) {
+          allCards.forEach(c => c.classList.remove('cardClicked'));
+
+          const cardHTML = targetCard.outerHTML;
+          targetCard.remove();
+          cardsContainer.insertAdjacentHTML('afterbegin', cardHTML);
+          const newTopCard = cardsContainer.querySelector('.js-job-card');
+          if (newTopCard) {
+            newTopCard.classList.add('cardClicked');
+          }
+        }
+        jobSrchRslt.classList.remove('focus');
+        jobSrchRslt.innerHTML = '';
+        searchBar.value = '';
+
+        saveButton();
+        renderCLickedCard();
+        selectedCardColor();
+          }
+        })
+      })
+      resetHighlight();
       jobSrchRslt.classList.add('focus')
     } else {
       jobSrchRslt.innerHTML = `<div class="srch-result">
@@ -346,10 +393,13 @@ export function descriptionWindow() {
     return;
    }
    
-  const matchedJobs = allJobs.filter(job =>
+  const startWithJobs = allJobs.filter(job =>
+    job.location.toLowerCase().startsWith(input)
+  );
+  const includesJobs = allJobs.filter(job =>
     job.location.toLowerCase().includes(input)
   );
-
+  const matchedJobs = [...startWithJobs,...includesJobs];
   if (matchedJobs.length > 0) {
     locationSrchRslt.innerHTML = matchedJobs.slice(0,10).map(job => `
       <a href="jobs.html?id=${job.id}">
