@@ -433,7 +433,7 @@ ul {
   position: absolute;
   z-index: 9999;
   background-color: var(--rslt-color);
-  height: 35vh;
+  height: auto;
   width: 90%;
   border-radius: 20px;
   transition: var(--main-transition);
@@ -442,21 +442,26 @@ ul {
  }
  .job-wind-rslt.focus{
   display: flex;
+  flex-direction: column;
  }
  .location-wind-rslt {
   display: none;
   position: absolute;
   z-index: 9999;
   background-color: var(--rslt-color);
-  height: 35vh;
+  height: auto;
   width: 90%;
   border-radius: 20px;
   transition: var(--main-transition);
   left: 26px;
   top: 53px;
  }
+ .location-wind-rslt .srch-result {
+  gap: 60px;
+ }
  .location-wind-rslt.focus{
   display: flex;
+  flex-direction: column;
  }
   .search-window.active {
     opacity: 1;
@@ -518,6 +523,10 @@ ul {
 font-size: 24px;
     position: relative;
     left: -15px;
+}
+.srch-result {
+  gap: 10px;
+  margin-left: 10px;
 }
 .srch-location-window:focus::placeholder , .srch-job-window:focus::placeholder{
   opacity: 0;

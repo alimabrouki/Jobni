@@ -44,8 +44,10 @@ export function searchWindow() {
   const searchBar = document.querySelector('.search-bar');
   const closeMenu = document.querySelector('.close-window');
   if (!searchWindow || !searchBar || !closeMenu) return;
+  const body = document.querySelector('body')
   searchBar.addEventListener('click', () => {
     searchWindow.classList.add('active');
+    bodyScrollLockUpgrade.disableBodyScroll(body);
   });
   closeMenu.addEventListener('click', () => {
     searchWindow.classList.remove('active');

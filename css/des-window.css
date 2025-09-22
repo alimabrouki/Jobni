@@ -77,11 +77,11 @@ ul {
     }
 }
 /* End Global Rules */
-.description-window {
+.cards .description-window {
  display: none;
 }
 @media (max-width: 767px) {
- .description-window {
+ .cards .description-window {
  display: block;
 }
    .container .job-description {
