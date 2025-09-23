@@ -43,13 +43,21 @@ export function searchWindow() {
   const searchWindow = document.querySelector('.search-window');
   const searchBar = document.querySelector('.search-bar');
   const closeMenu = document.querySelector('.close-window');
+  const srchJobWind = document.querySelector('.srch-job-window')
   if (!searchWindow || !searchBar || !closeMenu) return;
-  const body = document.querySelector('body')
+  const body = document.querySelector('body');
   searchBar.addEventListener('click', () => {
     searchWindow.classList.add('active');
-    bodyScrollLockUpgrade.disableBodyScroll(body);
+   
   });
   closeMenu.addEventListener('click', () => {
     searchWindow.classList.remove('active');
+    
   });
+  srchJobWind.addEventListener('click', () => {
+    bodyScrollLockUpgrade.disableBodyScroll(body);
+  })
+  closeMenu.addEventListener('click', () => {
+    bodyScrollLockUpgrade.enableBodyScroll(body);
+  })
 };

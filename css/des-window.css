@@ -131,18 +131,41 @@ ul {
   font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
 }
-.container .job-description .card div:nth-child(4) {
+.container .job-description .card div:nth-child(5) {
   color: black;
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-2xl);
   margin-bottom: 10px;
   margin-top: 10px;
 }
-.container .job-description .card div:nth-child(5) {
+.container .job-description .card div:nth-child(4) {
   color: var(--company-name-color);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-medium);
   margin-bottom: 10px;
+}
+.job-description .card .apply {
+  position: absolute;
+  right: 100px;
+  top: 16px;
+  color: white;
+  font-weight: bold;
+  background-color: var(--main-color);
+  padding: 9px 15px;
+  border-radius: 13px;
+  transition: var(--main-transition);
+  border: 1px solid var(--hover-color);
+  box-shadow: 4px 4px 0 0 var(--hover-color);
+}
+.job-description .card .apply:hover {
+  box-shadow: 2px 2px 0 0 var(--hover-color);
+  transform: translate(2px, 2px);
+}
+@media (max-width: 991px) {
+  .job-description .card .apply {
+  top: 100px;
+  right: 20px;
+  }
 }
 .job-description .card .save-button {
     border: none;

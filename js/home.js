@@ -1,6 +1,6 @@
 import { jobs } from "../data/jobs-data.js";
 import { searchLocation, toggleMenu, searchWindow,} from "./shared.js";
-import { saveButton,searchBar } from "./jobs.js";
+import { saveButton,searchBar,mobileSearch } from "./jobs.js";
 toggleMenu()
 
 function renderHomeJobs(jobs) {
@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded',() => {
   searchLocation();
   searchBar();
   saveButton();
+  mobileSearch();
 })
 
 

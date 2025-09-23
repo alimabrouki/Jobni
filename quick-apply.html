@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Quick Apply</title>
+ <style>
+  .step {display: none;}
+  .active {display: block;}
+ </style>
+</head>
+<body>
+ <!-- Start Form -->
+ <form action="" class="apply-form">
+  <!-- Step 1 -->
+   <div class="step active">
+    <h2>Step 1: Personal Info</h2>
+    <input type="text" name="firstName" placeholder="First Name" required> <br>
+    <input type="text" name="lastName" placeholder="Last Name" required> <br>
+    <input type="text" name="email" placeholder="Email" required> <br>
+    <button type="button" onclick="nextStep()">Next</button>
+   </div>
+   <!-- Step 2 -->
+    <div class="step">
+     <h2>Step 2: Location</h2>
+     <input type="text" name="city" placeholder="City" required> <br>
+     <input type="text" name="postalCode" placeholder="Postal Code" required> <br>
+     <button type="button" onclick="prevStep()">Back</button>
+     <button type="button" onclick="nextStep()">Next</button>
+    </div>
+    <!-- Step 3 -->
+     <div class="step">
+      <h2>Step 3: Resume</h2>
+      <input type="file" name="resume" accept=".pdf,.doc.docx" required> <br>
+      <button type="button" onclick="prevStep()">Back</button>
+      <button type="submit">Submit</button>
+     </div>
+ </form>
+</body>
+</html>

@@ -44,6 +44,7 @@ export function renderSelectedCard() {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}">
         <img src="${job.image}" alt="">
+        <a href="#" class="apply">Apply Now</a>
           <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
         <div>${job.company}</div>
@@ -86,6 +87,7 @@ export function renderCLickedCard() {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}" >
         <img src="${job.image}" alt="">
+        <a href="#" class="apply">Apply Now</a>
         <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
         <div>${job.company}</div>
@@ -152,6 +154,7 @@ btn2.addEventListener('click',() => {
        jobDes.innerHTML = `
     <div class="card" >
         <img src="${firstJob.image}" alt="">
+        <a href="#" class="apply">Apply Now</a>
         <i data-id="${firstJob.id}" class="save-button fa-regular fa-bookmark">
         </i>
         <div>${firstJob.company}</div>
@@ -503,7 +506,7 @@ export function descriptionWindow() {
   
   
 }
- function mobileSearch() {
+ export function mobileSearch() {
   const srchJobWindow = document.querySelector('.srch-job-window');
   const srchLocationWindow = document.querySelector('.srch-location-window');
   const jobWindRslt = document.querySelector('.job-wind-rslt');
