@@ -1,0 +1,203 @@
+/* Start Global Rules */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+ ::before , ::after {
+  box-sizing: border-box;
+}
+h1,h2,h3 {
+  margin: 0;
+  line-height: 1.1;
+} 
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100%;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+}
+:root {
+    --main-transition: .2s ;
+    --main-color:rgb(29, 57, 73);
+    --second-color: rgb(29 57 73 / 53%);
+    --hover-color:rgb(166, 199, 232);
+    --main-weight: 400;
+    --company-name-color: rgba(38, 35, 35, 0.759);
+    --card-border-color: rgba(0, 0, 0, 0.203);
+    --main-border-radius: 8px;
+    --second-hover-color: rgba(0, 0, 0, 0.071);
+    --main-box-shadow: 0px 1px 6px -2px;
+    --rslt-color:#e0e0e0;
+    
+  
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 30px;
+    
+    
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+/* Medium */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* Large */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+/* End Global Rules */
+/* Start Form */
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 130px;
+}
+.apply-form {
+ height: 610px;
+  width: 460px;
+  padding: 60px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--main-border-radius);
+}
+
+ .step div {
+  position: relative;
+  display: block;
+  border: 1px solid;
+  width: 100%;
+  height: 11px;
+  margin-bottom: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--card-border-color);
+}
+ .step div::before {
+  content: '';
+  width: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 10px;
+  border-radius: 4px;
+  background: var(--main-color);
+  transition: width var(--main-transition) ease;
+}
+.step.one div::before { 
+  width: 33%; 
+  
+}
+.step.two div::before { 
+  width: 66%; 
+ 
+}
+.step.three div::before { 
+  width: 100%; 
+  
+}
+.form input {
+  background-color: #99999933;
+  border: none;
+  border-radius: 33px;
+  font-size: var(--text-lg);
+  padding: 12px 45px;
+  text-align: center;
+  box-shadow: var(--main-box-shadow);
+  margin: 10px;
+}
+.form input:focus {
+  box-shadow: 0 0 9px rgb(86, 152, 217);
+  outline: none;
+}
+.btn {
+  color: white;
+  font-weight: bold;
+  background-color: var(--main-color);
+  margin-bottom: 18px !important;
+  padding: 10px 33px;
+  border-radius: 13px;
+  transition: var(--main-transition);
+  border: 1px solid var(--hover-color);
+  box-shadow: 4px 4px 0 0 var(--hover-color);
+  font-size: 20px;
+  cursor: pointer;
+}
+.form button {
+  font-weight: bold;
+  margin: 18px;
+  padding: 10px 33px;
+  border-radius: 13px;
+  transition: var(--main-transition);
+  border: 1px solid var(--hover-color);
+  box-shadow: 4px 4px 0 0 var(--hover-color);
+  font-size: 20px;
+  cursor: pointer;
+}
+button:hover {
+  box-shadow: 2px 2px 0 0 var(--hover-color);
+  transform: translate(2px, 2px);
+}
+
+.form h2 {
+ margin-bottom: 40px;
+ text-align: center;
+}
+.step {
+ display: none;
+}
+.active {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ transition: var(--main-transition);
+}
+.resume-input {
+  display: none;
+}
+
+.job {
+  position: absolute;
+  top: 99px;
+  width: 460px;
+  text-align: center;
+  padding: 20px 0;
+  font-size: var(--text-sm);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--main-border-radius);
+  color: var(--company-name-color);
+}

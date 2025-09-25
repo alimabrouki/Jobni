@@ -44,7 +44,7 @@ export function renderSelectedCard() {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}">
         <img src="${job.image}" alt="">
-        <a href="#" class="apply">Apply Now</a>
+        <a href="quick-apply.html" target="_blank" class="apply">Apply Now</a>
           <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
         <div>${job.company}</div>
@@ -87,7 +87,7 @@ export function renderCLickedCard() {
        jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}" >
         <img src="${job.image}" alt="">
-        <a href="#" class="apply">Apply Now</a>
+        <a href="quick-apply.html" target="_blank" class="apply">Apply Now</a>
         <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
         <div>${job.company}</div>
@@ -154,7 +154,7 @@ btn2.addEventListener('click',() => {
        jobDes.innerHTML = `
     <div class="card" >
         <img src="${firstJob.image}" alt="">
-        <a href="#" class="apply">Apply Now</a>
+        <a href="quick-apply.html" target="_blank" class="apply">Apply Now</a>
         <i data-id="${firstJob.id}" class="save-button fa-regular fa-bookmark">
         </i>
         <div>${firstJob.company}</div>
