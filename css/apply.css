@@ -84,10 +84,12 @@ ul {
 }
 /* End Global Rules */
 /* Start Form */
-.container {
+.form .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 130px;
+  align-items: center;
 }
 .apply-form {
  height: 610px;
@@ -95,21 +97,23 @@ ul {
   padding: 60px;
   border: 1px solid var(--card-border-color);
   border-radius: var(--main-border-radius);
+  translate: 0px -50px;
 }
 
- .step div {
+.progress-bar {
   position: relative;
   display: block;
   border: 1px solid;
-  width: 100%;
+  width: 40%;
+  top: 60px;
   height: 11px;
   margin-bottom: 40px;
   border-radius: 4px;
   border: 1px solid var(--card-border-color);
 }
- .step div::before {
+ .progress-bar::before {
   content: '';
-  width: 0;
+  width: 33%;
   top: 0;
   left: 0;
   position: absolute;
@@ -118,15 +122,15 @@ ul {
   background: var(--main-color);
   transition: width var(--main-transition) ease;
 }
-.step.one div::before { 
+/* .step .one::before { 
   width: 33%; 
   
-}
-.step.two div::before { 
+} */
+.progress-bar.two::before { 
   width: 66%; 
  
 }
-.step.three div::before { 
+.progress-bar.three::before { 
   width: 100%; 
   
 }
@@ -143,6 +147,21 @@ ul {
 .form input:focus {
   box-shadow: 0 0 9px rgb(86, 152, 217);
   outline: none;
+}
+.phone {
+  padding: 12px 45px !important;
+}
+.iti__selected-country {
+  padding: 0 !important;
+  top: -19px;
+  left: -20px;
+  border-radius: 22px !important;
+}
+.iti__selected-country-primary {
+  border-radius: 50% !important;
+}
+.country-select.inside .selected-flag {
+  border-radius: 50% !important;
 }
 .btn {
   color: white;
@@ -185,6 +204,7 @@ button:hover {
  flex-direction: column;
  align-items: center;
  transition: var(--main-transition);
+ translate: 0px 45px;
 }
 .resume-input {
   display: none;
