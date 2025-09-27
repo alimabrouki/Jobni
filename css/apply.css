@@ -88,7 +88,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 130px;
+  padding: 130px 130px 0 130px;
   align-items: center;
 }
 .apply-form {
@@ -99,17 +99,28 @@ ul {
   border-radius: var(--main-border-radius);
   translate: 0px -50px;
 }
-
+@media (width <= 767px) {
+  .apply-form {
+    width: 290px;
+    translate: 0px -70px;
+  }
+}
 .progress-bar {
   position: relative;
   display: block;
   border: 1px solid;
-  width: 40%;
+  width: 315px;
   top: 60px;
   height: 11px;
   margin-bottom: 40px;
   border-radius: 4px;
   border: 1px solid var(--card-border-color);
+}
+@media (width <= 767px) {
+  .progress-bar {
+   width: 220px;
+   top: 15px;
+  }
 }
  .progress-bar::before {
   content: '';
@@ -144,6 +155,11 @@ ul {
   box-shadow: var(--main-box-shadow);
   margin: 10px;
 }
+@media (width <= 767px) {
+  .form input {
+    padding: 12px 0;
+  }
+}
 .form input:focus {
   box-shadow: 0 0 9px rgb(86, 152, 217);
   outline: none;
@@ -163,6 +179,34 @@ ul {
 .country-select.inside .selected-flag {
   border-radius: 50% !important;
 }
+.iti__search-clear {
+  display: none !important;
+}
+.iti__search-icon {
+  left: 18px !important;
+}
+@media (width <= 767px) {
+  .iti__search-icon {
+  left: 3px !important;
+}
+.iti__search-input {
+  height: 40px !important;
+}
+.iti--fullscreen-popup.iti--container {
+  padding: 70px !important;
+}
+}
+.iti__search-icon-svg {
+  width: 25px !important;
+}
+@media (width <= 767px) {
+  .iti input.iti__tel-input {
+    padding: 12px 0 !important;
+  }
+  .country-select input {
+  padding: 12px 0 !important;
+  }
+}
 .btn {
   color: white;
   font-weight: bold;
@@ -175,6 +219,11 @@ ul {
   box-shadow: 4px 4px 0 0 var(--hover-color);
   font-size: 20px;
   cursor: pointer;
+}
+@media (width <= 767px) {
+  .btn {
+    font-size: 15px !important;
+  }
 }
 .form button {
   font-weight: bold;
@@ -206,6 +255,11 @@ button:hover {
  transition: var(--main-transition);
  translate: 0px 45px;
 }
+@media (width <= 767px) {
+  .active {
+    translate: 0px 10px;
+  }
+}
 .resume-input {
   display: none;
 }
@@ -220,4 +274,10 @@ button:hover {
   border: 1px solid var(--card-border-color);
   border-radius: var(--main-border-radius);
   color: var(--company-name-color);
+}
+@media (width <= 767px) {
+  .job {
+    width: 290px;
+    translate: 0px 25px;
+  }
 }
