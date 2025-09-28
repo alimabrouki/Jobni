@@ -236,10 +236,6 @@ ul {
   scroll-behavior: smooth;
  
 }
- ::-webkit-scrollbar {
-    width: 30px;
-    visibility: visible;
-  }
 @media (max-width: 767px) {
   .jobs .container .job-description {
     display: none;

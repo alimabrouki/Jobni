@@ -1,0 +1,142 @@
+@layer global {
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+ ::before , ::after {
+  box-sizing: border-box;
+}
+h1,h2,h3 {
+  margin: 0;
+  line-height: 1.1;
+} 
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100%;
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+}
+:root {
+    --main-transition: .2s ;
+    --main-color:rgb(29, 57, 73);
+    --second-color: rgb(29 57 73 / 53%);
+    --hover-color:rgb(166, 199, 232);
+    --main-weight: 400;
+    --company-name-color: rgba(38, 35, 35, 0.759);
+    --card-border-color: rgba(0, 0, 0, 0.203);
+    --main-border-radius: 8px;
+    --second-hover-color: rgba(0, 0, 0, 0.071);
+    --main-box-shadow: 0px 1px 6px -2px;
+    --rslt-color:#e0e0e0;
+    
+  
+    --text-xs: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 30px;
+    
+    
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+}
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+/* Medium */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* Large */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+}
+
+@layer header {
+    .header .container .nav ul li a {
+        color: white !important;
+    }
+    .header .container .nav ul li a::after {
+    border-bottom: 3px solid white !important;
+    }
+    .container .sign-up a {
+    color: white !important;
+    }
+}
+@layer hero {
+    .hero-container {
+    background-image: url(/imgs/employers.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 738px;
+    position: relative;
+}
+}
+@layer main {
+    section .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 80px;
+    translate: 0px 100px;
+    color: white;
+    }
+    h1 {
+        font-size: 65px;
+    }
+    h3 {
+        text-transform: uppercase;
+    }
+    .post-job{
+    color: var(--main-color);
+    font-size: 23px;
+    font-weight: bold;
+    background-color: white;
+    padding: 18px 30px !important;
+    border-radius: 13px;
+    transition: var(--main-transition);
+    border: 1px solid var(--hover-color);
+    box-shadow: 4px 4px 0 0 var(--hover-color);
+    cursor: pointer;
+    translate: 0px 110px;
+    }
+    .post-job:hover {
+    box-shadow: 2px 2px 0 0 var(--hover-color);
+    transform: translate(2px, 2px);
+    }
+}
+

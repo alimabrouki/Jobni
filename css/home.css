@@ -255,7 +255,7 @@ ul {
     text-align: center;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 0;
 }
 @media (max-width: 767px) {
   .home .container .search-container {
@@ -346,6 +346,7 @@ ul {
  transition: .1s;
 }
 .search-location.active {
+  translate: 12px;
   opacity: 1;
   visibility: visible;
   width: 200px;
