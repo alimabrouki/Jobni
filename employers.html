@@ -50,13 +50,30 @@
    <!-- End Header -->
     <main>
      
-      <section>
+      <section class="hero">
         <div class="container">
           <h3>Welcome To JOBNI Employers</h3>
           <h1>Hire fast. Scale smart. Win big.</h1>
           <a class="post-job" href="#">Post a job</a>
       </section>
+      <section class="form">
+        <form action="" class="job-post-form">
+          <h2>Post a Job</h2>
+          <label>Company Logo</label>
+          <input type="file" name="company_logo" accept="image/*" required>
+          <label>Company Name</label>
+          <input type="text" name="company_name" required>
+          <label>Job Title</label>
+          <input type="text" name="job_title" required>
+          <label>Location</label>
+          <input type="text" name="location" required>
+          <label>Salary</label>
+          <input type="text" name="salary" required>
+        </form>
+        <button class="next" type="button">Next</button>
+      </section>
     </main>
   </div>
+  <script type="module" src="js/employers.js"></script>
 </body>
 </html>

@@ -96,6 +96,9 @@ ul {
     }
 }
 @layer hero {
+    main {
+        position: relative;
+    }
     .hero-container {
     background-image: url(/imgs/employers.jpg);
     background-size: cover;
@@ -105,7 +108,7 @@ ul {
 }
 }
 @layer main {
-    section .container {
+    .hero .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -138,5 +141,66 @@ ul {
     box-shadow: 2px 2px 0 0 var(--hover-color);
     transform: translate(2px, 2px);
     }
-}
+    .hero.active {
+        translate: -500px 0;
+        transition: var(--main-transition);
+        opacity: 0;
 
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        justify-self: center;
+        top: 43px;
+        opacity: 0;
+        height: 600px;
+        width: 600px;
+        border: 1px solid var(--card-border-color);
+        border-radius: var(--main-border-radius);
+        background-color: #EBEAF0;
+        translate: 1000px 0;
+    }
+    .form.active {
+        translate: 0;
+        transition: var(--main-transition);
+        opacity: 1;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 35px !important;
+        text-align: center;
+        gap: 8px;
+    }
+    form input {
+        border: none;
+        border-radius: 20px;
+        font-size: var(--text-lg);
+        padding: 12px 20px !important;
+        text-align: center;
+        box-shadow: var(--main-box-shadow);
+        width: 380px;
+}
+    form input:focus {
+        box-shadow: 0 0 9px rgb(86, 152, 217);
+        outline: none;
+}
+    .form button {
+        font-weight: bold;
+        margin: 18px;
+        padding: 10px 33px !important;
+        border-radius: 13px;
+        transition: var(--main-transition);
+        border: 1px solid var(--hover-color);
+        box-shadow: 4px 4px 0 0 var(--hover-color);
+        font-size: 20px;
+        cursor: pointer;
+}
+    .form button:hover {
+        box-shadow: 2px 2px 0 0 var(--hover-color);
+        transform: translate(2px, 2px);
+}
+}
