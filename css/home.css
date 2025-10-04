@@ -34,7 +34,7 @@ body {
     --main-border-radius: 8px;
     --second-hover-color: rgba(0, 0, 0, 0.071);
     --main-box-shadow: 0px 1px 6px -2px;
-    --rslt-color:#e0e0e0;
+    --rslt-color: #EBEAF0;;
     
   
     --text-xs: 12px;
@@ -248,7 +248,7 @@ ul {
     position: relative;
     margin-top: 40px;
     max-width: 900px;
-    background-color: #EBEAF0;
+    background-color: var(--rslt-color);
     border: none;
     border-radius: 33px;
     padding: 12px 70px;
@@ -357,7 +357,7 @@ ul {
   z-index: 9999;
   background-color: var(--rslt-color);
   height: auto;
- width: 47%;
+  width: 47%;
   left: 11%;
   top: 74px;
   border-radius: 20px;
