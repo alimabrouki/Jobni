@@ -57,24 +57,87 @@
           <a class="post-job" href="#">Post a job</a>
       </section>
       <section class="form">
-        <form action="" class="job-post-form">
-          <h2>Post a Job</h2>
-          <label>Company Logo</label>
-          <div class="company-logo"><i class="fa-solid fa-briefcase"></i><span>upload logo</span></div>
+        <div class="progress-bar"></div>
+          <form action="" class="job-post-form ">
+             <h2>Post a Job</h2>
+          <h4>Fill in the details to create your job listing</h4>
+         <div class="step active">
+          <span>COMPANY LOGO</span>
+          <div class="company-logo"><i class="fa-solid fa-briefcase"></i></div>
+          <span>Upload Logo <br>PNG or JPG • Max 5MB</span>
           <input class="logo-input" type="file" name="company_logo" accept="image/*">
           <label>Company Name</label>
-          <input type="text" name="company_name" required>
+          <input type="text" name="company_name" placeholder="Enter company name" required>
           <label>Job Title</label>
-          <input type="text" name="job_title" required>
+          <input type="text" name="job_title" placeholder="e.g. Senior UX Designer" required>
           <label>Location</label>
-          <input type="text" name="location" required>
+          <input type="text" name="location" placeholder="City or Remote" required>
           <label>Salary</label>
-          <input type="text" name="salary" required>
+          <input type="text" name="salary" placeholder="e.g. 80k-120k" required>
+          <button class="next" type="button">Next</button>
+         </div>
+         <div class="step s-two">
+          <div class="two"></div>
+          <label for="">About Role</label>
+          <textarea name="about_role" id="" rows="4"></textarea>
+          <label for="">Qualifications</label>
+          <textarea name="qualifications" id="" rows="4"></textarea>
+          <button class="back" type="button">Back</button>
+         </div>
         </form>
-        <button class="next" type="button">Next</button>
       </section>
     </main>
   </div>
+   <div class="footer">
+        <div class="container">
+          <div class="logo">
+            <a href="#home">
+              <img src="imgs/logo1.png" alt="">
+            </a>
+            </div>
+          <div class="footer-menu">
+            <ul >
+          <li>
+            <a href="jobs.html">Jobs</a>
+          </li>
+          <li>
+            <a href="#community">Community</a>
+          </li>
+          <li>
+            <a href="#companies">Companies</a>
+          </li>
+        </ul>
+          </div>
+          <div class="social-links">
+            <ul>
+              <a href="https://www.facebook.com/ali.mabrouki.31" target="_blank">
+                <li>
+                  <i class="fa-brands fa-facebook"></i>Facebook
+               </li>
+            </a>
+              <a href="https://wa.me/21652213767" target="_blank">
+                <li> 
+                  <i class="fa-brands fa-whatsapp"></i>Whatsapp
+                </li>
+                </a>
+              <a href="https://www.linkedin.com/in/ali-mabrouki-8a7a46373/" target="_blank">
+                <li>
+                  <i class="fa-brands fa-linkedin"></i>Linkedin  
+                </li>
+                </a>
+              <a href="https://x.com/Ali_develo" target="_blank">
+                <li>
+                  <i class="fa-brands fa-x-twitter"></i>X-Twitter
+                </li>
+                </a>
+      </ul>
+          </div>
+        </div>
+        <div class="copyright">
+        Copyright &copy; 2025 By <a href="https://x.com/Ali_develo" target="_blank">Ali</a>
+      </div>
+      </div>
+      
   <script type="module" src="js/employers.js"></script>
 </body>
 </html>

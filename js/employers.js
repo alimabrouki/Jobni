@@ -8,9 +8,8 @@ function showForm() {
   form.classList.add('active');
   heroContainer.classList.add('active');
 });
-  document.addEventListener('click' ,(e) => {
-    const isActive = form.classList.add('active');
-    if (e.target !== isActive) {
+  document.addEventListener('mousedown' ,(e) => {
+    if (!form.contains(e.target)) {
       heroContainer.classList.remove('active');
       hero.classList.remove('active');
       form.classList.remove('active');
@@ -47,6 +46,51 @@ function uploadCLogo() {
     }
   })
 }
+const steps = document.querySelectorAll('.step');
+let currentStep = 0;
+function showStep(n) {
+ steps.forEach((step , index)=> {
+  step.classList.toggle('active', index === n);
+ })
+  const progressBar = document.querySelector('.progress-bar');
+  
+  if (n === 0) {
+    progressBar.classList.remove('two') 
+  }
+  if (n === 1) {
+    progressBar.classList.add('two');
+    progressBar.classList.remove('three')
+  };
+  if (n === 2) {
+     progressBar.classList.add('three');
+  }
+}
+function nextStep() {
+
+ if (currentStep < steps.length - 1) {
+  currentStep++;
+  showStep(currentStep);
+ }
+}
+function prevStep() {
+ if (currentStep > 0) {
+  currentStep--;
+  showStep(currentStep);
+ }
+}
+const nextBtns = document.querySelectorAll('.next');
+ const backBtns = document.querySelectorAll('.back'); 
+ nextBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+  nextStep();
+ });
+ })
+ backBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+  prevStep();
+ })
+ })
+
 document.addEventListener('DOMContentLoaded', () => {
  showForm();
  uploadCLogo();
