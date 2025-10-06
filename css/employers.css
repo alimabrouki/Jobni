@@ -121,7 +121,7 @@
         background-image: url(/imgs/employers.jpg);
         background-size: cover;
         background-repeat: no-repeat;
-        height: 900px;
+        height: 955px;
         position: relative;
 
     }
@@ -226,7 +226,6 @@
                 }
 
                 .s-two {
-                    label {}
 
                     textarea {
                         width: 470px;
@@ -234,12 +233,59 @@
                         caret-color: var(--main-color) rgb(29, 57, 73);
                         border: 1px solid var(--hover-color);
                         border-radius: 8px;
+                        padding: 11px 0 0 11px !important;
+                        font-size: 16px;
+                        resize: none;
+
+                        &:focus {
+                            box-shadow: 0 0 2px rgb(86, 152, 217);
+                            outline: none;
+                        }
                     }
 
-                    textarea:focus {
-                        box-shadow: 0 0 2px rgb(86, 152, 217);
-                        outline: none;
+                    .qualifications {
+                        width: 470px;
+                        height: 150px;
+                        caret-color: var(--main-color) rgb(29, 57, 73);
+                        border: 1px solid var(--hover-color);
+                        border-radius: 8px;
+                        padding: 11px 0 0 11px !important;
+                        font-size: 16px;
+                        overflow: auto;
+                        text-align: start;
+
+                        &:focus {
+                            box-shadow: 0 0 2px rgb(86, 152, 217);
+                            outline: none;
+                        }
+
+                        &:empty::before {
+                            content: attr(placeholder);
+                            color: #888;
+                            pointer-events: none;
+                            font-family: "Roboto", sans-serif;
+                        }
                     }
+                }
+
+                .s-three {
+                    select {
+                        width: 470px;
+                        border: 1px solid var(--hover-color);
+                        border-radius: 8px;
+                        padding: 10px !important;
+                        font-size: 16px;
+
+                        
+
+                        &:focus {
+                            box-shadow: 0 0 2px rgb(86, 152, 217);
+                            outline: none;
+                        }
+                    }
+                    option {
+                            font-size: 16px;
+                        }
                 }
             }
         }
@@ -345,7 +391,6 @@
                 font-weight: var(--font-weight-normal);
                 align-self: start;
                 text-transform: uppercase;
-                translate: 0 7px;
             }
         }
 
@@ -369,8 +414,8 @@
 
         .form button {
             font-weight: bold;
-            margin: 18px;
-            translate: 0 55px;
+            margin: 18px !important;
+            translate: 0 30px;
             padding: 10px 90px !important;
             border-radius: 13px;
             transition: var(--main-transition);

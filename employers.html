@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <link rel="icon" type="image" href="imgs/favicon.ico" >
+  <link rel="icon" type="image" href="imgs/favicon.ico">
   <!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1d,100..900&display=swap" rel="stylesheet">
-<!-- css -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/css/intlTelInput.css">
- <link rel="stylesheet" href="country-select-js-master/build/css/countrySelect.css">
- <link rel="stylesheet" href="css/all.min.css">
- <link rel="stylesheet" href="css/home.css">
- <link rel="stylesheet" href="css/employers.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1d,100..900&display=swap"
+    rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/css/intlTelInput.css">
+  <link rel="stylesheet" href="country-select-js-master/build/css/countrySelect.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/employers.css">
   <title>Employers</title>
 </head>
+
 <body>
   <div class="hero-container">
-     <!-- Start Header -->
-   <div class="header" id="home">
-    <div class="container">
-      <div class="logo"><a href="index.html"><img src="imgs/emlogo.png" alt=""></a></div>
-      <div class="nav" id="navi" >
-         <div id="close-menu">
-          <i class="fa-solid fa-xmark"></i>
-        </div>
-        <ul id="menu">
-          <li>
-            <a href="jobs.html">Jobs</a>
-          </li>
-          <li>
-            <a href="#community">Community</a>
-          </li>
-          <li>
-            <a href="#Employers">Employers</a>
-          </li>
-        </ul>
-      </div>
-      <div class="sign-up">
-          <a href="#"><span>Sign Up</span></a>
+    <!-- Start Header -->
+    <div class="header" id="home">
+      <div class="container">
+        <div class="logo"><a href="index.html"><img src="imgs/emlogo.png" alt=""></a></div>
+        <div class="nav" id="navi">
+          <div id="close-menu">
+            <i class="fa-solid fa-xmark"></i>
           </div>
-          
+          <ul id="menu">
+            <li>
+              <a href="jobs.html">Jobs</a>
+            </li>
+            <li>
+              <a href="#community">Community</a>
+            </li>
+            <li>
+              <a href="#Employers">Employers</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sign-up">
+          <a href="#"><span>Sign Up</span></a>
+        </div>
+
         <div id="bars"><i class="fa-solid fa-bars"></i></div>
 
+      </div>
     </div>
-   </div>
-   <!-- End Header -->
+    <!-- End Header -->
     <main>
-     
+
       <section class="hero">
         <div class="container">
           <h3>Welcome To JOBNI Employers</h3>
@@ -58,45 +61,64 @@
       </section>
       <section class="form">
         <div class="progress-bar"></div>
-          <form action="" class="job-post-form ">
-             <h2>Post a Job</h2>
+        <form action="" class="job-post-form ">
+          <h2>Post a Job</h2>
           <h4>Fill in the details to create your job listing</h4>
-         <div class="step active">
-          <span>COMPANY LOGO</span>
-          <div class="company-logo"><i class="fa-solid fa-briefcase"></i></div>
-          <span>Upload Logo <br>PNG or JPG • Max 5MB</span>
-          <input class="logo-input" type="file" name="company_logo" accept="image/*">
-          <label>Company Name</label>
-          <input type="text" name="company_name" placeholder="Enter company name" required>
-          <label>Job Title</label>
-          <input type="text" name="job_title" placeholder="e.g. Senior UX Designer" required>
-          <label>Location</label>
-          <input type="text" name="location" placeholder="City or Remote" required>
-          <label>Salary</label>
-          <input type="text" name="salary" placeholder="e.g. 80k-120k" required>
-          <button class="next" type="button">Next</button>
-         </div>
-         <div class="step s-two">
-          <div class="two"></div>
-          <label for="">About Role</label>
-          <textarea name="about_role" id="" rows="4"></textarea>
-          <label for="">Qualifications</label>
-          <textarea name="qualifications" id="" rows="4"></textarea>
-          <button class="back" type="button">Back</button>
-         </div>
+          <div class="step active">
+            <span>COMPANY LOGO</span>
+            <div class="company-logo"><i class="fa-solid fa-briefcase"></i></div>
+            <span>Upload Logo <br>PNG or JPG • Max 5MB</span>
+            <input class="logo-input" type="file" name="company_logo" accept="image/*">
+            <label>Company Name</label>
+            <input type="text" name="company_name" placeholder="Enter company name" required>
+            <label>Job Title</label>
+            <input type="text" name="job_title" placeholder="e.g. Senior UX Designer" required>
+            <label>Location</label>
+            <input type="text" name="location" placeholder="City or Remote" required>
+            <label>Salary</label>
+            <input type="text" name="salary" placeholder="e.g. 80k-120k" required>
+            <button class="next" type="button">Next</button>
+          </div>
+          <div class="step s-two">
+            <div class="two"></div>
+            <label for="">About Role</label>
+            <textarea name="about_role" id="" rows="4" placeholder="Type role details..."></textarea>
+            <label for="">Qualifications</label>
+            <div class="qualifications" contenteditable="true" placeholder="Type qualifications..." aria-required="">
+            </div>
+            <button class="back" type="button">Back</button>
+            <button class="next" type="button">Next</button>
+          </div>
+          <div class="step s-three">
+            <div class="three"></div>
+            <label for="">Job Type</label>
+            <select name="job_type" id="" required>
+              <option value="">Full-Time</option>
+              <option value="">Part-Time</option>
+              <option value="">Contract</option>
+              <option value="">Internship</option>
+              <option value="">Temporary</option>
+            </select>
+            <label for="">Phone</label>
+            <input type="number" name="phone" id="" placeholder="Your Number" required>
+            <label for="">Email</label>
+            <input type="email" name="email" id="" placeholder="Your Email" required>
+            <button class="back" type="button" style="translate: 0 113px;">Back</button>
+            <button type="submit" style="translate: 0 113px;">Submit</button>
+          </div>
         </form>
       </section>
     </main>
   </div>
-   <div class="footer">
-        <div class="container">
-          <div class="logo">
-            <a href="#home">
-              <img src="imgs/logo1.png" alt="">
-            </a>
-            </div>
-          <div class="footer-menu">
-            <ul >
+  <div class="footer">
+    <div class="container">
+      <div class="logo">
+        <a href="#home">
+          <img src="imgs/logo1.png" alt="">
+        </a>
+      </div>
+      <div class="footer-menu">
+        <ul>
           <li>
             <a href="jobs.html">Jobs</a>
           </li>
@@ -107,37 +129,38 @@
             <a href="#companies">Companies</a>
           </li>
         </ul>
-          </div>
-          <div class="social-links">
-            <ul>
-              <a href="https://www.facebook.com/ali.mabrouki.31" target="_blank">
-                <li>
-                  <i class="fa-brands fa-facebook"></i>Facebook
-               </li>
-            </a>
-              <a href="https://wa.me/21652213767" target="_blank">
-                <li> 
-                  <i class="fa-brands fa-whatsapp"></i>Whatsapp
-                </li>
-                </a>
-              <a href="https://www.linkedin.com/in/ali-mabrouki-8a7a46373/" target="_blank">
-                <li>
-                  <i class="fa-brands fa-linkedin"></i>Linkedin  
-                </li>
-                </a>
-              <a href="https://x.com/Ali_develo" target="_blank">
-                <li>
-                  <i class="fa-brands fa-x-twitter"></i>X-Twitter
-                </li>
-                </a>
-      </ul>
-          </div>
-        </div>
-        <div class="copyright">
-        Copyright &copy; 2025 By <a href="https://x.com/Ali_develo" target="_blank">Ali</a>
       </div>
+      <div class="social-links">
+        <ul>
+          <a href="https://www.facebook.com/ali.mabrouki.31" target="_blank">
+            <li>
+              <i class="fa-brands fa-facebook"></i>Facebook
+            </li>
+          </a>
+          <a href="https://wa.me/21652213767" target="_blank">
+            <li>
+              <i class="fa-brands fa-whatsapp"></i>Whatsapp
+            </li>
+          </a>
+          <a href="https://www.linkedin.com/in/ali-mabrouki-8a7a46373/" target="_blank">
+            <li>
+              <i class="fa-brands fa-linkedin"></i>Linkedin
+            </li>
+          </a>
+          <a href="https://x.com/Ali_develo" target="_blank">
+            <li>
+              <i class="fa-brands fa-x-twitter"></i>X-Twitter
+            </li>
+          </a>
+        </ul>
       </div>
-      
+    </div>
+    <div class="copyright">
+      Copyright &copy; 2025 By <a href="https://x.com/Ali_develo" target="_blank">Ali</a>
+    </div>
+  </div>
+
   <script type="module" src="js/employers.js"></script>
 </body>
+
 </html>
