@@ -167,6 +167,9 @@ ul {
 .phone {
   padding: 12px 45px !important;
 }
+.iti__dropdown-content {
+  translate: 0 -33px;
+}
 .iti__selected-country {
   padding: 0 !important;
   top: -19px;

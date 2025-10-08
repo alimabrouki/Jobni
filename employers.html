@@ -17,10 +17,13 @@
   <link rel="stylesheet" href="css/all.min.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/employers.css">
+   
   <title>Employers</title>
 </head>
-
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/country-select-js-master/build/js/countrySelect.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/js/intlTelInput.min.js"></script>
   <div class="hero-container">
     <!-- Start Header -->
     <div class="header" id="home">
@@ -84,15 +87,14 @@
             <label for="">About Role</label>
             <textarea name="about_role" id="" rows="4" placeholder="Type role details..."></textarea>
             <label for="">Qualifications</label>
-            <div class="qualifications" contenteditable="true" placeholder="Type qualifications..." aria-required="">
-            </div>
+            <div class="qualifications" contenteditable="true" placeholder="Type qualifications..." ></div>
             <button class="back" type="button">Back</button>
             <button class="next" type="button">Next</button>
           </div>
           <div class="step s-three">
             <div class="three"></div>
             <label for="">Job Type</label>
-            <select name="job_type" id="" required>
+            <select name="job_type" id="">
               <option value="">Full-Time</option>
               <option value="">Part-Time</option>
               <option value="">Contract</option>
@@ -100,7 +102,7 @@
               <option value="">Temporary</option>
             </select>
             <label for="">Phone</label>
-            <input type="number" name="phone" id="" placeholder="Your Number" required>
+            <input class="phone" type="number" name="phone" id="" placeholder="Your Number" required>
             <label for="">Email</label>
             <input type="email" name="email" id="" placeholder="Your Email" required>
             <button class="back" type="button" style="translate: 0 113px;">Back</button>
@@ -159,7 +161,6 @@
       Copyright &copy; 2025 By <a href="https://x.com/Ali_develo" target="_blank">Ali</a>
     </div>
   </div>
-
   <script type="module" src="js/employers.js"></script>
 </body>
 

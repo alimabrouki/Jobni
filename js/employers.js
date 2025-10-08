@@ -94,29 +94,54 @@ backBtns.forEach(btn => {
 }
 function qualificationsList() {
   const qualifications = document.querySelector('.qualifications');
-  qualifications.addEventListener('focus', () => {
-    if (qualifications.innerText.trim() === '') {
-      qualifications.innerHTML = '• ';
-      placeCaretAtEnd(qualifications);
-    }
-  });
+  let intialized = false;
   qualifications.addEventListener('keydown' , (e) => {
+    const isPrintable = e.key.length === 1 && !e.ctrKey && !e.metaKey && !e.altKey;
+
+    if (!intialized && (isPrintable || e.key === 'Enter')) {
+      e.preventDefault();
+      qualifications.innerHTML = e.key === 'Enter' ? '• ' : ('• ' + e.key);
+      placeCaretAtEnd(qualifications);
+      intialized = true;
+      return;
+    }
     if (e.key === 'Enter') {
       e.preventDefault();
-      insertHTMLAtCaret('<br>• ')
+      insertHTMLAtCaret('<br>• ');
+      return;
     }
 
     if (e.key === 'Backspace') {
       const selection = window.getSelection();
+      if (!selection || !selection.rangeCount) return;
       const range = selection.getRangeAt(0);
-      const  caretPos = range.startOffset;
-      const text = qualifications.innerText;
 
-      if (caretPos <= 1 ) {
-        e.preventDefault();
-      } 
+      const text = qualifications.textContent;
+
+      const onlyFirstBullet = text === '• ' || text === '•' || text.trim() === '•';
+
+      const caretAtStart = range.startOffset <= 1 && range.collapsed;
+
+      if (onlyFirstBullet && caretAtStart) {
+        e.preventDefaultl();
+        return;
+      }
     }
+  });
+
+  qualifications.addEventListener('input', () => {
+   const plain = qualifications.textContent.trim();
+   const hasAny = plain.length > 0;
+
+   if (!hasAny) {
+    qualifications.innerHTML = '• ';
+    placeCaretAtEnd(qualifications);
+    intialized = true;
+   } else {
+    intialized = true;
+   }
   })
+
   function placeCaretAtEnd(el) {
     const range = document.createRange();
     const sel = window.getSelection();
