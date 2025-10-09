@@ -1,19 +1,31 @@
 function showForm() {
   const hero = document.querySelector('.hero');
-  const postJob = document.querySelector('.post-job');
+  const postJobBtn = document.querySelector('.post-job');
   const heroContainer = document.querySelector('.hero-container');
-  const form = document.querySelector('.form')
-  postJob.addEventListener('click', () => {
+  const form = document.querySelector('.form');
+  const getStartedBtn = document.querySelector('.get-started');
+  function openForm() {
     hero.classList.add('active');
     form.classList.add('active');
     heroContainer.classList.add('active');
+
+    form.scrollIntoView({behavior: 'smooth'});
+  }
+  postJobBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openForm();
   });
   document.addEventListener('mousedown', (e) => {
-    if (!form.contains(e.target)) {
+    if (!form.contains(e.target) && !postJobBtn.contains(e.target) && !getStartedBtn.contains(e.target)) {
       heroContainer.classList.remove('active');
       hero.classList.remove('active');
       form.classList.remove('active');
     }
+  })
+  getStartedBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    getStartedBtn.classList.add('active');
+    openForm();
   })
 }
 function uploadCLogo() {
@@ -94,15 +106,15 @@ backBtns.forEach(btn => {
 }
 function qualificationsList() {
   const qualifications = document.querySelector('.qualifications');
-  let intialized = false;
+  let hasStartedTyping = false;
   qualifications.addEventListener('keydown' , (e) => {
-    const isPrintable = e.key.length === 1 && !e.ctrKey && !e.metaKey && !e.altKey;
+    const isPrintable = e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
 
-    if (!intialized && (isPrintable || e.key === 'Enter')) {
+    if (!hasStartedTyping && (isPrintable || e.key === 'Enter')) {
       e.preventDefault();
       qualifications.innerHTML = e.key === 'Enter' ? '• ' : ('• ' + e.key);
       placeCaretAtEnd(qualifications);
-      intialized = true;
+      hasStartedTyping = true;
       return;
     }
     if (e.key === 'Enter') {
@@ -123,7 +135,7 @@ function qualificationsList() {
       const caretAtStart = range.startOffset <= 1 && range.collapsed;
 
       if (onlyFirstBullet && caretAtStart) {
-        e.preventDefaultl();
+        e.preventDefault();
         return;
       }
     }
@@ -136,9 +148,9 @@ function qualificationsList() {
    if (!hasAny) {
     qualifications.innerHTML = '• ';
     placeCaretAtEnd(qualifications);
-    intialized = true;
+    hasStartedTyping = true;
    } else {
-    intialized = true;
+    hasStartedTyping = true;
    }
   })
 
@@ -170,9 +182,17 @@ function qualificationsList() {
     }
   }
 }
+function phoneInput() {
+  const inputPhone = document.querySelector('.phone');
+  window.intlTelInput(inputPhone, {
+    loadUtils: () => import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/js/utils.js"),
+  });
+  $("#country").countrySelect();
+}
 document.addEventListener('DOMContentLoaded', () => {
   showForm();
   steps();
   uploadCLogo();
   qualificationsList();
+  phoneInput();
 });
