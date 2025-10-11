@@ -74,19 +74,19 @@
             <span>Upload Logo <br>PNG or JPG • Max 5MB</span>
             <input class="logo-input" type="file" name="company_logo" accept="image/*">
             <label>Company Name</label>
-            <input type="text" name="company_name" placeholder="Enter company name" required>
+            <input class="company-name" type="text" name="company_name" placeholder="Enter company name" required>
             <label>Job Title</label>
-            <input type="text" name="job_title" placeholder="e.g. Senior UX Designer" required>
+            <input class="job-title" type="text" name="job_title" placeholder="e.g. Senior UX Designer" required>
             <label>Location</label>
-            <input type="text" name="location" placeholder="City or Remote" required>
+            <input class="location" type="text" name="location" placeholder="City or Remote" required>
             <label>Salary</label>
-            <input type="text" name="salary" placeholder="e.g. 80k-120k" required>
+            <input class="salary" type="text" name="salary" placeholder="e.g. 80k-120k" required>
             <button class="next" type="button">Next</button>
           </div>
           <div class="step s-two">
             <div class="two"></div>
             <label for="">About Role</label>
-            <textarea name="about_role" id="" rows="4" placeholder="Type role details..."></textarea>
+            <textarea class="about-role" name="about_role" id="" rows="4" placeholder="Type role details..."></textarea>
             <label for="">Qualifications</label>
             <div class="qualifications" contenteditable="true" placeholder="Type qualifications..."></div>
             <button class="back" type="button">Back</button>
@@ -95,17 +95,17 @@
           <div class="step s-three">
             <div class="three"></div>
             <label for="">Job Type</label>
-            <select name="job_type" id="">
-              <option value="">Full-Time</option>
-              <option value="">Part-Time</option>
-              <option value="">Contract</option>
-              <option value="">Internship</option>
-              <option value="">Temporary</option>
+            <select name="job_type" class="job-type">
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Contract">Contract</option>
+              <option value="Internship">Internship</option>
+              <option value="Temporary">Temporary</option>
             </select>
             <label for="">Phone</label>
             <input class="phone" name="phone" id="" placeholder="Your Number" required>
             <label for="">Email</label>
-            <input type="email" name="email" id="" placeholder="Your Email" required>
+            <input class="email" type="email" name="email" id="" placeholder="Your Email" required>
             <button class="back" type="button" style="translate: 0 113px;">Back</button>
             <button type="submit" style="translate: 0 113px;">Submit</button>
           </div>

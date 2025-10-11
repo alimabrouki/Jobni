@@ -1,3 +1,5 @@
+import { newJobs,jobs } from "../data/jobs-data.js";
+
 function showForm() {
   const hero = document.querySelector('.hero');
   const postJobBtn = document.querySelector('.post-job');
@@ -9,7 +11,7 @@ function showForm() {
     form.classList.add('active');
     heroContainer.classList.add('active');
 
-    form.scrollIntoView({behavior: 'smooth'});
+    form.scrollIntoView({ behavior: 'smooth' });
   }
   postJobBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -60,54 +62,54 @@ function uploadCLogo() {
 }
 function steps() {
   const steps = document.querySelectorAll('.step');
-let currentStep = 0;
-function showStep(n) {
-  steps.forEach((step, index) => {
-    step.classList.toggle('active', index === n);
-  })
-  const progressBar = document.querySelector('.progress-bar');
+  let currentStep = 0;
+  function showStep(n) {
+    steps.forEach((step, index) => {
+      step.classList.toggle('active', index === n);
+    })
+    const progressBar = document.querySelector('.progress-bar');
 
-  if (n === 0) {
-    progressBar.classList.remove('two')
+    if (n === 0) {
+      progressBar.classList.remove('two')
+    }
+    if (n === 1) {
+      progressBar.classList.add('two');
+      progressBar.classList.remove('three')
+    };
+    if (n === 2) {
+      progressBar.classList.add('three');
+    }
   }
-  if (n === 1) {
-    progressBar.classList.add('two');
-    progressBar.classList.remove('three')
-  };
-  if (n === 2) {
-    progressBar.classList.add('three');
-  }
-}
-function nextStep() {
+  function nextStep() {
 
-  if (currentStep < steps.length - 1) {
-    currentStep++;
-    showStep(currentStep);
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    }
   }
-}
-function prevStep() {
-  if (currentStep > 0) {
-    currentStep--;
-    showStep(currentStep);
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
   }
-}
-const nextBtns = document.querySelectorAll('.next');
-const backBtns = document.querySelectorAll('.back');
-nextBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    nextStep();
-  });
-})
-backBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    prevStep();
+  const nextBtns = document.querySelectorAll('.next');
+  const backBtns = document.querySelectorAll('.back');
+  nextBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      nextStep();
+    });
   })
-})
+  backBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      prevStep();
+    })
+  })
 }
 function qualificationsList() {
   const qualifications = document.querySelector('.qualifications');
   let hasStartedTyping = false;
-  qualifications.addEventListener('keydown' , (e) => {
+  qualifications.addEventListener('keydown', (e) => {
     const isPrintable = e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
 
     if (!hasStartedTyping && (isPrintable || e.key === 'Enter')) {
@@ -142,16 +144,16 @@ function qualificationsList() {
   });
 
   qualifications.addEventListener('input', () => {
-   const plain = qualifications.textContent.trim();
-   const hasAny = plain.length > 0;
+    const plain = qualifications.textContent.trim();
+    const hasAny = plain.length > 0;
 
-   if (!hasAny) {
-    qualifications.innerHTML = '• ';
-    placeCaretAtEnd(qualifications);
-    hasStartedTyping = true;
-   } else {
-    hasStartedTyping = true;
-   }
+    if (!hasAny) {
+      qualifications.innerHTML = '• ';
+      placeCaretAtEnd(qualifications);
+      hasStartedTyping = true;
+    } else {
+      hasStartedTyping = true;
+    }
   })
 
   function placeCaretAtEnd(el) {
@@ -168,12 +170,12 @@ function qualificationsList() {
     el.innerHTML = html;
     const frag = document.createDocumentFragment();
     let node, lastNode;
-    while((node = el.firstChild)) {
+    while ((node = el.firstChild)) {
       lastNode = frag.appendChild(node);
     }
     range.insertNode(frag);
 
-    if(lastNode) {
+    if (lastNode) {
       range.setStartAfter(lastNode);
       range.collapse(true);
       const sel = window.getSelection();
@@ -189,10 +191,46 @@ function phoneInput() {
   });
   $("#country").countrySelect();
 }
+function postJob() {
+  const form = document.querySelector('.job-post-form');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const companyName = document.querySelector('.company-name').value;
+    const jobTitle = document.querySelector('.job-title').value;
+    const location = document.querySelector('.location').value;
+    const salary = document.querySelector('.salary').value;
+    const aboutRole = document.querySelector('.about-role').value;
+    const qualifications = document.querySelector('.qualifications').value;
+    const jobType = document.querySelector('.job-type').value;
+    const phone = document.querySelector('.phone').value;
+    const email = document.querySelector('.email').value;
+    const companyLogo = document.querySelector('.company-logo');
+    const previemImg = companyLogo.querySelector('img');
+
+    let imageUrl = 'img/job1.webp';
+
+    if(previemImg) {
+      imageUrl = previemImg.src;
+    }
+
+
+    
+    const newId = (Math.max(...newJobs.map(j => parseInt(j.id)), ...jobs.map(j => parseInt(j.id))) + 1).toString();
+    const newAddedJob = { id: newId, company: companyName,image: imageUrl, jobTitle, location, salary: parseInt(salary),dateUploaded: 'Just Now', aboutRole, qualifications, jobType, phone, email };
+    const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+    addedJobs.push(newAddedJob);
+    localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
+    newJobs.push(newAddedJob);
+    window.location.href = 'jobs.html';
+  })
+
+}
 document.addEventListener('DOMContentLoaded', () => {
   showForm();
   steps();
   uploadCLogo();
   qualificationsList();
   phoneInput();
+  postJob();
 });

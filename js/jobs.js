@@ -647,7 +647,80 @@ export function mobileSearch() {
     }
   })
 }
-
+  function displayJobs() {
+    const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+    
+    const jobDescription = document.querySelector('.job-description');
+    jobDescription.innerHTML = '';
+    addedJobs.forEach(job => {
+      jobDescription.innerHTML = `
+       <div class="js-des-card">
+      <div class="card js-job-card" data-id="${job.id}">
+        <img class="image" src="${job.image}" alt="">
+       <a href="quick-apply.html?id=${job.id}" class="apply" target="_blank">Apply Now</a>
+          <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
+        </i>
+        <div>${job.companyName}</div>
+        <div>${job.jobTitle}</div>
+        <div>
+          <span>${job.location}</span> |
+          <span>${job.salary} $TND</span>
+        </div>
+        </div>
+       </div>
+        <div class="job-info">
+            <div class="info">
+              <div class="role">
+              <div class="about-role">
+              <div><i class="fa-solid fa-circle-dot"></i>
+                About The Role :</div>
+              <span>${job.aboutRole}
+              </span></div>
+            </div>
+            <div class="qualifications">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Qualifications :</div>
+                <dl>
+                  ${job.qualifications}
+                </dl>
+            </div>
+            <div class="job-time">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Job Type :</div>
+              ${job.jobType}
+            </div>
+            <div class="company-info">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Company Information :</div>
+             
+              <div class="phone"> 
+                <i class="fa-solid fa-phone"></i> 
+                <span>
+                  Phone :
+                </span>
+              <div class="phone-number">${job.phone}</div>
+            </div>
+              <br>
+              
+              <div class="email">
+                <i class="fa-solid fa-envelope"></i>
+                <span>
+                  Email :
+                </span>
+                <div class="email-address">${job.email}</div>
+            </div>
+              </div>
+              
+            </div>
+            </div>
+      `
+      
+    })
+    newJobs.push(...addedJobs)
+  }
 document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
   renderSelectedCard();
@@ -662,6 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
   saveButton();
   toggleMenu();
   descriptionWindow();
+  displayJobs();
 });
 
 
