@@ -332,16 +332,23 @@ margin-left: 22px;
  margin-bottom: 25px;
  margin-top: 25px;
 }
+.container .job-description .job-info .about-role span {
+  white-space: pre-wrap;
+}
 .about-role div {
   font-weight: var(--font-weight-semibold); 
   margin-bottom: 25px;
 }
 .container .job-description .job-info .qualifications {
   margin-bottom: 25px;
+   li {
+    margin-left: 16px;
+  }
 }
 .qualifications div {
   font-weight: var(--font-weight-semibold);
   margin-bottom: 25px;
+ 
 }
 .container .job-description .job-info .job-time {
   margin-bottom: 25px;

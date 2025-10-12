@@ -106,7 +106,7 @@ function steps() {
     })
   })
 }
-function qualificationsList() {
+export function qualificationsList() {
   const qualifications = document.querySelector('.qualifications');
   let hasStartedTyping = false;
   qualifications.addEventListener('keydown', (e) => {
@@ -114,14 +114,14 @@ function qualificationsList() {
 
     if (!hasStartedTyping && (isPrintable || e.key === 'Enter')) {
       e.preventDefault();
-      qualifications.innerHTML = e.key === 'Enter' ? '• ' : ('• ' + e.key);
+      qualifications.innerHTML = e.key === 'Enter' ? ' <li> ' : (' <li> ' + e.key);
       placeCaretAtEnd(qualifications);
       hasStartedTyping = true;
       return;
     }
     if (e.key === 'Enter') {
       e.preventDefault();
-      insertHTMLAtCaret('<br>• ');
+      insertHTMLAtCaret(' <li> ');
       return;
     }
 
@@ -132,7 +132,7 @@ function qualificationsList() {
 
       const text = qualifications.textContent;
 
-      const onlyFirstBullet = text === '• ' || text === '•' || text.trim() === '•';
+      const onlyFirstBullet = text === ' <li> ' || text === '<li> ' || text.trim() === ' <li> ';
 
       const caretAtStart = range.startOffset <= 1 && range.collapsed;
 
@@ -148,7 +148,7 @@ function qualificationsList() {
     const hasAny = plain.length > 0;
 
     if (!hasAny) {
-      qualifications.innerHTML = '• ';
+      qualifications.innerHTML =' <li> ';
       placeCaretAtEnd(qualifications);
       hasStartedTyping = true;
     } else {
@@ -201,7 +201,7 @@ function postJob() {
     const location = document.querySelector('.location').value;
     const salary = document.querySelector('.salary').value;
     const aboutRole = document.querySelector('.about-role').value;
-    const qualifications = document.querySelector('.qualifications').value;
+    const qualifications = document.querySelector('.qualifications').innerHTML;
     const jobType = document.querySelector('.job-type').value;
     const phone = document.querySelector('.phone').value;
     const email = document.querySelector('.email').value;
@@ -218,7 +218,7 @@ function postJob() {
     
     const newId = (Math.max(...newJobs.map(j => parseInt(j.id)), ...jobs.map(j => parseInt(j.id))) + 1).toString();
     const newAddedJob = { id: newId, company: companyName,image: imageUrl, jobTitle, location, salary: parseInt(salary),dateUploaded: 'Just Now', aboutRole, qualifications, jobType, phone, email };
-    const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+   const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
     addedJobs.push(newAddedJob);
     localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
     newJobs.push(newAddedJob);

@@ -236,7 +236,7 @@
                         padding: 11px 0 0 11px !important;
                         font-size: 16px;
                         resize: none;
-
+                        white-space: pre-wrap;
                         &:focus {
                             box-shadow: 0 0 2px rgb(86, 152, 217);
                             outline: none;
@@ -249,7 +249,7 @@
                         caret-color: var(--main-color) rgb(29, 57, 73);
                         border: 1px solid var(--hover-color);
                         border-radius: 8px;
-                        padding: 11px 0 0 11px !important;
+                        padding: 11px 0 0 20px !important;
                         font-size: 16px;
                         overflow: auto;
                         text-align: start;

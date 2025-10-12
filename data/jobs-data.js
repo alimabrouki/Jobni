@@ -13,10 +13,21 @@ export const jobs = [
     id: '1',
     image: 'imgs/job1.webp',
     company: 'Facebook',
-    jobTitle: 'Web developer',
+    jobTitle: 'Web Developer',
     location: 'Sousse',
     salary: 3900,
-    dateUploaded: '1d'
+    dateUploaded: '1d',
+    aboutRole: 'You will work on modern web interfaces used by millions daily. Collaborate with UI designers and backend engineers to deliver seamless experiences.',
+    qualifications: `
+      <ul>
+        <li>Strong HTML, CSS, and JavaScript skills</li>
+        <li>Experience with REST APIs</li>
+        <li>Basic knowledge of React</li>
+        <li>Attention to detail</li>
+      </ul>`,
+    jobType: 'Full-Time',
+    phone: '+216 22 345 678',
+    email: 'careers@facebook.com'
   },
   {
     id: '2',
@@ -25,7 +36,17 @@ export const jobs = [
     jobTitle: 'Web Designer',
     location: 'Tunis',
     salary: 2900,
-    dateUploaded: '2d'
+    dateUploaded: '2d',
+    aboutRole: 'Create engaging web layouts that enhance usability and visual appeal. Work closely with developers and product teams to build consistent designs.',
+    qualifications: `
+      <ul>
+        <li>Proficiency in Figma or Adobe XD</li>
+        <li>Good eye for color and typography</li>
+        <li>Basic HTML/CSS knowledge</li>
+      </ul>`,
+    jobType: 'Contract',
+    phone: '+216 24 123 456',
+    email: 'design@twitter.com'
   },
   {
     id: '3',
@@ -34,7 +55,17 @@ export const jobs = [
     jobTitle: 'Full Stack Developer',
     location: 'Gafsa',
     salary: 5000,
-    dateUploaded: '3hrs'
+    dateUploaded: '3hrs',
+    aboutRole: 'Build scalable web systems integrating frontend and backend components for global e-commerce services.',
+    qualifications: `
+      <ul>
+        <li>3+ years with Node.js or Python</li>
+        <li>React or Vue experience</li>
+        <li>Database skills (MySQL or MongoDB)</li>
+      </ul>`,
+    jobType: 'Full-Time',
+    phone: '+216 98 456 789',
+    email: 'jobs@amazon.com'
   },
   {
     id: '4',
@@ -43,7 +74,16 @@ export const jobs = [
     jobTitle: 'Backend Developer',
     location: 'Sfax',
     salary: 2400,
-    dateUploaded: '4d'
+    dateUploaded: '4d',
+    aboutRole: 'Develop and maintain backend services that power Microsoft products and internal tools.',
+    qualifications: `
+      <ul>
+        <li>Experience with C# or Node.js</li>
+        <li>Understanding of APIs and microservices</li>
+      </ul>`,
+    jobType: 'Full-Time',
+    phone: '+216 23 555 777',
+    email: 'backend@microsoft.com'
   },
   {
     id: '5',
@@ -52,7 +92,16 @@ export const jobs = [
     jobTitle: 'Frontend Developer',
     location: 'Tunis',
     salary: 2600,
-    dateUploaded: '5hrs'
+    dateUploaded: '5hrs',
+    aboutRole: 'Collaborate with cross-functional teams to develop web components for Google internal tools.',
+    qualifications: `
+      <ul>
+        <li>Advanced JavaScript knowledge</li>
+        <li>React.js or Angular experience</li>
+      </ul>`,
+    jobType: 'Remote',
+    phone: '+216 25 998 321',
+    email: 'frontend@google.com'
   },
   {
     id: '6',
@@ -61,7 +110,16 @@ export const jobs = [
     jobTitle: 'Full Stack Engineer',
     location: 'Ariana',
     salary: 2100,
-    dateUploaded: '6d'
+    dateUploaded: '6d',
+    aboutRole: 'Design and build end-to-end financial platforms for global clients.',
+    qualifications: `
+      <ul>
+        <li>React, Node.js, and SQL experience</li>
+        <li>Strong debugging skills</li>
+      </ul>`,
+    jobType: 'Full-Time',
+    phone: '+216 29 667 234',
+    email: 'careers@vermeg.com'
   },
   {
     id: '7',
@@ -70,7 +128,16 @@ export const jobs = [
     jobTitle: 'Software Tester',
     location: 'Sousse',
     salary: 1800,
-    dateUploaded: '1w'
+    dateUploaded: '1w',
+    aboutRole: 'Ensure software quality through manual and automated testing.',
+    qualifications: `
+      <ul>
+        <li>Knowledge of testing tools (Selenium, Cypress)</li>
+        <li>Basic scripting knowledge</li>
+      </ul>`,
+    jobType: 'Part-Time',
+    phone: '+216 55 909 888',
+    email: 'qa@telnet.com'
   },
   {
     id: '8',
@@ -79,7 +146,16 @@ export const jobs = [
     jobTitle: 'Mobile App Developer',
     location: 'Gabès',
     salary: 2000,
-    dateUploaded: '8hrs'
+    dateUploaded: '8hrs',
+    aboutRole: 'Develop and maintain Android and iOS apps for telecommunications services.',
+    qualifications: `
+      <ul>
+        <li>Flutter or React Native</li>
+        <li>API integration experience</li>
+      </ul>`,
+    jobType: 'Contract',
+    phone: '+216 22 400 400',
+    email: 'mobile@ooredoo.com'
   },
   {
     id: '9',
@@ -191,7 +267,13 @@ export const newJobs = [
     jobTitle: 'UI/UX Designer',
     location: 'Tunis',
     salary: 2700,
-    dateUploaded: '1d'
+    dateUploaded: '1d',
+    aboutRole: 'Design clean, intuitive music interfaces that elevate listening experiences.',
+    qualifications: 'Experience with Figma and motion design Strong UX research and testing skills Good sense of typography and color theory Ability to collaborate with developers'
+    ,
+    jobType: 'Full-Time',
+    phone: '+216 27 890 123',
+    email: 'design@spotify.com'
   },
   {
     id: '20',
@@ -200,7 +282,17 @@ export const newJobs = [
     jobTitle: 'Frontend Engineer',
     location: 'Sousse',
     salary: 3100,
-    dateUploaded: '12hrs'
+    dateUploaded: '12hrs',
+    aboutRole: 'Develop rich web interfaces that connect professionals across the world.',
+    qualifications: [
+      'Strong React and TypeScript skills',
+      'Experience with state management tools',
+      'Understanding of scalable UI architecture',
+      'Strong teamwork and communication skills'
+    ],
+    jobType: 'Full-Time',
+    phone: '+216 28 901 234',
+    email: 'frontend@linkedin.com'
   },
   {
     id: '21',
@@ -209,7 +301,17 @@ export const newJobs = [
     jobTitle: 'Product Manager',
     location: 'Ariana',
     salary: 4200,
-    dateUploaded: '2d'
+    dateUploaded: '2d',
+    aboutRole: 'Lead creative software projects from concept to release, balancing design and development needs.',
+    qualifications: [
+      'Experience in product lifecycle management',
+      'Strong analytical and leadership skills',
+      'Understanding of software development cycles',
+      'Excellent communication and planning'
+    ],
+    jobType: 'Full-Time',
+    phone: '+216 29 012 345',
+    email: 'pm@adobe.com'
   },
   {
     id: '22',
@@ -218,7 +320,17 @@ export const newJobs = [
     jobTitle: 'Hardware Engineer',
     location: 'Sfax',
     salary: 4600,
-    dateUploaded: '8hrs'
+    dateUploaded: '8hrs',
+    aboutRole: 'Design, test, and optimize next-generation hardware components.',
+    qualifications: [
+      'Strong knowledge of circuit design',
+      'Experience with microcontrollers and embedded systems',
+      'Ability to prototype and debug hardware',
+      'Familiarity with manufacturing processes'
+    ],
+    jobType: 'Contract',
+    phone: '+216 30 123 456',
+    email: 'hardware@intel.com'
   },
   {
     id: '23',
@@ -227,7 +339,17 @@ export const newJobs = [
     jobTitle: 'Support Engineer',
     location: 'Monastir',
     salary: 2400,
-    dateUploaded: '3d'
+    dateUploaded: '3d',
+    aboutRole: 'Provide top-tier support to enterprise clients ensuring high system uptime.',
+    qualifications: [
+      'Excellent troubleshooting and communication skills',
+      'Familiarity with Windows Server and Linux OS',
+      'Customer-focused problem-solving mindset',
+      'Ability to handle ticketing systems efficiently'
+    ],
+    jobType: 'Full-Time',
+    phone: '+216 31 234 567',
+    email: 'support@dell.com'
   },
   {
     id: '24',

@@ -54,6 +54,54 @@ export function renderSelectedCard() {
           <span>${job.salary} $TND</span>
         </div>
         </div>
+         <div class="job-info">
+            <div class="info">
+              <div class="role">
+              <div class="about-role">
+              <div><i class="fa-solid fa-circle-dot"></i>
+                About The Role :</div>
+              <span>${job.aboutRole}
+              </span></div>
+            </div>
+            <div class="qualifications">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Qualifications :</div>
+                <dl>
+                ${job.qualifications}
+                </dl>
+            </div>
+            <div class="job-time">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Job Type :</div>
+              ${job.jobType}
+            </div>
+            <div class="company-info">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Company Information :</div>
+             
+              <div class="phone"> 
+                <i class="fa-solid fa-phone"></i> 
+                <span>
+                  Phone :
+                </span>
+              <div class="phone-number">${job.phone}</div>
+            </div>
+              <br>
+              
+              <div class="email">
+                <i class="fa-solid fa-envelope"></i>
+                <span>
+                  Email :
+                </span>
+                <div class="email-address">${job.email}</div>
+            </div>
+              </div>
+              
+            </div>
+            </div>
       `;
 
   };
@@ -97,6 +145,54 @@ export function renderCLickedCard() {
           <span>${job.salary} $TND</span>
         </div>
         </div>
+         <div class="job-info">
+            <div class="info">
+              <div class="role">
+              <div class="about-role">
+              <div><i class="fa-solid fa-circle-dot"></i>
+                About The Role :</div>
+              <span>${job.aboutRole}
+              </span></div>
+            </div>
+            <div class="qualifications">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Qualifications :</div>
+                <dl>
+                ${job.qualifications}
+                </dl>
+            </div>
+            <div class="job-time">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Job Type :</div>
+              ${job.jobType}
+            </div>
+            <div class="company-info">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Company Information :</div>
+             
+              <div class="phone"> 
+                <i class="fa-solid fa-phone"></i> 
+                <span>
+                  Phone :
+                </span>
+              <div class="phone-number">${job.phone}</div>
+            </div>
+              <br>
+              
+              <div class="email">
+                <i class="fa-solid fa-envelope"></i>
+                <span>
+                  Email :
+                </span>
+                <div class="email-address">${job.email}</div>
+            </div>
+              </div>
+              
+            </div>
+            </div>
       `;
         saveButton();
 
@@ -164,6 +260,54 @@ function btnsRenderJobs() {
           <span>${firstJob.salary} $TND</span>
         </div>
         </div>
+         <div class="job-info">
+            <div class="info">
+              <div class="role">
+              <div class="about-role">
+              <div><i class="fa-solid fa-circle-dot"></i>
+                About The Role :</div>
+              <span>${firstJob.aboutRole}
+              </span></div>
+            </div>
+            <div class="qualifications">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Qualifications :</div>
+                <dl>
+                ${firstJob.qualifications}
+                </dl>
+            </div>
+            <div class="job-time">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Job Type :</div>
+              ${firstJob.jobType}
+            </div>
+            <div class="company-info">
+              <div>
+                <i class="fa-solid fa-circle-dot"></i>
+                Company Information :</div>
+             
+              <div class="phone"> 
+                <i class="fa-solid fa-phone"></i> 
+                <span>
+                  Phone :
+                </span>
+              <div class="phone-number">${firstJob.phone}</div>
+            </div>
+              <br>
+              
+              <div class="email">
+                <i class="fa-solid fa-envelope"></i>
+                <span>
+                  Email :
+                </span>
+                <div class="email-address">${firstJob.email}</div>
+            </div>
+              </div>
+              
+            </div>
+            </div>
       `
     };
     saveButton();
@@ -296,47 +440,6 @@ export function searchBar() {
           searchBar.value = jobTitle;
           jobSrchRslt.classList.remove('focus')
 
-          //   const resultdiv = link.querySelector('.srch-result');
-          //   const jobId = resultdiv.getAttribute('data-id');
-          //   const job = getJobs(jobId) || getNewJobs(jobId);
-          //   if (job) {
-          //     const jobDes = document.querySelector('.js-des-card');
-          //     if(jobDes) {
-          //       jobDes.innerHTML = `
-          //       <div class="card js-job-card" data-id="${job.id}">
-          //     <img src="${job.image}" alt="">
-          //     <i data-id="${job.id}" class="save-button fa-regular fa-bookmark"></i>
-          //     <div>${job.company}</div>
-          //     <div>${job.jobTitle}</div>
-          //     <div>
-          //       <span>${job.location}</span> |
-          //       <span>${job.salary} $TND</span>
-          //     </div>
-          //   </div>
-          //       `
-          // }
-          // const cardsContainer = document.querySelector('.cards');
-          // const allCards = document.querySelectorAll('.cards .js-job-card');
-          // const targetCard = [...allCards].find(card => card.getAttribute('data-id') === jobId)
-          // if (targetCard && cardsContainer) {
-          //   allCards.forEach(c => c.classList.remove('cardClicked'));
-
-          //   const cardHTML = targetCard.outerHTML;
-          //   targetCard.remove();
-          //   cardsContainer.insertAdjacentHTML('afterbegin', cardHTML);
-          //   const newTopCard = cardsContainer.querySelector('.js-job-card');
-          //   if (newTopCard) {
-          //     newTopCard.classList.add('cardClicked');
-          //   }
-          // }
-          // jobSrchRslt.classList.remove('focus');
-          // jobSrchRslt.innerHTML = '';
-          // searchBar.value = '';
-
-          // saveButton();
-          // renderCLickedCard();
-          // selectedCardColor();
-          //   }
         })
       })
       resetHighlight();
@@ -396,13 +499,6 @@ export function searchBar() {
       locationSrchRslt.innerHTML = '';
       return;
     }
-
-    // const startWithJobs = allJobs.filter(job =>
-    //   job.location.toLowerCase().startsWith(input)
-    // );
-    // const includesJobs = allJobs.filter(job =>
-    //   job.location.toLowerCase().includes(input)
-    // );
     const matchedJobs = allJobs.filter(loc =>
       loc.location.toLowerCase().startsWith(input)
     );
@@ -552,47 +648,6 @@ export function mobileSearch() {
           srchJobWindow.value = jobTitle;
           jobWindRslt.classList.remove('focus')
 
-          //   const resultdiv = link.querySelector('.srch-result');
-          //   const jobId = resultdiv.getAttribute('data-id');
-          //   const job = getJobs(jobId) || getNewJobs(jobId);
-          //   if (job) {
-          //     const jobDes = document.querySelector('.js-des-card');
-          //     if(jobDes) {
-          //       jobDes.innerHTML = `
-          //       <div class="card js-job-card" data-id="${job.id}">
-          //     <img src="${job.image}" alt="">
-          //     <i data-id="${job.id}" class="save-button fa-regular fa-bookmark"></i>
-          //     <div>${job.company}</div>
-          //     <div>${job.jobTitle}</div>
-          //     <div>
-          //       <span>${job.location}</span> |
-          //       <span>${job.salary} $TND</span>
-          //     </div>
-          //   </div>
-          //       `
-          // }
-          // const cardsContainer = document.querySelector('.cards');
-          // const allCards = document.querySelectorAll('.cards .js-job-card');
-          // const targetCard = [...allCards].find(card => card.getAttribute('data-id') === jobId)
-          // if (targetCard && cardsContainer) {
-          //   allCards.forEach(c => c.classList.remove('cardClicked'));
-
-          //   const cardHTML = targetCard.outerHTML;
-          //   targetCard.remove();
-          //   cardsContainer.insertAdjacentHTML('afterbegin', cardHTML);
-          //   const newTopCard = cardsContainer.querySelector('.js-job-card');
-          //   if (newTopCard) {
-          //     newTopCard.classList.add('cardClicked');
-          //   }
-          // }
-          // jobSrchRslt.classList.remove('focus');
-          // jobSrchRslt.innerHTML = '';
-          // searchBar.value = '';
-
-          // saveButton();
-          // renderCLickedCard();
-          // selectedCardColor();
-          //   }
         })
       })
       jobWindRslt.classList.add('focus')
@@ -614,13 +669,6 @@ export function mobileSearch() {
       locationWindRslt.innerHTML = '';
       return;
     }
-
-    // const startWithJobs = allJobs.filter(job =>
-    //   job.location.toLowerCase().startsWith(input)
-    // );
-    // const includesJobs = allJobs.filter(job =>
-    //   job.location.toLowerCase().includes(input)
-    // );
     const matchedJobs = allJobs.filter(loc =>
       loc.location.toLowerCase().startsWith(input)
     );
@@ -647,80 +695,12 @@ export function mobileSearch() {
     }
   })
 }
-  function displayJobs() {
-    const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
-    
-    const jobDescription = document.querySelector('.job-description');
-    jobDescription.innerHTML = '';
-    addedJobs.forEach(job => {
-      jobDescription.innerHTML = `
-       <div class="js-des-card">
-      <div class="card js-job-card" data-id="${job.id}">
-        <img class="image" src="${job.image}" alt="">
-       <a href="quick-apply.html?id=${job.id}" class="apply" target="_blank">Apply Now</a>
-          <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
-        </i>
-        <div>${job.companyName}</div>
-        <div>${job.jobTitle}</div>
-        <div>
-          <span>${job.location}</span> |
-          <span>${job.salary} $TND</span>
-        </div>
-        </div>
-       </div>
-        <div class="job-info">
-            <div class="info">
-              <div class="role">
-              <div class="about-role">
-              <div><i class="fa-solid fa-circle-dot"></i>
-                About The Role :</div>
-              <span>${job.aboutRole}
-              </span></div>
-            </div>
-            <div class="qualifications">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Qualifications :</div>
-                <dl>
-                  ${job.qualifications}
-                </dl>
-            </div>
-            <div class="job-time">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Job Type :</div>
-              ${job.jobType}
-            </div>
-            <div class="company-info">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Company Information :</div>
-             
-              <div class="phone"> 
-                <i class="fa-solid fa-phone"></i> 
-                <span>
-                  Phone :
-                </span>
-              <div class="phone-number">${job.phone}</div>
-            </div>
-              <br>
-              
-              <div class="email">
-                <i class="fa-solid fa-envelope"></i>
-                <span>
-                  Email :
-                </span>
-                <div class="email-address">${job.email}</div>
-            </div>
-              </div>
-              
-            </div>
-            </div>
-      `
-      
-    })
-    newJobs.push(...addedJobs)
-  }
+
+function displayJobs() {
+  const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+  newJobs.push(...addedJobs)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderJobs(jobs);
   renderSelectedCard();
