@@ -207,24 +207,40 @@ function postJob() {
     const email = document.querySelector('.email').value;
     const companyLogo = document.querySelector('.company-logo');
     const previemImg = companyLogo.querySelector('img');
+    let alertDiv = document.querySelector('.post-alert')
 
     let imageUrl = 'img/job1.webp';
 
     if(previemImg) {
       imageUrl = previemImg.src;
     }
-
-
-    
-    const newId = (Math.max(...newJobs.map(j => parseInt(j.id)), ...jobs.map(j => parseInt(j.id))) + 1).toString();
-    const newAddedJob = { id: newId, company: companyName,image: imageUrl, jobTitle, location, salary: parseInt(salary),dateUploaded: 'Just Now', aboutRole, qualifications, jobType, phone, email };
+    if ( !previemImg || 
+      companyName.trim() === '' || jobTitle.trim() === '' || jobType.trim() === '' || location.trim() === '' || phone.trim() === '' || email.trim() === '' || salary.trim() === '' || qualifications.trim() === '' || aboutRole.trim() === '' ) {
+      
+      alertDiv.classList.add('alert-msg');
+      return;   
+    } else {
+      alertDiv.classList.remove('alert-msg')
+    }
+    const newAddedJob = { id: Date.now().toString(), company: companyName,image: imageUrl, jobTitle, location, salary: parseInt(salary),dateUploaded: Date.now(), aboutRole, qualifications, jobType, phone, email };
    const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
     addedJobs.push(newAddedJob);
     localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
     newJobs.push(newAddedJob);
     window.location.href = 'jobs.html';
   })
+}
+export function timeAgo(timestamp) {
+  const now = Date.now();
+  const diff = Math.floor((now - timestamp) / 1000);
 
+  if (diff < 60) return 'Just Now';
+  if (diff < 3600) return `${Math.floor(diff / 60)} min`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
+  if (diff < 604800) return `${Math.floor(diff / 86400)}d`;
+  if (diff < 2592000) return `${Math.floor(diff / 604800)}w`;
+  if (diff < 31536000) return `${Math.floor(diff / 2592000)}m`;
+  return `${Math.floor(diff / 31536000)}y`
 }
 document.addEventListener('DOMContentLoaded', () => {
   showForm();

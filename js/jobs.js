@@ -1,5 +1,6 @@
-import { jobs, getJobs, newJobs, getNewJobs, locations } from "../data/jobs-data.js";
+import { jobs, newJobs, addedJobs, allJobs } from "../data/jobs-data.js";
 import { toggleMenu, searchLocation, searchWindow } from "./shared.js";
+import { timeAgo } from "./employers.js";
 function reload() {
   const navEntries = performance.getEntriesByType('navigation');
   const isReload = navEntries.length && navEntries[0].type === 'reload';
@@ -36,10 +37,9 @@ function interactiveBtns() {
 interactiveBtns();
 export function renderSelectedCard() {
   const jobDes = document.querySelector('.js-des-card');
-
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id');
-  const job = getJobs(jobId) || getNewJobs(jobId) || jobs[0];
+  const job = allJobs.find(job => job.id === jobId) || jobs[0];
   if (jobDes && job) {
     jobDes.innerHTML = `
     <div class="card js-job-card" data-id="${job.id}">
@@ -106,10 +106,10 @@ export function renderSelectedCard() {
 
   };
 };
-export function renderJobs(jobs) {
+export function renderJobs(allJobs) {
   const cards = document.querySelector('.cards');
   cards.innerHTML = '';
-  jobs.forEach(job => {
+  allJobs.forEach(job => {
     cards.innerHTML += `
     <div class="card js-job-card " data-id="${job.id}">
               <img src="${job.image}" alt="">
@@ -119,7 +119,7 @@ export function renderJobs(jobs) {
               <div>${job.jobTitle}</div>
               <div>${job.location}</div>
               <div>${job.salary} $TND</div>
-              <div>${job.dateUploaded}</div>
+              <div>${timeAgo(job.dateUploaded)}</div>
           </div>
          `;
   });
@@ -129,7 +129,8 @@ export function renderCLickedCard() {
   const jobDes = document.querySelector('.js-des-card');
   jobCards.forEach(card => {
     const jobId = card.getAttribute('data-id');
-    const job = getJobs(jobId) || getNewJobs(jobId) || jobs[0];
+
+    const job = allJobs.find(job => job.id === jobId) || jobs[0];
     card.addEventListener('click', () => {
       if (jobDes && job) {
         jobDes.innerHTML = `
@@ -215,7 +216,7 @@ function selectedCardColor() {
 function btnsRenderJobs() {
   const btn1 = document.querySelector('.js-btn1')
   btn1.addEventListener('click', () => {
-    renderJobs(jobs);
+    renderJobs(allJobs);
     renderCLickedCard();
     selectedCardColor();
     renderSelectedCard();
@@ -238,7 +239,7 @@ function btnsRenderJobs() {
               <div>${job.jobTitle}</div>
               <div>${job.location}</div>
               <div>${job.salary} $TND</div>
-              <div>${job.dateUploaded}</div>
+              <div>${timeAgo(job.dateUploaded)}</div>
           </div>
          
     `;
@@ -409,7 +410,7 @@ export function searchBar() {
       jobSrchRslt.innerHTML = '';
       return;
     };
-    const allJobs = [...jobs, ...newJobs];
+
 
     const startWithJobs = (allJobs).filter(job =>
 
@@ -493,7 +494,7 @@ export function searchBar() {
   }
   searchLocation.addEventListener('input', (e) => {
     const input = e.target.value.trim().toLowerCase();
-    const allJobs = [...jobs, ...newJobs];
+
     if (input === '') {
       locationSrchRslt.classList.remove('focus');
       locationSrchRslt.innerHTML = '';
@@ -555,7 +556,7 @@ export function searchBar() {
     if (e.key === 'Enter') {
       const jobInput = searchBar.value.trim().toLowerCase();
       const locInput = searchLocation.value.trim().toLowerCase();
-      const allJobs = [...jobs, ...newJobs];
+
 
       let match = allJobs.find(job =>
         job.jobTitle.toLowerCase() === jobInput &&
@@ -617,7 +618,7 @@ export function mobileSearch() {
       jobWindRslt.innerHTML = '';
       return;
     };
-    const allJobs = [...jobs, ...newJobs];
+
 
     const startWithJobs = (allJobs).filter(job =>
 
@@ -663,7 +664,7 @@ export function mobileSearch() {
   })
   srchLocationWindow.addEventListener('input', (e) => {
     const input = e.target.value.trim().toLowerCase();
-    const allJobs = [...jobs, ...newJobs];
+
     if (input === '') {
       locationWindRslt.classList.remove('focus');
       locationWindRslt.innerHTML = '';
@@ -697,12 +698,17 @@ export function mobileSearch() {
 }
 
 function displayJobs() {
-  const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
-  newJobs.push(...addedJobs)
+
+  addedJobs.forEach(addedJob => {
+    if (!newJobs.some(job => job.id === addedJob.id)) {
+      newJobs.push(addedJob);
+      console.log(addedJob)
+    }
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderJobs(jobs);
+  renderJobs(allJobs);
   renderSelectedCard();
   renderCLickedCard();
   selectedCardColor();

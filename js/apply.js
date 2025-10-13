@@ -1,4 +1,4 @@
-import { getNewJobs, newJobs, getJobs, jobs } from "../data/jobs-data.js";
+import { getNewJobs, newJobs, getJobs, jobs, allJobs } from "../data/jobs-data.js";
 import { toggleMenu } from "./shared.js";
 
 function steps() {
@@ -74,11 +74,10 @@ function applyForJob() {
   const jobInfo = document.querySelector('.job');
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id')
-  const job = getJobs(jobId) || getNewJobs(jobId);
+  const job = allJobs.find(job => job.id === jobId);
   jobInfo.innerHTML = `
     ${job.jobTitle} | ${job.location}
    `;
-
 }
 steps();
 toggleMenu();

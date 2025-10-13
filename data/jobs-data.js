@@ -1,3 +1,9 @@
+
+export function getAddedJobs(jobId) {
+  return addedJobs.find(job => job.id === jobId)
+}
+export const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+
 export function getJobs(jobId) {
   let matchingJobs;
   jobs.forEach( job => {
@@ -465,3 +471,4 @@ export const locations = [
   { location: "Dubai, UAE" },
   { location: "Toronto, Canada" }
 ];
+export const allJobs = [...jobs , ...newJobs , ...addedJobs];

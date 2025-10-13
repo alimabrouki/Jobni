@@ -118,7 +118,7 @@
     }
 
     .hero-container {
-        background-image: url(/imgs/employers.jpg);
+        background-image: url(../imgs/employers.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         height: 955px;
@@ -237,6 +237,7 @@
                         font-size: 16px;
                         resize: none;
                         white-space: pre-wrap;
+
                         &:focus {
                             box-shadow: 0 0 2px rgb(86, 152, 217);
                             outline: none;
@@ -318,6 +319,19 @@
 
                     .iti__search-input {
                         text-align: center;
+                    }
+
+                    .post-alert {
+                        display: none;
+                    }
+
+                    .post-alert.alert-msg {
+                        display: block;
+                        position: absolute;
+                        color: #df0101;
+                        font-size: 16px;
+                        font-weight: 700;
+                        translate: 0 290px;
                     }
                 }
             }
@@ -488,18 +502,22 @@
         .stats {
             margin-top: 38px !important;
         }
+
         h2 {
             font-size: 56px;
             color: var(--main-color);
         }
+
         h3 {
             font-size: 24px;
             margin: 15px 0 !important;
         }
+
         p {
             font-size: 18px;
             margin-right: 90px !important;
         }
+
         .get-started {
             font-weight: bold;
             margin-top: 18px !important;
@@ -512,6 +530,7 @@
             font-size: 25px;
             cursor: pointer;
         }
+
         .get-started.active {
             box-shadow: 2px 2px 0 0 var(--hover-color);
             transform: translate(2px, 2px);

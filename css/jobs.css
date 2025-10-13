@@ -333,7 +333,8 @@ margin-left: 22px;
  margin-top: 25px;
 }
 .container .job-description .job-info .about-role span {
-  white-space: pre-wrap;
+  word-break: break-word;
+  white-space: pre-line;
 }
 .about-role div {
   font-weight: var(--font-weight-semibold); 
