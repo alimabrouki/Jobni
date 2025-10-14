@@ -1,4 +1,4 @@
-import { newJobs,jobs } from "../data/jobs-data.js";
+import { newJobs, jobs } from "../data/jobs-data.js";
 
 function showForm() {
   const hero = document.querySelector('.hero');
@@ -114,14 +114,14 @@ export function qualificationsList() {
 
     if (!hasStartedTyping && (isPrintable || e.key === 'Enter')) {
       e.preventDefault();
-      qualifications.innerHTML = e.key === 'Enter' ? ' <li> ' : (' <li> ' + e.key);
+      qualifications.innerHTML = e.key === 'Enter' ? ' <li></li> ' : (' <li> ' + e.key + ' </li>');
       placeCaretAtEnd(qualifications);
       hasStartedTyping = true;
       return;
     }
     if (e.key === 'Enter') {
       e.preventDefault();
-      insertHTMLAtCaret(' <li> ');
+      insertHTMLAtCaret(' <li></li> ');
       return;
     }
 
@@ -132,7 +132,7 @@ export function qualificationsList() {
 
       const text = qualifications.textContent;
 
-      const onlyFirstBullet = text === ' <li> ' || text === '<li> ' || text.trim() === ' <li> ';
+      const onlyFirstBullet = text.trim() === ' ';
 
       const caretAtStart = range.startOffset <= 1 && range.collapsed;
 
@@ -148,7 +148,7 @@ export function qualificationsList() {
     const hasAny = plain.length > 0;
 
     if (!hasAny) {
-      qualifications.innerHTML =' <li> ';
+      qualifications.innerHTML = ' <li></li> ';
       placeCaretAtEnd(qualifications);
       hasStartedTyping = true;
     } else {
@@ -200,30 +200,52 @@ function postJob() {
     const jobTitle = document.querySelector('.job-title').value;
     const location = document.querySelector('.location').value;
     const salary = document.querySelector('.salary').value;
-    const aboutRole = document.querySelector('.about-role').value;
-    const qualifications = document.querySelector('.qualifications').innerHTML;
+    const aboutRoleValue = document.querySelector('.about-role').value;
+    const aboutRole = aboutRoleValue.split('\n').map(line => line.trim() ? line.trim().charAt(0).toUpperCase() + line.trim().slice(1) : '').join('\n');
+    const qualificationsDiv = document.querySelector('.qualifications');
+    const qualificationsHTML = qualificationsDiv.innerHTML;
+    const qualifications = qualificationsHTML
+      .split(/<li>/i)
+      .map(line => {
+        line = line.replace(/<\/li>/i, '').trim();
+        if (!line) return '';
+        return '<li>' + line.charAt(0).toUpperCase() + line.slice(1) + '</li>';
+      })
+      .filter(line => line)
+      .join('');
     const jobType = document.querySelector('.job-type').value;
     const phone = document.querySelector('.phone').value;
     const email = document.querySelector('.email').value;
     const companyLogo = document.querySelector('.company-logo');
     const previemImg = companyLogo.querySelector('img');
     let alertDiv = document.querySelector('.post-alert')
-
     let imageUrl = 'img/job1.webp';
 
-    if(previemImg) {
+    if (previemImg) {
       imageUrl = previemImg.src;
     }
-    if ( !previemImg || 
-      companyName.trim() === '' || jobTitle.trim() === '' || jobType.trim() === '' || location.trim() === '' || phone.trim() === '' || email.trim() === '' || salary.trim() === '' || qualifications.trim() === '' || aboutRole.trim() === '' ) {
-      
+    if (!previemImg ||
+      companyName.trim() === '' || jobTitle.trim() === '' || jobType.trim() === '' || location.trim() === '' || phone.trim() === '' || email.trim() === '' || salary.trim() === '' || qualifications.trim() === '' || aboutRole.trim() === '') {
       alertDiv.classList.add('alert-msg');
-      return;   
+      return;
     } else {
       alertDiv.classList.remove('alert-msg')
     }
-    const newAddedJob = { id: Date.now().toString(), company: companyName,image: imageUrl, jobTitle, location, salary: parseInt(salary),dateUploaded: Date.now(), aboutRole, qualifications, jobType, phone, email };
-   const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+    const newAddedJob = {
+      id: Date.now().toString(),
+      company: companyName.charAt(0).toUpperCase() + companyName.slice(1),
+      image: imageUrl,
+      jobTitle: jobTitle.charAt(0).toUpperCase() + jobTitle.slice(1),
+      location: location.charAt(0).toUpperCase() + location.slice(1),
+      salary: parseInt(salary),
+      dateUploaded: Date.now(),
+      aboutRole,
+      qualifications,
+      jobType: jobType.charAt(0).toUpperCase() + jobType.slice(1),
+      phone,
+      email: email.charAt(0).toUpperCase() + email.slice(1)
+    };
+    const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
     addedJobs.push(newAddedJob);
     localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
     newJobs.push(newAddedJob);

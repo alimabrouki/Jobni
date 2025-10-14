@@ -495,8 +495,10 @@
         display: flex;
         gap: 20px;
 
+
         .us-map {
             margin: 38px 38px 0 38px !important;
+            max-width: 50%;
         }
 
         .stats {
