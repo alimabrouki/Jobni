@@ -153,7 +153,6 @@ ul {
   padding: 12px 45px;
   text-align: center;
   box-shadow: var(--main-box-shadow);
-  margin: 10px;
 }
 @media (width <= 767px) {
   .form input {
@@ -257,6 +256,7 @@ button:hover {
  align-items: center;
  transition: var(--main-transition);
  translate: 0px 45px;
+ gap: 15px;
 }
 @media (width <= 767px) {
   .active {

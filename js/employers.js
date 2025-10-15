@@ -1,5 +1,5 @@
 import { newJobs, jobs } from "../data/jobs-data.js";
-
+import { toggleMenu } from "./shared.js";
 function showForm() {
   const hero = document.querySelector('.hero');
   const postJobBtn = document.querySelector('.post-job');
@@ -265,10 +265,12 @@ export function timeAgo(timestamp) {
   return `${Math.floor(diff / 31536000)}y`
 }
 document.addEventListener('DOMContentLoaded', () => {
+  toggleMenu();
   showForm();
   steps();
   uploadCLogo();
   qualificationsList();
   phoneInput();
   postJob();
+  
 });
