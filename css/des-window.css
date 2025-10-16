@@ -171,7 +171,7 @@ ul {
     border: none;
     background-color: rgb(166 199 232 / 51%);
     position: absolute;
-    right: 19px;
+    right: 70px;
     top: 19px;
     font-size: var(--text-2xl);
     cursor: pointer;
@@ -184,6 +184,21 @@ ul {
  -webkit-text-stroke: 2px black;
     font-weight: 900;
     color: #1FF568;
+}
+ .dots-button {
+  position: absolute;
+  right: 25px;
+  background-color: rgb(166 199 232 / 51%);
+  top: 38px;
+  padding: 2px 17px 2px 17px;
+  border-radius: var(--main-border-radius);
+  cursor: pointer;
+  transform: rotate(90deg);
+  color: var(--main-color);
+  font-size: 35px;
+ }
+.dots-button:hover {
+  background-color: rgba(120, 138, 148, 0.26);
 }
 .container .job-description .job-info .info {
 margin-left: 22px;

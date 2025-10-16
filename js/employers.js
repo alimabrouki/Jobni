@@ -6,6 +6,7 @@ function showForm() {
   const heroContainer = document.querySelector('.hero-container');
   const form = document.querySelector('.form');
   const getStartedBtn = document.querySelector('.get-started');
+  const countryDropdown = document.querySelector('.iti__dropdown-content')
   function openForm() {
     hero.classList.add('active');
     form.classList.add('active');
@@ -18,7 +19,8 @@ function showForm() {
     openForm();
   });
   document.addEventListener('mousedown', (e) => {
-    if (!form.contains(e.target) && !postJobBtn.contains(e.target) && !getStartedBtn.contains(e.target)) {
+    const isMobile = window.matchMedia('max-width: 700px').matches;
+    if (!form.contains(e.target) && !postJobBtn.contains(e.target) && !getStartedBtn.contains(e.target) && ( !isMobile || !countryDropdown.contains(e.target))) {
       heroContainer.classList.remove('active');
       hero.classList.remove('active');
       form.classList.remove('active');

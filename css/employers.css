@@ -274,12 +274,15 @@
                     font-size: 16px;
                     resize: none;
                     white-space: pre-wrap;
-                    @media (width <= 700px) {
+
+                    @media (width <=700px) {
                         width: 420px;
                     }
-                    @media (width <= 500px) {
+
+                    @media (width <=500px) {
                         width: 320px;
                     }
+
                     &:focus {
                         box-shadow: 0 0 2px rgb(86, 152, 217);
                         outline: none;
@@ -296,10 +299,12 @@
                     font-size: 16px;
                     overflow: auto;
                     text-align: start;
-                    @media (width <= 700px) {
+
+                    @media (width <=700px) {
                         width: 420px;
                     }
-                    @media (width <= 500px) {
+
+                    @media (width <=500px) {
                         width: 320px;
                     }
 
@@ -324,12 +329,14 @@
                     padding: 10px !important;
                     font-size: 16px;
 
-                    @media (width <= 700px) {
+                    @media (width <=700px) {
                         width: 380px;
                     }
-                    @media (width <= 500px) {
+
+                    @media (width <=500px) {
                         width: 300px;
                     }
+
                     &:focus {
                         box-shadow: 0 0 2px rgb(86, 152, 217);
                         outline: none;
@@ -346,12 +353,15 @@
                     border-top-right-radius: var(--main-border-radius) !important;
                     box-shadow: 0px 2px 2px 2px var(--hover-color);
                     translate: 407px -19px;
-                    @media (width <= 700px) {
+
+                    @media (width <=700px) {
                         translate: 317px -19px;
                     }
-                    @media (width <= 500px) {
+
+                    @media (width <=500px) {
                         translate: 237px -19px;
                     }
+
                     &:hover {
                         translate: 404px -21px !important;
                         box-shadow: 0px 1px 3px 1px var(--hover-color) !important;
@@ -535,7 +545,7 @@
         }
 
         @media (width <=500px) {
-            width: 300px ;
+            width: 300px;
         }
 
         &::placeholder {
@@ -575,7 +585,7 @@
         @media (width <=700px) {
 
             flex-direction: column;
-            
+
 
         }
 
@@ -601,6 +611,15 @@
 
         .stats {
             margin-top: 38px !important;
+
+            @media (width <=700px) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin-bottom: 35px !important;
+            }
         }
 
         h2 {
@@ -624,6 +643,10 @@
         p {
             font-size: 18px;
             margin-right: 90px !important;
+
+            @media (width <=700px) {
+                margin-right: 0px !important;
+            }
         }
 
         .get-started {
@@ -642,6 +665,58 @@
         .get-started.active {
             box-shadow: 2px 2px 0 0 var(--hover-color);
             transform: translate(2px, 2px);
+        }
+    }
+}
+
+@layer dropdown {
+    .iti__dropdown-content {
+        translate: 0 -33px;
+    }
+
+   
+
+    .iti__selected-country-primary {
+        border-radius: 50% !important;
+    }
+
+    .country-select.inside .selected-flag {
+        border-radius: 50% !important;
+    }
+
+    .iti__search-clear {
+        display: none !important;
+    }
+
+    .iti__search-icon {
+        left: 18px !important;
+    }
+
+    @media (width <=767px) {
+        .iti__search-icon {
+            left: 3px !important;
+        }
+
+        .iti__search-input {
+            height: 40px !important;
+        }
+
+        .iti--fullscreen-popup.iti--container {
+            padding: 70px !important;
+        }
+    }
+
+    .iti__search-icon-svg {
+        width: 25px !important;
+    }
+
+    @media (width <=767px) {
+        .iti input.iti__tel-input {
+            padding: 12px 0 !important;
+        }
+
+        .country-select input {
+            padding: 12px 0 !important;
         }
     }
 }

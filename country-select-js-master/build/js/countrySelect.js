@@ -26,7 +26,7 @@
 		// localized country names e.g. { 'de': 'Deutschland' }
 		localizedCountries: null,
 		// Set the dropdown's width to be the same as the input. This is automatically enabled for small screens.
-		responsiveDropdown: ($(window).width() < 768 ? true : false),
+		responsiveDropdown: ($(window).width() < 700 ? true : false),
 	}, keys = {
 		UP: 38,
 		DOWN: 40,

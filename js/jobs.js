@@ -47,13 +47,15 @@ export function renderSelectedCard() {
        <a href="quick-apply.html?id=${job.id}" class="apply" target="_blank">Apply Now</a>
           <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
+       
         <div>${job.company}</div>
         <div>${job.jobTitle}</div>
         <div>
           <span>${job.location}</span> |
           <span>${job.salary} $TND</span>
         </div>
-        </div>
+        </div> 
+        <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
          <div class="job-info">
             <div class="info">
               <div class="role">
@@ -146,6 +148,7 @@ export function renderCLickedCard() {
           <span>${job.salary} $TND</span>
         </div>
         </div>
+        <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
          <div class="job-info">
             <div class="info">
               <div class="role">
@@ -261,6 +264,7 @@ function btnsRenderJobs() {
           <span>${firstJob.salary} $TND</span>
         </div>
         </div>
+        <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
          <div class="job-info">
             <div class="info">
               <div class="role">
