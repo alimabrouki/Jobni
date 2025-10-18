@@ -88,25 +88,6 @@ ul {
 
 /* End Global Rules */
 /* Start Jobs */
-/* .search-container .search-location {
-  opacity: 0;
-  visibility: hidden;
-  background-color: #99999933;
-  border: none;
-  border-radius: 33px;
-  font-size: 25px;
-  padding: 12px 0px;
-  text-align: center;
-  width: 0px;
-  box-shadow: var(--main-box-shadow);
-  transition: all var(--main-transition) ease-in-out;
-}
-.search-location.active {
-  opacity: 1;
-  visibility: visible;
-  width: 200px;
-  transition: all var(--main-transition) ease-in-out;
-} */
 .jobs {
   position: relative;
   margin-top: 100px;
@@ -273,6 +254,7 @@ ul {
     display: none;
   }
 }
+
 .container .job-description .card {
   border-bottom: .9px solid var(--card-border-color);
   position: relative;
@@ -280,7 +262,8 @@ ul {
   padding: 0 20px 7px 0px;
 
 }
- .dots-button {
+
+.dots-button {
   position: absolute;
   right: 30px;
   background-color: rgb(166 199 232 / 51%);
@@ -291,9 +274,30 @@ ul {
   transform: rotate(90deg);
   color: var(--main-color);
   font-size: 35px;
- }
+}
+
 .dots-button:hover {
   background-color: rgba(120, 138, 148, 0.26);
+}
+
+.delete {
+  position: absolute;
+  opacity: 0;
+  border-radius: var(--main-border-radius);
+  right: 5px;
+  padding: 17px 15px;
+  top: 85px;
+  box-shadow: 0px 2px 9px -3px;
+  cursor: pointer;
+  color: var(--main-color);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--main-transition);
+  i {
+    margin-right: 4px;
+  }
+}
+.delete.active {
+  opacity: 1;
 }
 .container .job-description .card img {
   margin: 15px 0px 0px 20px;
@@ -359,7 +363,16 @@ ul {
     right: 20px;
   }
 }
-
+.job-cards .cards .card .save-button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 19px;
+  top: 19px;
+  font-size: var(--text-2xl);
+  cursor: pointer;
+  z-index: 999999;
+}
 .job-description .card .save-button {
   border: none;
   background-color: rgb(166 199 232 / 51%);
@@ -371,6 +384,7 @@ ul {
   padding: 10px;
   border-radius: var(--main-border-radius);
   z-index: 999;
+
   &:hover {
     background-color: rgba(120, 138, 148, 0.26);
   }
