@@ -200,7 +200,10 @@ export function renderCLickedCard() {
             </div>
             </div>
       `; 
-      } 
+      saveButton();
+      deleteJob();
+      console.log('clicked')
+      }
     });
   });
   
@@ -224,7 +227,8 @@ function btnsRenderJobs() {
     renderCLickedCard();
     selectedCardColor();
     renderSelectedCard();
-   
+    saveButton();
+    descriptionWindow();
   });
   const btn2 = document.querySelector('.js-btn2');
   btn2.addEventListener('click', () => {
@@ -321,37 +325,50 @@ function btnsRenderJobs() {
     selectedCardColor();
   });
 };
+// ...existing code...
 export function saveButton() {
+  // set visual state for any existing save buttons (runs every call)
   const saveButtons = document.querySelectorAll('.save-button');
-  let savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
+  const savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
   saveButtons.forEach(btn => {
     const jobId = btn.getAttribute('data-id');
-    if (savedJobs.includes(jobId)) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    };
+    btn.classList.toggle('active', savedJobs.includes(jobId));
   });
-  saveButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const jobId = btn.getAttribute('data-id');
-       const isActive = btn.classList.toggle('active');
-      document.querySelectorAll(`.save-button[data-id="${jobId}"]`).forEach(btn => {
-        btn.classList.toggle('active', isActive);
-      });
-     
-      if (isActive) {
-        if (!savedJobs.includes(jobId)) savedJobs.push(jobId);
-      } else {
-        savedJobs = savedJobs.filter(id => id !== jobId);
-      };
-      localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
+
+  // attach delegated listener only once
+  if (saveButton._initialized) return;
+  saveButton._initialized = true;
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.save-button');
+    if (!btn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const jobId = btn.getAttribute('data-id');
+    // read fresh copy from localStorage to avoid stale closure state
+    let saved = JSON.parse(localStorage.getItem('savedJobs')) || [];
+
+    const willActivate = !saved.includes(jobId);
+
+    // update DOM: toggle every save-button with same data-id (card + description)
+    document.querySelectorAll(`.save-button[data-id="${jobId}"]`).forEach(b => {
+      b.classList.toggle('active', willActivate);
     });
+
+    // update saved array and persist
+    if (willActivate) {
+      if (!saved.includes(jobId)) saved.push(jobId);
+    } else {
+      saved = saved.filter(id => id !== jobId);
+    }
+    localStorage.setItem('savedJobs', JSON.stringify(saved));
   });
 };
+// ...existing code...
 export function descriptionWindow() {
+ if (window.matchMedia('(max-width: 767px)').matches) {
   const card = document.querySelectorAll('.card');
   card.forEach(c => {
     c.addEventListener('click', () => {
@@ -362,6 +379,8 @@ export function descriptionWindow() {
       saveButton();
     });
   });
+ }
+  
 };
 export function searchBar() {
   const searchBar = document.querySelector('.search-bar');
@@ -707,7 +726,6 @@ function displayJobs() {
   addedJobs.forEach(addedJob => {
     if (!newJobs.some(job => job.id === addedJob.id)) {
       newJobs.push(addedJob);
-      console.log(addedJob)
     }
   })
 }

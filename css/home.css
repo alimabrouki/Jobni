@@ -619,10 +619,21 @@ font-size: 24px;
   bottom: 6px;
   color: var(--company-name-color);
 }
-
-
-
-
+.job-cards .cards .card .save-button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 19px;
+  top: 19px;
+  font-size: var(--text-2xl);
+  cursor: pointer;
+  z-index: 999999;
+}
+.save-button.active {
+ -webkit-text-stroke: 2px black;
+    font-weight: 900;
+    color: #1FF568;
+}
 @media (max-width: 767px) {
   .description-window {
     pointer-events: none;

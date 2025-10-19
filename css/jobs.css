@@ -292,13 +292,16 @@ ul {
   color: var(--main-color);
   font-weight: var(--font-weight-semibold);
   transition: var(--main-transition);
+
   i {
     margin-right: 4px;
   }
 }
+
 .delete.active {
   opacity: 1;
 }
+
 .container .job-description .card img {
   margin: 15px 0px 0px 20px;
   max-width: 100%;
@@ -363,6 +366,7 @@ ul {
     right: 20px;
   }
 }
+
 .job-cards .cards .card .save-button {
   border: none;
   background-color: transparent;
@@ -373,6 +377,7 @@ ul {
   cursor: pointer;
   z-index: 999999;
 }
+
 .job-description .card .save-button {
   border: none;
   background-color: rgb(166 199 232 / 51%);
@@ -395,6 +400,12 @@ ul {
   font-weight: 900;
   color: #1FF568;
 }
+
+/* .des-btn.active {
+  -webkit-text-stroke: 2px black;
+  font-weight: 900;
+  color: #1FF568;
+} */
 
 .container .job-description .job-info .info {
   margin-left: 22px;
@@ -419,9 +430,16 @@ ul {
 
 .container .job-description .job-info .qualifications {
   margin-bottom: 25px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
 
   li {
     margin-left: 16px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    display: list-item;
+    list-style-position: inside;
   }
 }
 

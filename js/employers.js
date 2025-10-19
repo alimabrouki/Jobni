@@ -5,6 +5,7 @@ function showForm() {
   const postJobBtn = document.querySelector('.post-job');
   const heroContainer = document.querySelector('.hero-container');
   const form = document.querySelector('.form');
+  if (!postJobBtn || !hero || !heroContainer) return;
   const getStartedBtn = document.querySelector('.get-started');
   const countryDropdown = document.querySelector('.iti__dropdown-content')
   function openForm() {
@@ -20,7 +21,7 @@ function showForm() {
   });
   document.addEventListener('mousedown', (e) => {
     const isMobile = window.matchMedia('max-width: 700px').matches;
-    if (!form.contains(e.target) && !postJobBtn.contains(e.target) && !getStartedBtn.contains(e.target) && ( !isMobile || !countryDropdown.contains(e.target))) {
+    if (!form.contains(e.target) && !postJobBtn.contains(e.target) && !getStartedBtn.contains(e.target) && (!isMobile || !countryDropdown.contains(e.target))) {
       heroContainer.classList.remove('active');
       hero.classList.remove('active');
       form.classList.remove('active');
@@ -35,6 +36,7 @@ function showForm() {
 function uploadCLogo() {
   const logoInput = document.querySelector('.logo-input');
   const companyLogo = document.querySelector('.company-logo');
+  if (!logoInput || !companyLogo) return;
   companyLogo.addEventListener('click', () => {
     logoInput.click();
   })
@@ -108,22 +110,21 @@ function steps() {
     })
   })
 }
-export function qualificationsList() {
+ function qualificationsList() {
   const qualifications = document.querySelector('.qualifications');
   let hasStartedTyping = false;
   qualifications.addEventListener('keydown', (e) => {
     const isPrintable = e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
-
     if (!hasStartedTyping && (isPrintable || e.key === 'Enter')) {
       e.preventDefault();
-      qualifications.innerHTML = e.key === 'Enter' ? ' <li></li> ' : (' <li> ' + e.key + ' </li>');
+      qualifications.innerHTML = e.key === 'Enter' ? '<li><br></li>' : ('<li>' + e.key + '</li>');
       placeCaretAtEnd(qualifications);
       hasStartedTyping = true;
       return;
     }
     if (e.key === 'Enter') {
       e.preventDefault();
-      insertHTMLAtCaret(' <li></li> ');
+      insertHTMLAtCaret('<li><br></li>');
       return;
     }
 
@@ -134,7 +135,7 @@ export function qualificationsList() {
 
       const text = qualifications.textContent;
 
-      const onlyFirstBullet = text.trim() === ' ';
+      const onlyFirstBullet = text.trim() === '';
 
       const caretAtStart = range.startOffset <= 1 && range.collapsed;
 
@@ -150,7 +151,7 @@ export function qualificationsList() {
     const hasAny = plain.length > 0;
 
     if (!hasAny) {
-      qualifications.innerHTML = ' <li></li> ';
+      qualifications.innerHTML = '<li><br></li>';
       placeCaretAtEnd(qualifications);
       hasStartedTyping = true;
     } else {
@@ -159,15 +160,18 @@ export function qualificationsList() {
   })
 
   function placeCaretAtEnd(el) {
+    const lastLi = el.querySelector && el.querySelector('li:last-child');
+    const node = lastLi || el;
     const range = document.createRange();
     const sel = window.getSelection();
-    range.selectNodeContents(el);
+    range.selectNodeContents(node);
     range.collapse(false);
     sel.removeAllRanges();
     sel.addRange(range);
   }
   function insertHTMLAtCaret(html) {
-    const range = window.getSelection().getRangeAt(0);
+    const sel = window.getSelection();
+    const range = sel.rangeCount ? sel.getRangeAt(0) : null;
     const el = document.createElement('div');
     el.innerHTML = html;
     const frag = document.createDocumentFragment();
@@ -175,14 +179,25 @@ export function qualificationsList() {
     while ((node = el.firstChild)) {
       lastNode = frag.appendChild(node);
     }
-    range.insertNode(frag);
+    if (range) range.insertNode(frag);
 
     if (lastNode) {
-      range.setStartAfter(lastNode);
-      range.collapse(true);
-      const sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(range);
+
+      const newLi = lastNode.nodeType === 1 && lastNode.tagName === 'LI' ? lastNode :
+        (lastNode.querySelector && lastNode.querySelector('li'));
+      if (newLi) {
+        const r = document.createRange();
+        r.selectNodeContents(newLi);
+        r.collapse(false);
+        const s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(r);
+      } else if (range) {
+        range.setStartAfter(lastNode);
+        range.collapse(true);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
     }
   }
 }
@@ -267,12 +282,12 @@ export function timeAgo(timestamp) {
   return `${Math.floor(diff / 31536000)}y`
 }
 document.addEventListener('DOMContentLoaded', () => {
-  toggleMenu();
   showForm();
+  toggleMenu();
   steps();
   uploadCLogo();
   qualificationsList();
   phoneInput();
   postJob();
-  
+
 });

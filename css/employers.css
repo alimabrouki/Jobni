@@ -299,6 +299,18 @@
                     font-size: 16px;
                     overflow: auto;
                     text-align: start;
+                    white-space: pre-wrap;
+                    overflow-wrap: anywhere;
+                    word-break: break-word;
+                    max-width: 100%;
+
+                    li {
+                        white-space: pre-wrap;
+                        overflow-wrap: anywhere;
+                        word-break: break-word;
+                        display: list-item;
+                        list-style-position: inside;
+                    }
 
                     @media (width <=700px) {
                         width: 420px;
@@ -674,7 +686,7 @@
         translate: 0 -33px;
     }
 
-   
+
 
     .iti__selected-country-primary {
         border-radius: 50% !important;
