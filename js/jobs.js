@@ -36,13 +36,16 @@ function interactiveBtns() {
 };
 interactiveBtns();
 export function renderSelectedCard() {
-  const jobDes = document.querySelector('.des-card');
+  const jobsContainer = document.querySelector('.job-description');
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id');
   const job = allJobs.find(job => job.id === jobId) || jobs[0];
-  if (jobDes && job) {
-    jobDes.innerHTML = `
-    <div class="card" data-id="${job.id}">
+  if (jobsContainer && job) {
+    jobsContainer.innerHTML = `
+ 
+            
+            <div class="des-card des-card-${jobId}">
+                 <div class="card " data-id="${job.id}">
         <img src="${job.image}" alt="">
        <a href="quick-apply.html?id=${job.id}" class="apply" target="_blank">Apply Now</a>
           <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
@@ -56,7 +59,7 @@ export function renderSelectedCard() {
         </div>
         </div> 
         <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
-         <div class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
+         <div data-id="${job.id}" class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
          <div class="job-info">
             <div class="info">
               <div class="role">
@@ -105,16 +108,20 @@ export function renderSelectedCard() {
               
             </div>
             </div>
+          </div>
+          
       `;
 
   };
 };
 export function renderJobs(allJobs) {
   const cards = document.querySelector('.cards');
+
   cards.innerHTML = '';
   allJobs.forEach(job => {
+    const jobId = job.id
     cards.innerHTML += `
-    <div class="card js-job-card " data-id="${job.id}">
+    <div class="card js-job-card js-job-card-${jobId}" data-id="${job.id}">
               <img src="${job.image}" alt="">
               <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
@@ -129,15 +136,18 @@ export function renderJobs(allJobs) {
 };
 export function renderCLickedCard() {
   const jobCards = document.querySelectorAll('.js-job-card');
-  const jobDes = document.querySelector('.des-card');
+  const jobDes = document.querySelector('.job-description');
   jobCards.forEach(card => {
     const jobId = card.getAttribute('data-id');
 
     const job = allJobs.find(job => job.id === jobId) || jobs[0];
     card.addEventListener('click', () => {
-       if (jobDes && job ) {
+      if (jobDes && job) {
         jobDes.innerHTML = `
-    <div class="card" data-id="${job.id}" >
+  
+             
+            <div class="des-card des-card-${jobId}">
+                <div class="card " data-id="${job.id}" >
         <img src="${job.image}" alt="">
          <a href="quick-apply.html?id=${job.id}" class="apply" target="_blank">Apply Now</a>
         <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
@@ -150,7 +160,7 @@ export function renderCLickedCard() {
         </div>
         </div>
         <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
-        <div class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
+        <div data-id="${job.id}" class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
          <div class="job-info">
             <div class="info">
               <div class="role">
@@ -199,15 +209,17 @@ export function renderCLickedCard() {
               
             </div>
             </div>
-      `; 
-      saveButton();
-      deleteJob();
-      console.log('clicked')
+          </div>
+          
+      `;
+        saveButton();
+        deleteJob();
+        console.log('clicked')
       }
     });
   });
-  
-  
+
+
 };
 function selectedCardColor() {
   const cards = document.querySelectorAll('.js-job-card');
@@ -229,6 +241,7 @@ function btnsRenderJobs() {
     renderSelectedCard();
     saveButton();
     descriptionWindow();
+    deleteJob();
   });
   const btn2 = document.querySelector('.js-btn2');
   btn2.addEventListener('click', () => {
@@ -236,9 +249,10 @@ function btnsRenderJobs() {
 
     cards.innerHTML = '';
     newJobs.forEach(job => {
+      const jobId = job.id
       cards.innerHTML += `
     
-    <div class="card js-job-card " data-id="${job.id}">
+    <div class="card js-job-card js-job-card-${jobId} " data-id="${job.id}">
               <img src="${job.image}" alt="">
               <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
@@ -252,10 +266,12 @@ function btnsRenderJobs() {
     `;
       descriptionWindow();
     });
-    const jobDes = document.querySelector('.des-card');
+    const jobDes = document.querySelector('.job-description');
     const firstJob = newJobs[0];
     if (jobDes && firstJob) {
+      const jobId = firstJob.id
       jobDes.innerHTML = `
+      <div class="des-card des-card-${jobId}">
     <div class="card" >
         <img src="${firstJob.image}" alt="">
        <a href="quick-apply.html?id=${firstJob.id}" class="apply" target="_blank">Apply Now</a>
@@ -269,7 +285,7 @@ function btnsRenderJobs() {
         </div>
         </div>
         <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
-        <div class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
+        <div data-id="${firstJob.id}" class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
          <div class="job-info">
             <div class="info">
               <div class="role">
@@ -318,11 +334,13 @@ function btnsRenderJobs() {
               
             </div>
             </div>
+            </div>
       `
     };
     saveButton();
     renderCLickedCard();
     selectedCardColor();
+    deleteJob()
   });
 };
 // ...existing code...
@@ -366,21 +384,21 @@ export function saveButton() {
     localStorage.setItem('savedJobs', JSON.stringify(saved));
   });
 };
-// ...existing code...
+
 export function descriptionWindow() {
- if (window.matchMedia('(max-width: 767px)').matches) {
-  const card = document.querySelectorAll('.card');
-  card.forEach(c => {
-    c.addEventListener('click', () => {
-      const jobId = c.getAttribute('data-id');
-      if (window.matchMedia('(max-width: 767px)').matches) {
-        window.open(`des-window.html?id=${jobId}`, '_blank')
-      };
-      saveButton();
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    const card = document.querySelectorAll('.card');
+    card.forEach(c => {
+      c.addEventListener('click', () => {
+        const jobId = c.getAttribute('data-id');
+        if (window.matchMedia('(max-width: 767px)').matches) {
+          window.open(`des-window.html?id=${jobId}`, '_blank')
+        };
+        saveButton();
+      });
     });
-  });
- }
-  
+  }
+
 };
 export function searchBar() {
   const searchBar = document.querySelector('.search-bar');
@@ -729,13 +747,46 @@ function displayJobs() {
     }
   })
 }
+
 function deleteJob() {
   const deleteBtn = document.querySelector('.delete');
+  const deleteBtns = document.querySelectorAll('.delete')
   const dotBtns = document.querySelectorAll('.dots-button');
+
   dotBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-    deleteBtn.classList.toggle('active')
+      deleteBtn.classList.toggle('active');
+    })
   })
+  deleteBtns.forEach(btn => {
+    const jobId = btn.getAttribute('data-id');
+    btn.addEventListener('click', () => {
+
+      let deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
+      const willBeDeleted = !deletedJobs.includes(jobId);
+      if (willBeDeleted) {
+        if (!deletedJobs.includes(jobId)) deletedJobs.push(jobId);
+      } else {
+        deletedJobs = deletedJobs.filter(id => id !== jobId)
+      }
+
+
+      const jobDes = document.querySelector(`.des-card-${jobId}`)
+
+      const remainJobs = allJobs.filter((job) => !deletedJobs.find(({ id }) => job.id === id))
+
+      jobs.splice(allJobs,remainJobs)
+      const jobSCard = document.querySelector(`.js-job-card-${jobId}`, `.des-card-${jobId}`)
+      jobSCard.remove();
+      jobDes.innerHTML = '';
+      renderCLickedCard()
+      
+      localStorage.setItem('deletedJobs', JSON.stringify(deletedJobs))
+      
+      console.log(deletedJobs)
+
+
+    })
   })
 }
 document.addEventListener('DOMContentLoaded', () => {
@@ -746,7 +797,7 @@ document.addEventListener('DOMContentLoaded', () => {
   deleteJob();
   selectedCardColor();
   reload();
-  
+
   searchWindow();
   searchBar();
   mobileSearch();

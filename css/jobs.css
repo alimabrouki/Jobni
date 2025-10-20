@@ -291,8 +291,11 @@ ul {
   cursor: pointer;
   color: var(--main-color);
   font-weight: var(--font-weight-semibold);
-  transition: var(--main-transition);
-
+  transition: .2s;
+  border: 1px solid rgba(102, 181, 226, 0.29);
+  &:hover {
+    background-color: rgba(120, 138, 148, 0.26);
+  }
   i {
     margin-right: 4px;
   }
