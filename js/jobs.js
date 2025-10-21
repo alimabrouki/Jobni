@@ -35,16 +35,11 @@ function interactiveBtns() {
   });
 };
 interactiveBtns();
-export function renderSelectedCard() {
-  const jobsContainer = document.querySelector('.job-description');
-  const param = new URLSearchParams(window.location.search);
-  const jobId = param.get('id');
-  const job = allJobs.find(job => job.id === jobId) || jobs[0];
-  if (jobsContainer && job) {
-    jobsContainer.innerHTML = `
- 
-            
-            <div class="des-card des-card-${jobId}">
+function jobDescriptionHtml(job) {
+  if (!job) return '';
+  return `
+      
+            <div class="des-card des-card-${job.id}">
                  <div class="card " data-id="${job.id}">
         <img src="${job.image}" alt="">
        <a href="quick-apply.html?id=${job.id}" class="apply" target="_blank">Apply Now</a>
@@ -60,6 +55,14 @@ export function renderSelectedCard() {
         </div> 
         <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
          <div data-id="${job.id}" class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
+         <div class="delete-alert">
+         <div class="msg">Are You Sure You Want To Delete <span class="alert-job-title">| ${job.jobTitle} |</span> ? 
+         </div>
+         <div class="buttons">
+         <button>Yes</button>
+         <button>No</button>
+         </div>
+         </div>
          <div class="job-info">
             <div class="info">
               <div class="role">
@@ -109,8 +112,15 @@ export function renderSelectedCard() {
             </div>
             </div>
           </div>
-          
-      `;
+  `
+}
+export function renderSelectedCard() {
+  const jobsContainer = document.querySelector('.job-description');
+  const param = new URLSearchParams(window.location.search);
+  const jobId = param.get('id');
+  const job = allJobs.find(job => job.id === jobId) || jobs[0];
+  if (jobsContainer && job) {
+    jobsContainer.innerHTML = jobDescriptionHtml(job);
 
   };
 };
@@ -132,6 +142,7 @@ export function renderJobs(allJobs) {
               <div>${timeAgo(job.dateUploaded)}</div>
           </div>
          `;
+         deleteJob()
   });
 };
 export function renderCLickedCard() {
@@ -140,78 +151,10 @@ export function renderCLickedCard() {
   jobCards.forEach(card => {
     const jobId = card.getAttribute('data-id');
 
-    const job = allJobs.find(job => job.id === jobId) || jobs[0];
+    const job = allJobs.find(job => job.id === jobId) || allJobs[0];
     card.addEventListener('click', () => {
       if (jobDes && job) {
-        jobDes.innerHTML = `
-  
-             
-            <div class="des-card des-card-${jobId}">
-                <div class="card " data-id="${job.id}" >
-        <img src="${job.image}" alt="">
-         <a href="quick-apply.html?id=${job.id}" class="apply" target="_blank">Apply Now</a>
-        <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
-        </i>
-        <div>${job.company}</div>
-        <div>${job.jobTitle}</div>
-        <div>
-          <span>${job.location}</span> |
-          <span>${job.salary} $TND</span>
-        </div>
-        </div>
-        <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
-        <div data-id="${job.id}" class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
-         <div class="job-info">
-            <div class="info">
-              <div class="role">
-              <div class="about-role">
-              <div><i class="fa-solid fa-circle-dot"></i>
-                About The Role :</div>
-              <span>${job.aboutRole}
-              </span></div>
-            </div>
-            <div class="qualifications">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Qualifications :</div>
-                <dl>
-                ${job.qualifications}
-                </dl>
-            </div>
-            <div class="job-time">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Job Type :</div>
-              ${job.jobType}
-            </div>
-            <div class="company-info">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Company Information :</div>
-             
-              <div class="phone"> 
-                <i class="fa-solid fa-phone"></i> 
-                <span>
-                  Phone :
-                </span>
-              <div class="phone-number">${job.phone}</div>
-            </div>
-              <br>
-              
-              <div class="email">
-                <i class="fa-solid fa-envelope"></i>
-                <span>
-                  Email :
-                </span>
-                <div class="email-address">${job.email}</div>
-            </div>
-              </div>
-              
-            </div>
-            </div>
-          </div>
-          
-      `;
+        jobDes.innerHTML = jobDescriptionHtml(job);
         saveButton();
         deleteJob();
         console.log('clicked')
@@ -269,73 +212,7 @@ function btnsRenderJobs() {
     const jobDes = document.querySelector('.job-description');
     const firstJob = newJobs[0];
     if (jobDes && firstJob) {
-      const jobId = firstJob.id
-      jobDes.innerHTML = `
-      <div class="des-card des-card-${jobId}">
-    <div class="card" >
-        <img src="${firstJob.image}" alt="">
-       <a href="quick-apply.html?id=${firstJob.id}" class="apply" target="_blank">Apply Now</a>
-        <i data-id="${firstJob.id}" class="save-button fa-regular fa-bookmark">
-        </i>
-        <div>${firstJob.company}</div>
-        <div>${firstJob.jobTitle}</div>
-        <div>
-          <span>${firstJob.location}</span> |
-          <span>${firstJob.salary} $TND</span>
-        </div>
-        </div>
-        <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
-        <div data-id="${firstJob.id}" class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
-         <div class="job-info">
-            <div class="info">
-              <div class="role">
-              <div class="about-role">
-              <div><i class="fa-solid fa-circle-dot"></i>
-                About The Role :</div>
-              <span>${firstJob.aboutRole}
-              </span></div>
-            </div>
-            <div class="qualifications">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Qualifications :</div>
-                <dl>
-                ${firstJob.qualifications}
-                </dl>
-            </div>
-            <div class="job-time">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Job Type :</div>
-              ${firstJob.jobType}
-            </div>
-            <div class="company-info">
-              <div>
-                <i class="fa-solid fa-circle-dot"></i>
-                Company Information :</div>
-             
-              <div class="phone"> 
-                <i class="fa-solid fa-phone"></i> 
-                <span>
-                  Phone :
-                </span>
-              <div class="phone-number">${firstJob.phone}</div>
-            </div>
-              <br>
-              
-              <div class="email">
-                <i class="fa-solid fa-envelope"></i>
-                <span>
-                  Email :
-                </span>
-                <div class="email-address">${firstJob.email}</div>
-            </div>
-              </div>
-              
-            </div>
-            </div>
-            </div>
-      `
+      jobDes.innerHTML = jobDescriptionHtml(firstJob)
     };
     saveButton();
     renderCLickedCard();
@@ -762,30 +639,39 @@ function deleteJob() {
     const jobId = btn.getAttribute('data-id');
     btn.addEventListener('click', () => {
 
-      let deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
-      const willBeDeleted = !deletedJobs.includes(jobId);
-      if (willBeDeleted) {
-        if (!deletedJobs.includes(jobId)) deletedJobs.push(jobId);
-      } else {
-        deletedJobs = deletedJobs.filter(id => id !== jobId)
+
+      const deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
+
+
+      if (!deletedJobs.includes(jobId)) {
+        deletedJobs.push(jobId);
+        localStorage.setItem('deletedJobs', JSON.stringify(deletedJobs));
       }
-
-
-      const jobDes = document.querySelector(`.des-card-${jobId}`)
-
-      const remainJobs = allJobs.filter((job) => !deletedJobs.find(({ id }) => job.id === id))
-
-      jobs.splice(allJobs,remainJobs)
-      const jobSCard = document.querySelector(`.js-job-card-${jobId}`, `.des-card-${jobId}`)
-      jobSCard.remove();
-      jobDes.innerHTML = '';
-      renderCLickedCard()
-      
-      localStorage.setItem('deletedJobs', JSON.stringify(deletedJobs))
-      
-      console.log(deletedJobs)
-
-
+      const remainJobs = allJobs.filter(job => {
+        const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
+        return !deleted.includes(job.id);
+      })
+      renderJobs(remainJobs);
+      const btn1 = document.querySelector('.js-btn1');
+      const btn2 = document.querySelector('.js-btn2');
+      const jobCard = document.querySelector(`.js-job-card-${jobId}`)
+      if (jobCard) jobCard.remove();
+      const jobDesContainer = document.querySelector('.job-description');
+      if (jobDesContainer) {
+        const firstRemain = remainJobs.length ? remainJobs[0] : null
+        if (firstRemain) {
+          jobDesContainer.innerHTML = jobDescriptionHtml(firstRemain)
+          btn1.classList.add('btn1');
+          btn2.classList.add('btn2');
+          deleteJob();
+        } else {
+          jobDesContainer.innerHTML = '';
+        }
+      }
+      renderCLickedCard();
+      selectedCardColor();
+      saveButton();
+      descriptionWindow();
     })
   })
 }

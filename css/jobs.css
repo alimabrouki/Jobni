@@ -25,7 +25,8 @@ body {
   --second-color: rgb(29 57 73 / 53%);
   --hover-color: rgb(166, 199, 232);
   --main-weight: 400;
-  --company-name-color: rgba(38, 35, 35, 0.759);
+  --company-name-color:  rgb(56, 65, 72);
+
   --card-border-color: rgba(0, 0, 0, 0.203);
   --main-border-radius: 8px;
   --second-hover-color: rgba(0, 0, 0, 0.071);
@@ -217,26 +218,24 @@ ul {
 }
 
 .container .job-cards .cards .card {
-  border: .9px solid var(--card-border-color);
   max-width: 360px;
   position: relative;
   border-radius: 8px;
   padding-bottom: 10px;
   font-family: "Roboto", sans-serif;
-  box-shadow: 0px 1px 6px -2px;
   padding: 0 20px 7px 0px;
+  background-color: var(--rslt-color);
 }
 
 .cardClicked {
   transform: translateY(-1px) translateX(-1px);
-  transition: .2s;
+  transition: .1s;
   background-color: rgb(166 199 232 / 25%);
   box-shadow: 0px 1px 6px -2px;
 
 }
 
 .jobs .container .job-description {
-  border: 1px solid var(--card-border-color);
   border-radius: var(--main-border-radius);
   margin-top: 25px;
   position: sticky;
@@ -244,15 +243,57 @@ ul {
   height: 100vh;
   flex: 1;
   overflow-y: auto;
-  box-shadow: 0px 1px 4px -2px;
   scroll-behavior: smooth;
   padding: 15px 0;
+  background: linear-gradient(140deg, var(--rslt-color) 0%, #abc3f04f 100%);
 }
 
 @media (max-width: 767px) {
   .jobs .container .job-description {
     display: none;
   }
+}
+
+.container .job-description .delete-alert {
+  position: absolute;
+  padding: 50px;
+  background-color: var(--rslt-color);
+  border-radius: var(--main-border-radius);
+  transform: translate(-50%);
+  left: 50%;
+  right: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 19px;
+  font-weight: var(--font-weight-medium);
+  box-shadow: #00000087 0px 10px 19px -2px;
+  top: 100px;
+  gap: 30px;
+  width: 360px;
+  height: 199px;
+    .alert-job-title {
+    color: rgb(5, 98, 191);
+  }
+  .buttons {
+    display: flex;
+    gap: 35px;
+      button {
+    color: white;
+    font-weight: bold;
+    background-color: var(--main-color);
+    border-radius: 13px;
+    transition: var(--main-transition);
+    border: 1px solid var(--hover-color);
+    box-shadow: 4px 4px 0 0 var(--hover-color);
+    width: 80px;
+    height: 35px;
+    font-size: var(--text-lg);
+  }
+  }
+   
 }
 
 .container .job-description .card {
@@ -293,9 +334,11 @@ ul {
   font-weight: var(--font-weight-semibold);
   transition: .2s;
   border: 1px solid rgba(102, 181, 226, 0.29);
+
   &:hover {
     background-color: rgba(120, 138, 148, 0.26);
   }
+
   i {
     margin-right: 4px;
   }
@@ -318,6 +361,7 @@ ul {
   margin-left: 22px;
   padding: 4px 0;
   line-height: 20px;
+  color: var(--company-name-color);
 }
 
 .container .job-description .card div:first-of-type {
@@ -424,6 +468,8 @@ ul {
 .container .job-description .job-info .about-role span {
   word-break: break-word;
   white-space: pre-line;
+  color: var(--company-name-color);
+
 }
 
 .about-role div {
@@ -437,12 +483,11 @@ ul {
   word-break: break-word;
   max-width: 100%;
 
-  li {
-    margin-left: 16px;
+  dl {
+   margin-left: 16px;
     overflow-wrap: anywhere;
     word-break: break-word;
-    display: list-item;
-    list-style-position: inside;
+    color: var(--company-name-color);
   }
 }
 

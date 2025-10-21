@@ -554,14 +554,13 @@ font-size: 24px;
   gap: 30px;
 }
 .container .job-cards .cards .card {
-  border: .9px solid var(--card-border-color);
   width: 330px;
   position: relative;
   border-radius: 8px;
   padding-bottom: 30px ;
   font-family: "Roboto", sans-serif;
-  box-shadow: 0px 1px 6px -2px;
   cursor: pointer;
+   background-color: var(--rslt-color);
 }
 .container .job-cards .cards .card:hover {
  background-color: rgb(166 199 232 / 25%)
