@@ -286,6 +286,7 @@ ul {
   transition: var(--main-transition);
   font-size: var(--text-base);
   font-family: "Roboto", sans-serif;
+  font-weight: var(--font-weight-medium);
 }
 .home .container .search-bar:focus::placeholder {
   opacity: 0;
@@ -334,6 +335,7 @@ ul {
 .home .container .search-location::placeholder {
   font-size: var(--text-base);
   font-family: "Roboto", sans-serif;
+  font-weight: var(--font-weight-medium);
 }
 .home .container .search-location:focus::placeholder {
   opacity: 0;
@@ -532,6 +534,7 @@ font-size: 24px;
 .srch-location-window:focus::placeholder , .srch-job-window:focus::placeholder{
   opacity: 0;
   transition: .1s;
+  font-weight: var(--font-weight-medium);
 }
 .srch-job-window:focus , .srch-location-window:focus {
  box-shadow: 0 0 9px rgb(86, 152, 217);
@@ -561,9 +564,15 @@ font-size: 24px;
   font-family: "Roboto", sans-serif;
   cursor: pointer;
    background-color: var(--rslt-color);
+   box-shadow: 0 6px 18px rgba(20,30,40,0.04);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+
 }
 .container .job-cards .cards .card:hover {
- background-color: rgb(166 199 232 / 25%)
+ background-color: rgb(166 199 232 / 25%);
+ transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(20,30,40,0.08);
 }
 .container .job-cards .cards a {
   border-radius: var(--main-border-radius);
@@ -631,7 +640,7 @@ font-size: 24px;
 .save-button.active {
  -webkit-text-stroke: 2px black;
     font-weight: 900;
-    color: #1FF568;
+    color: rgb(5, 98, 191);
 }
 @media (max-width: 767px) {
   .description-window {

@@ -109,11 +109,11 @@ ul {
 
 .apply-form {
   height: 640px;
-  width: 460px;
+  width: 600px;
   padding: 60px;
   border: 1px solid var(--card-border-color);
   border-radius: var(--main-border-radius);
-  translate: 0px -50px;
+  translate: 0px -73px;
 }
 
 @media (width <=700px) {
@@ -134,8 +134,8 @@ ul {
   position: relative;
   display: block;
   border: 1px solid;
-  width: 315px;
-  top: 30px;
+  width: 470px;
+  top: 0px;
   height: 11px;
   margin-bottom: 40px;
   border-radius: 4px;
@@ -174,7 +174,18 @@ ul {
   width: 100%;
 
 }
-
+@media (width >= 700px) {
+  .next, .back, .submit {
+  padding: 10px 90px !important;
+}
+}
+.iti__selected-country {
+  background: white !important;
+  padding: 0 !important;
+  top: -13px;
+  left: -14px;
+  border-radius: 8px !important;
+}
 .form input {
   border: 1px solid var(--hover-color);
   border-radius: 8px;
@@ -182,9 +193,10 @@ ul {
   padding: 15px !important;
   caret-color: var(--main-color);
   text-align: center;
+  
 
   @media (width >=700px) {
-    width: 360px;
+    width: 470px !important;
   }
 }
 
@@ -216,13 +228,7 @@ ul {
   }
 }
 
-.iti__selected-country {
-  background: white !important;
-  padding: 0 !important;
-  top: -13px;
-  left: -14px;
-  border-radius: 8px !important;
-}
+
 
 .country-select.inside .selected-flag {
   border-radius: 50% !important;
@@ -324,7 +330,7 @@ button:hover {
 .job {
   position: absolute;
   top: 99px;
-  width: 460px;
+  width: 600px;
   text-align: center;
   padding: 20px 0;
   font-size: var(--text-sm);

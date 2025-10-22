@@ -27,6 +27,7 @@ body {
     --main-border-radius: 8px;
     --second-hover-color: rgba(0, 0, 0, 0.071);
     --main-box-shadow: 0px 1px 6px -2px;
+    --rslt-color: #EBEAF0;;
     
     /* Typography Scale */
     --text-xs: 12px;
@@ -80,7 +81,7 @@ ul {
 .cards .description-window {
  display: none;
 }
-@media (max-width: 767px) {
+@media (max-width: 700px) {
  .cards .description-window {
  display: block;
 }
@@ -94,6 +95,9 @@ ul {
     flex: 1;
     overflow-y: auto;
     scroll-behavior: smooth;
+     background: linear-gradient(140deg, var(--rslt-color) 0%, #abc3f04f 100%);
+  box-shadow: 0 6px 18px rgba(20, 30, 40, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 767px) {
@@ -110,6 +114,110 @@ ul {
     padding-bottom: 10px;
     padding: 0 20px 7px 0px;
 }
+.dots-button {
+  position: absolute;
+  right: 30px;
+  background-color: rgb(166 199 232 / 51%);
+  top: 36px;
+  padding: 2px 17px 2px 17px;
+  border-radius: var(--main-border-radius);
+  cursor: pointer;
+  transform: rotate(90deg);
+  color: var(--main-color);
+  font-size: 35px;
+}
+
+.dots-button:hover {
+  background-color: rgba(120, 138, 148, 0.26);
+}
+
+.delete {
+  position: absolute;
+  opacity: 0;
+  border-radius: var(--main-border-radius);
+  right: 20px;
+  padding: 17px 15px;
+  top: 85px;
+  box-shadow: 0px 2px 9px -3px;
+  cursor: pointer;
+  color: var(--main-color);
+  font-weight: var(--font-weight-semibold);
+  transition: .2s;
+  border: 1px solid rgba(102, 181, 226, 0.29);
+  background-color: var(--rslt-color);
+
+  &:hover {
+    background-color: rgba(120, 138, 148, 0.26);
+  }
+
+  i {
+    margin-right: 4px;
+  }
+}
+
+.delete.active {
+  opacity: 1;
+}
+
+.container .job-description .delete-alert {
+  position: absolute;
+  padding: 50px;
+  background-color: var(--rslt-color);
+  border-radius: var(--main-border-radius);
+  transform: translate(-50%);
+  left: 50%;
+  right: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1px;
+  font-weight: var(--font-weight-medium);
+  box-shadow: #00000087 0px 10px 19px -2px;
+  top: 100px;
+  gap: 30px;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  transition: .1s;
+
+  .alert-job-title {
+    color: rgb(5, 98, 191);
+  }
+
+  .buttons {
+    display: flex;
+    gap: 35px;
+
+    button {
+      color: white;
+      font-weight: bold;
+      background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
+      border-radius: 13px;
+      transition: var(--main-transition);
+      border: 1px solid var(--hover-color);
+      box-shadow: 4px 4px 0 0 var(--hover-color);
+      width: 80px;
+      height: 35px;
+      font-size: var(--text-lg);
+      cursor: pointer;
+      &:hover {
+        box-shadow: 2px 2px 0 0 var(--hover-color);
+        transform: translate(2px, 2px);
+      }
+    }
+  }
+
+}
+
+.delete-alert.active {
+  opacity: 1 !important;
+  width: 360px !important;
+  height: 199px !important;
+  font-size: 19px !important;
+}
+
 .container .job-description .card img {
     margin: 15px 0px 0px 20px;
     max-width: 100%;
@@ -146,11 +254,11 @@ ul {
 }
 .job-description .card .apply {
   position: absolute;
-  right: 100px;
-  top: 16px;
+  top: 175px ;
+  right: 50px ;
   color: white;
   font-weight: bold;
-  background-color: var(--main-color);
+  background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
   padding: 9px 15px;
   border-radius: 13px;
   transition: var(--main-transition);
@@ -161,12 +269,8 @@ ul {
   box-shadow: 2px 2px 0 0 var(--hover-color);
   transform: translate(2px, 2px);
 }
-@media (max-width: 991px) {
-  .job-description .card .apply {
-  top: 100px;
-  right: 20px;
-  }
-}
+
+
 .job-description .card .save-button {
     border: none;
     background-color: rgb(166 199 232 / 51%);

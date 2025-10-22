@@ -25,7 +25,7 @@ body {
   --second-color: rgb(29 57 73 / 53%);
   --hover-color: rgb(166, 199, 232);
   --main-weight: 400;
-  --company-name-color:  rgb(56, 65, 72);
+  --company-name-color: rgb(56, 65, 72);
 
   --card-border-color: rgba(0, 0, 0, 0.203);
   --main-border-radius: 8px;
@@ -108,12 +108,12 @@ ul {
   display: inline-block;
   color: black;
   font-weight: bold;
-  padding: 19px 10px;
+  padding: 15px 6px;
   right: 50%;
   bottom: -22px;
   border-radius: 13px;
   transition: var(--main-transition);
-  background-color: rgb(217, 217, 217);
+  background: var(--rslt-color);
   box-shadow: 2px 2px 0 0 var(--hover-color);
   transform: translate(2px, 2px);
 }
@@ -123,8 +123,8 @@ ul {
   display: inline-block;
   color: white;
   font-weight: bold;
-  background-color: var(--main-color);
-  padding: 19px 10px;
+  background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
+  padding: 15px 6px;
   left: 55%;
   bottom: -22px;
   border-radius: 13px;
@@ -138,8 +138,8 @@ ul {
   display: inline-block;
   color: white;
   font-weight: bold;
-  background-color: var(--main-color);
-  padding: 19px 10px;
+  background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
+  padding: 15px 6px;
   right: 50%;
   bottom: -22px;
   border-radius: 13px;
@@ -153,12 +153,12 @@ ul {
   display: inline-block;
   color: black;
   font-weight: bold;
-  padding: 19px 10px;
+  padding: 15px 6px;
   left: 55%;
   bottom: -22px;
   border-radius: 13px;
   transition: var(--main-transition);
-  background-color: rgb(217, 217, 217);
+  background: var(--rslt-color);
   box-shadow: 2px 2px 0 0 var(--hover-color);
   transform: translate(2px, 2px);
 }
@@ -225,6 +225,10 @@ ul {
   font-family: "Roboto", sans-serif;
   padding: 0 20px 7px 0px;
   background-color: var(--rslt-color);
+  box-shadow: 0 6px 18px rgba(20, 30, 40, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+
 }
 
 .cardClicked {
@@ -246,6 +250,8 @@ ul {
   scroll-behavior: smooth;
   padding: 15px 0;
   background: linear-gradient(140deg, var(--rslt-color) 0%, #abc3f04f 100%);
+  box-shadow: 0 6px 18px rgba(20, 30, 40, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 767px) {
@@ -254,47 +260,6 @@ ul {
   }
 }
 
-.container .job-description .delete-alert {
-  position: absolute;
-  padding: 50px;
-  background-color: var(--rslt-color);
-  border-radius: var(--main-border-radius);
-  transform: translate(-50%);
-  left: 50%;
-  right: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 19px;
-  font-weight: var(--font-weight-medium);
-  box-shadow: #00000087 0px 10px 19px -2px;
-  top: 100px;
-  gap: 30px;
-  width: 360px;
-  height: 199px;
-    .alert-job-title {
-    color: rgb(5, 98, 191);
-  }
-  .buttons {
-    display: flex;
-    gap: 35px;
-      button {
-    color: white;
-    font-weight: bold;
-    background-color: var(--main-color);
-    border-radius: 13px;
-    transition: var(--main-transition);
-    border: 1px solid var(--hover-color);
-    box-shadow: 4px 4px 0 0 var(--hover-color);
-    width: 80px;
-    height: 35px;
-    font-size: var(--text-lg);
-  }
-  }
-   
-}
 
 .container .job-description .card {
   border-bottom: .9px solid var(--card-border-color);
@@ -348,6 +313,65 @@ ul {
   opacity: 1;
 }
 
+.container .job-description .delete-alert {
+  position: absolute;
+  padding: 50px;
+  background-color: var(--rslt-color);
+  border-radius: var(--main-border-radius);
+  transform: translate(-50%);
+  left: 50%;
+  right: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1px;
+  font-weight: var(--font-weight-medium);
+  box-shadow: #00000087 0px 10px 19px -2px;
+  top: 100px;
+  gap: 30px;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  transition: .1s;
+
+  .alert-job-title {
+    color: rgb(5, 98, 191);
+  }
+
+  .buttons {
+    display: flex;
+    gap: 35px;
+
+    button {
+      color: white;
+      font-weight: bold;
+      background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
+      border-radius: 13px;
+      transition: var(--main-transition);
+      border: 1px solid var(--hover-color);
+      box-shadow: 4px 4px 0 0 var(--hover-color);
+      width: 80px;
+      height: 35px;
+      font-size: var(--text-lg);
+      cursor: pointer;
+      &:hover {
+        box-shadow: 2px 2px 0 0 var(--hover-color);
+        transform: translate(2px, 2px);
+      }
+    }
+  }
+
+}
+
+.delete-alert.active {
+  opacity: 1 !important;
+  width: 360px !important;
+  height: 199px !important;
+  font-size: 19px !important;
+}
+
 .container .job-description .card img {
   margin: 15px 0px 0px 20px;
   max-width: 100%;
@@ -394,7 +418,7 @@ ul {
   top: 16px;
   color: white;
   font-weight: bold;
-  background-color: var(--main-color);
+  background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
   padding: 9px 15px;
   border-radius: 13px;
   transition: var(--main-transition);
@@ -445,7 +469,7 @@ ul {
 .save-button.active {
   -webkit-text-stroke: 2px black;
   font-weight: 900;
-  color: #1FF568;
+  color: rgb(5, 98, 191);
 }
 
 /* .des-btn.active {
@@ -484,7 +508,7 @@ ul {
   max-width: 100%;
 
   dl {
-   margin-left: 16px;
+    margin-left: 16px;
     overflow-wrap: anywhere;
     word-break: break-word;
     color: var(--company-name-color);
@@ -515,6 +539,7 @@ ul {
 
 .job-description .job-info .fa-circle-dot {
   font-size: 18px;
+  color: rgb(5, 98, 191);
 }
 
 .company-info div:first-child {
@@ -528,6 +553,7 @@ ul {
 
 .company-info .phone i {
   margin-bottom: 20px;
+  color: rgb(5, 98, 191);
 }
 
 .company-info .phone,
@@ -547,6 +573,7 @@ ul {
 
 .company-info .email i {
   margin-bottom: 20px;
+  color: rgb(5, 98, 191);
 }
 
 /* End Jobs */

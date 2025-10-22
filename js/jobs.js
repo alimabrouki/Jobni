@@ -52,15 +52,15 @@ function jobDescriptionHtml(job) {
           <span>${job.location}</span> |
           <span>${job.salary} $TND</span>
         </div>
-        </div> 
+        </div>
         <i class="fa-solid fa-ellipsis-vertical dots-button"></i>
          <div data-id="${job.id}" class="delete"><i class="fa-solid fa-trash"></i>Delete</div>
          <div class="delete-alert">
          <div class="msg">Are You Sure You Want To Delete <span class="alert-job-title">| ${job.jobTitle} |</span> ? 
          </div>
          <div class="buttons">
-         <button>Yes</button>
-         <button>No</button>
+         <button class="yes-btn">Yes</button>
+         <button class="no-btn">No</button>
          </div>
          </div>
          <div class="job-info">
@@ -142,7 +142,7 @@ export function renderJobs(allJobs) {
               <div>${timeAgo(job.dateUploaded)}</div>
           </div>
          `;
-         deleteJob()
+    deleteJob()
   });
 };
 export function renderCLickedCard() {
@@ -625,7 +625,7 @@ function displayJobs() {
   })
 }
 
-function deleteJob() {
+export function deleteJob() {
   const deleteBtn = document.querySelector('.delete');
   const deleteBtns = document.querySelectorAll('.delete')
   const dotBtns = document.querySelectorAll('.dots-button');
@@ -637,9 +637,15 @@ function deleteJob() {
   })
   deleteBtns.forEach(btn => {
     const jobId = btn.getAttribute('data-id');
+    const yesNoMsg = document.querySelector('.delete-alert');
+    const yesBtn = document.querySelector('.yes-btn');
+    const noBtn = document.querySelector('.no-btn');
     btn.addEventListener('click', () => {
 
-
+      yesNoMsg.classList.add('active');
+      console.log(yesNoMsg)
+    })
+    yesBtn.addEventListener('click', () => {
       const deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
 
 
@@ -672,6 +678,16 @@ function deleteJob() {
       selectedCardColor();
       saveButton();
       descriptionWindow();
+    })
+    noBtn.addEventListener('click', (e) => {
+      yesNoMsg.classList.remove('active');
+      deleteBtn.classList.remove('active')
+    })
+    document.addEventListener('mousedown', (e) => {
+      if (!(yesNoMsg).contains(e.target) && !(deleteBtn).contains(e.target)) {
+        yesNoMsg.classList.remove('active');
+        deleteBtn.classList.remove('active');
+      }
     })
   })
 }
