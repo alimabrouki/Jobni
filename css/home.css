@@ -65,7 +65,7 @@ ul {
     margin-right: auto;
 }
 /* Small */
-@media (min-width: 700px) {
+@media (min-width: 767px) {
     .container {
         width: 725px;
     }
@@ -81,6 +81,11 @@ ul {
     .container {
         width: 1170px;
     }
+}
+@media (width >= 1200px) {
+  .container {
+    
+  }
 }
 /* End Global Rules */
 /* Start Header */
@@ -143,7 +148,7 @@ ul {
   justify-content: center;
   align-items: center;
   z-index: 9999999;
-  transform: translateX(500px);
+  transform: translateX(700px);
   transition: var(--main-transition);
   visibility: hidden;
 }

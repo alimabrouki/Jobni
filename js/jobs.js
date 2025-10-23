@@ -46,9 +46,9 @@ function jobDescriptionHtml(job) {
           <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
        
-        <div>${job.company}</div>
-        <div>${job.jobTitle}</div>
-        <div>
+        <div class="co-name">${job.company}</div>
+        <div class="j-title">${job.jobTitle}</div>
+        <div class="loc-sal">
           <span>${job.location}</span> |
           <span>${job.salary} $TND</span>
         </div>
@@ -121,7 +121,6 @@ export function renderSelectedCard() {
   const job = allJobs.find(job => job.id === jobId) || jobs[0];
   if (jobsContainer && job) {
     jobsContainer.innerHTML = jobDescriptionHtml(job);
-
   };
 };
 export function renderJobs(allJobs) {
@@ -142,8 +141,9 @@ export function renderJobs(allJobs) {
               <div>${timeAgo(job.dateUploaded)}</div>
           </div>
          `;
-    deleteJob()
+    
   });
+  deleteJob()
 };
 export function renderCLickedCard() {
   const jobCards = document.querySelectorAll('.js-job-card');
@@ -632,61 +632,74 @@ export function deleteJob() {
 
   dotBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      deleteBtn.classList.toggle('active');
+      const menu = btn.nextElementSibling;
+      if (menu && menu.classList.contains('delete')) {
+        menu.classList.toggle('active');
+      }
     })
   })
   deleteBtns.forEach(btn => {
     const jobId = btn.getAttribute('data-id');
+    const container = btn.closest('.des-card') || btn.closest('.card') || document;
     const yesNoMsg = document.querySelector('.delete-alert');
     const yesBtn = document.querySelector('.yes-btn');
     const noBtn = document.querySelector('.no-btn');
-    btn.addEventListener('click', () => {
+    if (!btn) return;
 
-      yesNoMsg.classList.add('active');
+    btn.addEventListener('click', (e) => {
+      if (yesNoMsg) yesNoMsg.classList.add('active');
       console.log(yesNoMsg)
     })
-    yesBtn.addEventListener('click', () => {
-      const deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
+    if (yesBtn) {
+      yesBtn.addEventListener('click', () => {
+        const deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
 
 
-      if (!deletedJobs.includes(jobId)) {
-        deletedJobs.push(jobId);
-        localStorage.setItem('deletedJobs', JSON.stringify(deletedJobs));
-      }
-      const remainJobs = allJobs.filter(job => {
-        const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
-        return !deleted.includes(job.id);
-      })
-      renderJobs(remainJobs);
-      const btn1 = document.querySelector('.js-btn1');
-      const btn2 = document.querySelector('.js-btn2');
-      const jobCard = document.querySelector(`.js-job-card-${jobId}`)
-      if (jobCard) jobCard.remove();
-      const jobDesContainer = document.querySelector('.job-description');
-      if (jobDesContainer) {
-        const firstRemain = remainJobs.length ? remainJobs[0] : null
-        if (firstRemain) {
-          jobDesContainer.innerHTML = jobDescriptionHtml(firstRemain)
-          btn1.classList.add('btn1');
-          btn2.classList.add('btn2');
-          deleteJob();
-        } else {
-          jobDesContainer.innerHTML = '';
+        if (!deletedJobs.includes(jobId)) {
+          deletedJobs.push(jobId);
+          localStorage.setItem('deletedJobs', JSON.stringify(deletedJobs));
         }
-      }
-      renderCLickedCard();
-      selectedCardColor();
-      saveButton();
-      descriptionWindow();
-    })
-    noBtn.addEventListener('click', (e) => {
-      yesNoMsg.classList.remove('active');
-      deleteBtn.classList.remove('active')
-    })
+        const remainJobs = allJobs.filter(job => {
+          const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
+          return !deleted.includes(job.id);
+        })
+        renderJobs(remainJobs);
+        const btn1 = document.querySelector('.js-btn1');
+        const btn2 = document.querySelector('.js-btn2');
+        const jobCard = document.querySelector(`.js-job-card-${jobId}`)
+        if (jobCard) jobCard.remove();
+        const jobDesContainer = document.querySelector('.job-description');
+        if (jobDesContainer) {
+          const firstRemain = remainJobs.length ? remainJobs[0] : null
+          if (firstRemain) {
+            jobDesContainer.innerHTML = jobDescriptionHtml(firstRemain)
+            btn1.classList.add('btn1');
+            btn2.classList.add('btn2');
+            deleteJob();
+          } else {
+            jobDesContainer.innerHTML = '';
+          }
+        }
+        renderCLickedCard();
+        selectedCardColor();
+        descriptionWindow();
+      })
+    }
+    if (noBtn) {
+      noBtn.addEventListener('click', (e) => {
+        if (yesNoMsg) yesNoMsg.classList.remove('active');
+        const menu = btn.closest('.des-card')?.querySelector('.delete') || btn;
+        if (menu) menu.classList.remove('active')
+      })
+    }
+
     document.addEventListener('mousedown', (e) => {
-      if (!(yesNoMsg).contains(e.target) && !(deleteBtn).contains(e.target)) {
+      if (yesNoMsg && !yesNoMsg.contains(e.target) && !btn.contains(e.target)) {
         yesNoMsg.classList.remove('active');
-        deleteBtn.classList.remove('active');
+        const menu = btn.nextElementSibling;
+        if (menu && !menu.contains(e.target) && !btn.contains(e.target)) {
+           menu.classList.remove('active');
+        }
       }
     })
   })

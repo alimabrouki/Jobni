@@ -81,7 +81,7 @@ ul {
 .cards .description-window {
  display: none;
 }
-@media (max-width: 700px) {
+@media (max-width: 767px) {
  .cards .description-window {
  display: block;
 }
@@ -136,7 +136,7 @@ ul {
   opacity: 0;
   border-radius: var(--main-border-radius);
   right: 20px;
-  padding: 17px 15px;
+  padding: 13px 15px;
   top: 85px;
   box-shadow: 0px 2px 9px -3px;
   cursor: pointer;
@@ -231,7 +231,7 @@ ul {
   padding: 4px 0;
   line-height: 20px;
 }
-.container .job-description .card div:first-of-type {
+.container .job-description .card .co-name {
   display: inline;
   position: absolute;
   margin: 25px 15px;
@@ -239,14 +239,14 @@ ul {
   font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
 }
-.container .job-description .card div:nth-child(5) {
+.container .job-description .card .j-title {
   color: black;
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-2xl);
   margin-bottom: 10px;
   margin-top: 10px;
 }
-.container .job-description .card div:nth-child(4) {
+.container .job-description .card .loc-sal {
   color: var(--company-name-color);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-medium);
@@ -254,8 +254,8 @@ ul {
 }
 .job-description .card .apply {
   position: absolute;
-  top: 175px ;
-  right: 50px ;
+  right: 15px;
+  top: 122px;
   color: white;
   font-weight: bold;
   background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
@@ -332,12 +332,14 @@ margin-left: 22px;
 }
 .job-time i {
   margin-bottom: 25px;
+  color: rgb(5, 98, 191);
 }
 .job-description .job-info  {
   font-size: var(--text-base);
 }
 .job-description .job-info .fa-circle-dot  {
   font-size: 18px;
+  color: rgb(5, 98, 191);
 }
 .company-info div:first-child {
   font-weight: var(--font-weight-semibold);
@@ -348,6 +350,7 @@ margin-left: 22px;
 }
 .company-info .phone i {
   margin-bottom: 20px;
+  color: rgb(5, 98, 191);
 }
 .company-info .phone , .phone-number {
   display: inline;
@@ -361,6 +364,7 @@ margin-left: 22px;
 }
 .company-info .email i {
   margin-bottom: 20px;
+  color: rgb(5, 98, 191);
 }
 /* End Jobs */
 

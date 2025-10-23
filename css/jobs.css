@@ -67,16 +67,16 @@ ul {
 }
 
 /* Small */
-@media (min-width: 768px) {
+@media (min-width: 700px) {
   .container {
-    width: 750px;
+    width: 830px;
   }
 }
 
 /* Medium */
-@media (min-width: 992px) {
+@media (min-width: 900px) {
   .container {
-    width: 970px;
+    width: 1100px;
   }
 }
 
@@ -271,7 +271,7 @@ ul {
 
 .dots-button {
   position: absolute;
-  right: 30px;
+  right: 220px;
   background-color: rgb(166 199 232 / 51%);
   top: 36px;
   padding: 2px 17px 2px 17px;
@@ -306,6 +306,11 @@ ul {
 
   i {
     margin-right: 4px;
+  }
+  @media (width <= 900px) {
+    right: 125px;
+  padding: 11px 9px;
+  top: 30px;
   }
 }
 
@@ -388,16 +393,15 @@ ul {
   color: var(--company-name-color);
 }
 
-.container .job-description .card div:first-of-type {
+.container .job-description .card .co-name {
   display: inline;
   position: absolute;
   margin: 25px 15px;
   color: var(--company-name-color);
-  font-size: var(--text-sm);
   font-weight: var(--font-weight-medium);
 }
 
-.container .job-description .card div:nth-child(5) {
+.container .job-description .card .j-title {
   color: black;
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-2xl);
@@ -405,16 +409,17 @@ ul {
   margin-top: 10px;
 }
 
-.container .job-description .card div:nth-child(4) {
+.container .job-description .card .loc-sal {
   color: var(--company-name-color);
   font-size: var(--text-lg);
   font-weight: var(--font-weight-medium);
   margin-bottom: 10px;
 }
 
-.job-description .card .apply {
+@media (width >= 901px) {
+  .job-description .card .apply {
   position: absolute;
-  right: 160px;
+  right: 30px;
   top: 16px;
   color: white;
   font-weight: bold;
@@ -430,14 +435,27 @@ ul {
   box-shadow: 2px 2px 0 0 var(--hover-color);
   transform: translate(2px, 2px);
 }
-
-@media (max-width: 991px) {
+}
+@media (width <= 900px) {
   .job-description .card .apply {
-    top: 100px;
-    right: 20px;
-  }
+  position: absolute;
+  right: 25px;
+  top: 122px;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(180deg, var(--main-color) 0%, rgba(37, 99, 235, 0.9) 100%);
+  padding: 9px 15px;
+  border-radius: 13px;
+  transition: var(--main-transition);
+  border: 1px solid var(--hover-color);
+  box-shadow: 4px 4px 0 0 var(--hover-color);
 }
 
+.job-description .card .apply:hover {
+  box-shadow: 2px 2px 0 0 var(--hover-color);
+  transform: translate(2px, 2px);
+}
+}
 .job-cards .cards .card .save-button {
   border: none;
   background-color: transparent;
@@ -449,11 +467,12 @@ ul {
   z-index: 999999;
 }
 
-.job-description .card .save-button {
+@media (width >= 901px) {
+  .job-description .card .save-button {
   border: none;
   background-color: rgb(166 199 232 / 51%);
   position: absolute;
-  right: 90px;
+  right: 160px;
   top: 19px;
   font-size: var(--text-2xl);
   cursor: pointer;
@@ -465,18 +484,36 @@ ul {
     background-color: rgba(120, 138, 148, 0.26);
   }
 }
+}
+@media (width <= 900px) {
+  .job-description .card .save-button {
+  border: none;
+  background-color: rgb(166 199 232 / 51%);
+  position: absolute;
+  right: 25px;
+  top: 19px;
+  font-size: var(--text-2xl);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: var(--main-border-radius);
+  z-index: 999;
 
+  &:hover {
+    background-color: rgba(120, 138, 148, 0.26);
+  }
+}
+}
 .save-button.active {
   -webkit-text-stroke: 2px black;
   font-weight: 900;
   color: rgb(5, 98, 191);
 }
 
-/* .des-btn.active {
-  -webkit-text-stroke: 2px black;
-  font-weight: 900;
-  color: #1FF568;
-} */
+@media (width <= 900px) {
+  .dots-button {
+    right: 75px;
+  }
+}
 
 .container .job-description .job-info .info {
   margin-left: 22px;

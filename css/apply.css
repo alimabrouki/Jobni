@@ -114,6 +114,7 @@ ul {
   border: 1px solid var(--card-border-color);
   border-radius: var(--main-border-radius);
   translate: 0px -73px;
+  background: linear-gradient(140deg, var(--rslt-color) 0%, #abc3f04f 100%);
 }
 
 @media (width <=700px) {
@@ -140,6 +141,7 @@ ul {
   margin-bottom: 40px;
   border-radius: 4px;
   border: 1px solid var(--card-border-color);
+  z-index: 1;
 }
 
 @media (width <=700px) {
@@ -337,6 +339,7 @@ button:hover {
   border: 1px solid var(--card-border-color);
   border-radius: var(--main-border-radius);
   color: var(--company-name-color);
+  background: linear-gradient(140deg, var(--rslt-color) 0%, #abc3f04f 100%);
 }
 
 @media (width <=700px) {
