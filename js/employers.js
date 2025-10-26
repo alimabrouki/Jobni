@@ -266,7 +266,7 @@ export function postJob() {
     addedJobs.push(newAddedJob);
     localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
     newJobs.push(newAddedJob);
-    window.location.href = 'jobs.html';
+    window.location.href = 'https://alimabrouki.github.io/Jobni/jobs.html';
   })
 }
 
