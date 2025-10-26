@@ -1,6 +1,5 @@
 import { jobs, newJobs, addedJobs, allJobs } from "../data/jobs-data.js";
-import { toggleMenu, searchLocation, searchWindow } from "./shared.js";
-import { timeAgo } from "./employers.js";
+import { toggleMenu, searchLocation, searchWindow,timeAgo} from "./shared.js";
 function reload() {
   const navEntries = performance.getEntriesByType('navigation');
   const isReload = navEntries.length && navEntries[0].type === 'reload';
@@ -12,17 +11,17 @@ function interactiveBtns() {
   const btn1 = document.querySelector('.js-btn1');
   const btn2 = document.querySelector('.js-btn2');
   if (!btn1 || !btn2) return;
-  function clickButton(active) {
-    if (active === 'btn1') {
-      btn1.classList.add('btn1');
-      btn1.classList.remove('btn1unclicked');
-      btn2.classList.add('btn2');
-      btn2.classList.remove('btn1unclicked')
+function clickButton(active) {
+  if (active === 'btn1') {
+    btn1.classList.add('btn1');
+    btn1.classList.remove('btn1unclicked');
+    btn2.classList.add('btn2');
+    btn2.classList.remove('btn1unclicked')
     } else {
-      btn1.classList.add('btn1unclicked');
-      btn1.classList.remove('btn1');
-      btn2.classList.add('btn2clicked')
-      btn2.classList.remove('btn2')
+    btn1.classList.add('btn1unclicked');
+    btn1.classList.remove('btn1');
+    btn2.classList.add('btn2clicked')
+    btn2.classList.remove('btn2')
     };
   };
   btn1.addEventListener('click', () => {
@@ -121,16 +120,16 @@ export function renderSelectedCard() {
   const job = allJobs.find(job => job.id === jobId) || jobs[0];
   if (jobsContainer && job) {
     jobsContainer.innerHTML = jobDescriptionHtml(job);
+
   };
 };
-export function renderJobs(allJobs) {
+function renderJobs(allJobs) {
   const cards = document.querySelector('.cards');
 
   cards.innerHTML = '';
   allJobs.forEach(job => {
-    const jobId = job.id
     cards.innerHTML += `
-    <div class="card js-job-card js-job-card-${jobId}" data-id="${job.id}">
+    <div class="card js-job-card js-job-card-${job.id}" data-id="${job.id}">
               <img src="${job.image}" alt="">
               <i data-id="${job.id}" class="save-button fa-regular fa-bookmark">
         </i>
@@ -143,7 +142,6 @@ export function renderJobs(allJobs) {
          `;
     
   });
-  deleteJob()
 };
 export function renderCLickedCard() {
   const jobCards = document.querySelectorAll('.js-job-card');
@@ -215,15 +213,15 @@ function btnsRenderJobs() {
       jobDes.innerHTML = jobDescriptionHtml(firstJob)
     };
     saveButton();
-    renderCLickedCard();
-    selectedCardColor();
+  renderCLickedCard();
+   selectedCardColor();
     deleteJob()
   });
 };
 // ...existing code...
 export function saveButton() {
   // set visual state for any existing save buttons (runs every call)
-  const saveButtons = document.querySelectorAll('.save-button');
+    const saveButtons = document.querySelectorAll('.save-button');
   const savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
   saveButtons.forEach(btn => {
     const jobId = btn.getAttribute('data-id');
@@ -616,7 +614,7 @@ export function mobileSearch() {
   })
 }
 
-function displayJobs() {
+export function displayJobs() {
 
   addedJobs.forEach(addedJob => {
     if (!newJobs.some(job => job.id === addedJob.id)) {
@@ -722,8 +720,8 @@ document.addEventListener('DOMContentLoaded', () => {
   descriptionWindow();
   displayJobs();
 })
-
-
+  
+  
 
 
 

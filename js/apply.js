@@ -1,4 +1,4 @@
-import { getNewJobs, newJobs, getJobs, jobs, allJobs } from "../data/jobs-data.js";
+import {  allJobs } from "../data/jobs-data.js";
 import { toggleMenu } from "./shared.js";
 
 function steps() {

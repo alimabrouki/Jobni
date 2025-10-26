@@ -1,4 +1,4 @@
-import { newJobs, jobs } from "../data/jobs-data.js";
+import { newJobs } from "../data/jobs-data.js";
 import { toggleMenu } from "./shared.js";
 function showForm() {
   const hero = document.querySelector('.hero');
@@ -208,7 +208,7 @@ function phoneInput() {
   });
   $("#country").countrySelect();
 }
-function postJob() {
+export function postJob() {
   const form = document.querySelector('.job-post-form');
 
   form.addEventListener('submit', (e) => {
@@ -269,18 +269,7 @@ function postJob() {
     window.location.href = 'jobs.html';
   })
 }
-export function timeAgo(timestamp) {
-  const now = Date.now();
-  const diff = Math.floor((now - timestamp) / 1000);
 
-  if (diff < 60) return 'Just Now';
-  if (diff < 3600) return `${Math.floor(diff / 60)} min`;
-  if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
-  if (diff < 604800) return `${Math.floor(diff / 86400)}d`;
-  if (diff < 2592000) return `${Math.floor(diff / 604800)}w`;
-  if (diff < 31536000) return `${Math.floor(diff / 2592000)}m`;
-  return `${Math.floor(diff / 31536000)}y`
-}
 document.addEventListener('DOMContentLoaded', () => {
   showForm();
   toggleMenu();
