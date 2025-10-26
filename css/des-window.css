@@ -287,7 +287,7 @@ ul {
 .save-button.active  {
  -webkit-text-stroke: 2px black;
     font-weight: 900;
-    color: #1FF568;
+    color: rgb(5, 98, 191);;
 }
  .dots-button {
   position: absolute;

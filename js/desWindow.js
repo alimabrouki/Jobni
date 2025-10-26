@@ -1,4 +1,5 @@
-import { renderSelectedCard,renderCLickedCard,descriptionWindow,saveButton, deleteJob  } from "./jobs.js";
+import { renderSelectedCard,renderCLickedCard,descriptionWindow, deleteJob  } from "./jobs.js";
+import { saveButton } from "./shared.js";
   renderSelectedCard();
   renderCLickedCard();
   saveButton();
