@@ -494,7 +494,6 @@ ul {
     justify-content: start;
     align-items: center;
     z-index: 9999999;
-    border-top: 1px solid;
     box-shadow: 0 0px 15px 3px;
     color: black;
     gap: 21px;
