@@ -133,7 +133,7 @@ ul {
 
 .delete {
   position: absolute;
-  opacity: 0;
+  display: none;
   border-radius: var(--main-border-radius);
   right: 20px;
   padding: 13px 15px;
@@ -156,7 +156,7 @@ ul {
 }
 
 .delete.active {
-  opacity: 1;
+  display: block;
 }
 
 .container .job-description .delete-alert {

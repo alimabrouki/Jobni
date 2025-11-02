@@ -761,7 +761,21 @@ export function deleteJob() {
           const updatedAddedJobs = addedJobs.filter(job => job.id !== jobId);
           localStorage.setItem('addedJobs', JSON.stringify(updatedAddedJobs));
 
-          // Update allJobs array
+          // Check if we're in des-window.html (mobile)
+          const isDesWindow = window.location.pathname.includes('des-window.html');
+          
+          if (isDesWindow) {
+            // On mobile, redirect to jobs page after deletion
+            yesBtn.textContent = 'Deleted!';
+            yesBtn.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+              window.location.href = "jobs.html";
+            }, 1000);
+            return;
+          }
+
+          // Update allJobs array (desktop version)
           const remainJobs = allJobs.filter(job => {
             const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
             return !deleted.includes(job.id);
