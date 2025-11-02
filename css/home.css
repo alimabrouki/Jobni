@@ -225,7 +225,7 @@ ul {
   top: 7px;
 }
 }
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   .container #bars  {
   display: none;
 }
@@ -424,11 +424,10 @@ ul {
   color: black;
   font-size: 22px;
 }
-@media (min-width: 768px) {
+
   .search-window {
   display: none;
-}
-}
+  }
 @media (max-width: 767px) {
   .search-location.active {
  display: none;
