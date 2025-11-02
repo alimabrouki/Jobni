@@ -220,10 +220,19 @@ function steps() {
 }
 function phoneInput() {
   const inputPhone = document.querySelector('.phone');
+  if (!inputPhone) return;
+  
   window.intlTelInput(inputPhone, {
     loadUtils: () => import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/js/utils.js"),
   });
-  $("#country").countrySelect();
+  
+  // Wait for jQuery to be available before using it
+  const countryInput = document.querySelector("#country");
+  if (countryInput && typeof window.$ !== 'undefined' && window.$.fn.countrySelect) {
+    $("#country").countrySelect();
+  } else {
+    console.log('Country select not initialized - jQuery or plugin not loaded');
+  }
 }
 export function postJob() {
   const form = document.querySelector('.job-post-form');
@@ -292,7 +301,9 @@ export function postJob() {
 
     try {
       // Add to Firebase
+      console.log('Attempting to save job to Firebase...');
       await addDoc(collection(db, "jobs"), newAddedJob);
+      console.log('Job saved to Firebase successfully!');
       
       // Also add to localStorage for immediate local access
       const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
@@ -308,6 +319,7 @@ export function postJob() {
       
       // Redirect after short delay
       setTimeout(() => {
+        console.log('Redirecting to jobs.html...');
         window.location.href = "jobs.html";
       }, 500);
       
