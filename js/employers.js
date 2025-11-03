@@ -1,6 +1,6 @@
 import { newJobs } from "../data/jobs-data.js";
 import { toggleMenu } from "./shared.js";
-import {collection, addDoc, getFirestore} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"
+import { collection, addDoc, getFirestore } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 
 // Firebase configuration
@@ -127,7 +127,7 @@ function steps() {
     })
   })
 }
- function qualificationsList() {
+function qualificationsList() {
   const qualifications = document.querySelector('.qualifications');
   let hasStartedTyping = false;
   qualifications.addEventListener('keydown', (e) => {
@@ -221,11 +221,11 @@ function steps() {
 function phoneInput() {
   const inputPhone = document.querySelector('.phone');
   if (!inputPhone) return;
-  
+
   window.intlTelInput(inputPhone, {
     loadUtils: () => import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/js/utils.js"),
   });
-  
+
   // Wait for jQuery to be available before using it
   const countryInput = document.querySelector("#country");
   if (countryInput && typeof window.$ !== 'undefined' && window.$.fn.countrySelect) {
@@ -288,12 +288,7 @@ export function postJob() {
       phone,
       email: email.charAt(0).toUpperCase() + email.slice(1)
     };
-    // const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
-    // addedJobs.push(newAddedJob);
-    // localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
-    // newJobs.push(newAddedJob);
-    // window.location.href = 'https://alimabrouki.github.io/Jobni/jobs.html';
-    // Show loading state
+
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Posting...';
@@ -304,31 +299,31 @@ export function postJob() {
       console.log('Attempting to save job to Firebase...');
       await addDoc(collection(db, "jobs"), newAddedJob);
       console.log('Job saved to Firebase successfully!');
-      
+
       // Also add to localStorage for immediate local access
       const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
       addedJobs.push(newAddedJob);
       localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
-      
+
       // Clear form
       form.reset();
-      
+
       // Show success message briefly
       submitBtn.textContent = 'Posted !';
       submitBtn.style.backgroundColor = '#4CAF50';
-      
+
       // Redirect after short delay
       setTimeout(() => {
         console.log('Redirecting to jobs.html...');
         window.location.href = "jobs.html";
       }, 500);
-      
+
     } catch (error) {
       console.error('Error adding a job:', error);
       submitBtn.textContent = 'Error - Try Again';
       submitBtn.style.backgroundColor = '#f44336';
       submitBtn.disabled = false;
-      
+
       // Reset button after 3 seconds
       setTimeout(() => {
         submitBtn.textContent = originalText;

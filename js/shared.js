@@ -13,12 +13,12 @@ export function toggleMenu() {
     menu.classList.add('show')
     bodyScrollLockUpgrade.disableBodyScroll(body);
   });
-  
+
   closeMenu.addEventListener('click', () => {
     naviMenu.classList.remove('active')
     bodyScrollLockUpgrade.enableBodyScroll(body);
   })
- 
+
 }
 
 export function searchLocation() {
@@ -27,9 +27,9 @@ export function searchLocation() {
   const locationIcon = document.querySelector('.location-icon')
   const searchBar = document.querySelector('.search-bar')
 
-  
+
   if (!searchLocation || !searchContainer || !locationIcon || !searchBar) return;
-  
+
   locationIcon.addEventListener('click', () => {
     searchLocation.classList.toggle('active')
     searchContainer.classList.add('active')
@@ -48,11 +48,11 @@ export function searchWindow() {
   const body = document.querySelector('body');
   searchBar.addEventListener('click', () => {
     searchWindow.classList.add('active');
-   
+
   });
   closeMenu.addEventListener('click', () => {
     searchWindow.classList.remove('active');
-    
+
   });
   srchJobWind.addEventListener('click', () => {
     bodyScrollLockUpgrade.disableBodyScroll(body);

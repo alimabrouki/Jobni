@@ -1,6 +1,6 @@
 import { jobs, newJobs, addedJobs, allJobs } from "../data/jobs-data.js";
-import { toggleMenu, searchLocation, searchWindow,timeAgo} from "./shared.js";
-import {collection, getDocs, getFirestore, doc, deleteDoc} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"
+import { toggleMenu, searchLocation, searchWindow, timeAgo } from "./shared.js";
+import { collection, getDocs, getFirestore, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 
 // Firebase configuration
@@ -24,12 +24,12 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 export async function fetchJobs() {
   const now = Date.now();
-  
+
   // Return cached data if it's still fresh
   if (firebaseJobsCache && (now - lastFetchTime) < CACHE_DURATION) {
     return firebaseJobsCache;
   }
-  
+
   try {
     const jobsCol = collection(db, "jobs");
     const jobsSnapShot = await getDocs(jobsCol);
@@ -38,11 +38,11 @@ export async function fetchJobs() {
       firebaseDocId: doc.id, // Store the Firebase document ID
       id: doc.data().id || doc.id // Use the job's id field or fallback to Firebase doc ID
     }));
-    
+
     // Cache the results
     firebaseJobsCache = jobs;
     lastFetchTime = now;
-    
+
     return jobs;
   } catch (error) {
     console.error('Error fetching jobs from Firebase:', error);
@@ -55,30 +55,30 @@ export async function deleteJobFromFirebase(jobId) {
     // Clear cache to force fresh fetch
     firebaseJobsCache = null;
     lastFetchTime = 0;
-    
+
     // Get fresh data from Firebase
     const firebaseJobs = await fetchJobs();
     console.log('All Firebase jobs:', firebaseJobs);
     console.log('Looking for job ID:', jobId);
-    
+
     // Find the job in Firebase
     const jobInFirebase = firebaseJobs.find(job => {
       console.log('Checking job:', job.id, 'against:', jobId);
       return job.id === jobId;
     });
-    
+
     if (jobInFirebase) {
       console.log('Found job in Firebase, deleting...', jobInFirebase);
-      
+
       // Use the Firebase document ID to delete the document
       const firebaseDocId = jobInFirebase.firebaseDocId;
       const jobDoc = doc(db, "jobs", firebaseDocId);
       await deleteDoc(jobDoc);
-      
+
       // Clear cache to force fresh fetch on next load
       firebaseJobsCache = null;
       lastFetchTime = 0;
-      
+
       console.log('Job deleted from Firebase successfully:', jobId, 'Firebase Doc ID:', firebaseDocId);
       return true;
     } else {
@@ -102,17 +102,17 @@ function interactiveBtns() {
   const btn1 = document.querySelector('.js-btn1');
   const btn2 = document.querySelector('.js-btn2');
   if (!btn1 || !btn2) return;
-function clickButton(active) {
-  if (active === 'btn1') {
-    btn1.classList.add('btn1');
-    btn1.classList.remove('btn1unclicked');
-    btn2.classList.add('btn2');
-    btn2.classList.remove('btn1unclicked')
+  function clickButton(active) {
+    if (active === 'btn1') {
+      btn1.classList.add('btn1');
+      btn1.classList.remove('btn1unclicked');
+      btn2.classList.add('btn2');
+      btn2.classList.remove('btn1unclicked')
     } else {
-    btn1.classList.add('btn1unclicked');
-    btn1.classList.remove('btn1');
-    btn2.classList.add('btn2clicked')
-    btn2.classList.remove('btn2')
+      btn1.classList.add('btn1unclicked');
+      btn1.classList.remove('btn1');
+      btn2.classList.add('btn2clicked')
+      btn2.classList.remove('btn2')
     };
   };
   btn1.addEventListener('click', () => {
@@ -231,34 +231,34 @@ function renderJobs(allJobs) {
               <div>${timeAgo(job.dateUploaded)}</div>
           </div>
          `;
-    
+
   });
 };
 export function renderCLickedCard() {
   const jobCards = document.querySelectorAll('.js-job-card');
   const jobDes = document.querySelector('.job-description');
-  jobCards.forEach(card => { 
-  const jobId = card.getAttribute('data-id');
+  jobCards.forEach(card => {
+    const jobId = card.getAttribute('data-id');
 
     const job = allJobs.find(job => job.id === jobId) || allJobs[0];
-  card.addEventListener('click', () => {
-    if (jobDes && job) {
+    card.addEventListener('click', () => {
+      if (jobDes && job) {
         jobDes.innerHTML = jobDescriptionHtml(job);
         saveButton();
         deleteJob();
         console.log('clicked')
-    }
+      }
+    });
   });
-});
 
-  
+
 };
 function selectedCardColor() {
   const cards = document.querySelectorAll('.js-job-card');
   cards.forEach(card => {
     card.addEventListener('click', () => {
-    cards.forEach(c => {
-      c.classList.remove('cardClicked')
+      cards.forEach(c => {
+        c.classList.remove('cardClicked')
       });
       card.classList.add('cardClicked');
     });
@@ -268,21 +268,21 @@ function btnsRenderJobs() {
   const btn1 = document.querySelector('.js-btn1')
   btn1.addEventListener('click', () => {
     renderJobs(allJobs);
-  renderCLickedCard();
+    renderCLickedCard();
     selectedCardColor();
     renderSelectedCard();
     saveButton();
     descriptionWindow();
     deleteJob();
   });
-const btn2 = document.querySelector('.js-btn2');
+  const btn2 = document.querySelector('.js-btn2');
   btn2.addEventListener('click', () => {
     const cards = document.querySelector('.cards');
-  
-  cards.innerHTML = '';
+
+    cards.innerHTML = '';
     newJobs.forEach(job => {
       const jobId = job.id
-    cards.innerHTML += `
+      cards.innerHTML += `
     
     <div class="card js-job-card js-job-card-${jobId} " data-id="${job.id}">
               <img src="${job.image}" alt="">
@@ -295,24 +295,24 @@ const btn2 = document.querySelector('.js-btn2');
               <div>${timeAgo(job.dateUploaded)}</div>
           </div>
          
-    `; 
+    `;
       descriptionWindow();
     });
     const jobDes = document.querySelector('.job-description');
     const firstJob = newJobs[0];
-  if (jobDes && firstJob) {
+    if (jobDes && firstJob) {
       jobDes.innerHTML = jobDescriptionHtml(firstJob)
     };
     saveButton();
-  renderCLickedCard();
-   selectedCardColor();
+    renderCLickedCard();
+    selectedCardColor();
     deleteJob()
   });
 };
 // ...existing code...
 export function saveButton() {
   // set visual state for any existing save buttons (runs every call)
-    const saveButtons = document.querySelectorAll('.save-button');
+  const saveButtons = document.querySelectorAll('.save-button');
   const savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
   saveButtons.forEach(btn => {
     const jobId = btn.getAttribute('data-id');
@@ -330,7 +330,7 @@ export function saveButton() {
     e.preventDefault();
     e.stopPropagation();
 
-     const jobId = btn.getAttribute('data-id');
+    const jobId = btn.getAttribute('data-id');
     // read fresh copy from localStorage to avoid stale closure state
     let saved = JSON.parse(localStorage.getItem('savedJobs')) || [];
 
@@ -344,7 +344,7 @@ export function saveButton() {
     // update saved array and persist
     if (willActivate) {
       if (!saved.includes(jobId)) saved.push(jobId);
-     } else {
+    } else {
       saved = saved.filter(id => id !== jobId);
     }
     localStorage.setItem('savedJobs', JSON.stringify(saved));
@@ -748,7 +748,7 @@ export function deleteJob() {
         try {
           // Delete from Firebase if it exists there
           const deletedFromFirebase = await deleteJobFromFirebase(jobId);
-          
+
           // Add to deleted jobs list (for static jobs)
           const deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
           if (!deletedJobs.includes(jobId)) {
@@ -763,12 +763,12 @@ export function deleteJob() {
 
           // Check if we're in des-window.html (mobile)
           const isDesWindow = window.location.pathname.includes('des-window.html');
-          
+
           if (isDesWindow) {
             // On mobile, redirect to jobs page after deletion
             yesBtn.textContent = 'Deleted!';
             yesBtn.style.backgroundColor = '#4CAF50';
-            
+
             setTimeout(() => {
               window.location.href = "jobs.html";
             }, 1000);
@@ -780,7 +780,7 @@ export function deleteJob() {
             const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
             return !deleted.includes(job.id);
           });
-          
+
           // Update the global allJobs array
           allJobs.length = 0;
           allJobs.push(...remainJobs);
@@ -791,7 +791,7 @@ export function deleteJob() {
           const btn2 = document.querySelector('.js-btn2');
           const jobCard = document.querySelector(`.js-job-card-${jobId}`)
           if (jobCard) jobCard.remove();
-          
+
           const jobDesContainer = document.querySelector('.job-description');
           if (jobDesContainer) {
             const firstRemain = remainJobs.length ? remainJobs[0] : null
@@ -811,7 +811,7 @@ export function deleteJob() {
           // Show success message
           yesBtn.textContent = 'Deleted!';
           yesBtn.style.backgroundColor = '#4CAF50';
-          
+
           // Close the alert after a short delay
           setTimeout(() => {
             const yesNoMsg = document.querySelector('.delete-alert');
@@ -822,7 +822,7 @@ export function deleteJob() {
           console.error('Error deleting job:', error);
           yesBtn.textContent = 'Error - Try Again';
           yesBtn.style.backgroundColor = '#f44336';
-          
+
           // Reset button after 3 seconds
           setTimeout(() => {
             yesBtn.textContent = 'Yes';
@@ -845,7 +845,7 @@ export function deleteJob() {
         yesNoMsg.classList.remove('active');
         const menu = btn.nextElementSibling;
         if (menu && !menu.contains(e.target) && !btn.contains(e.target)) {
-           menu.classList.remove('active');
+          menu.classList.remove('active');
         }
       }
     })
@@ -855,11 +855,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // First, render static data + localStorage data immediately for fast initial load
   const localAddedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
   const initialJobs = [...jobs, ...newJobs, ...localAddedJobs];
-  
+
   // Update allJobs with initial data
   allJobs.length = 0;
   allJobs.push(...initialJobs);
-  
+
   renderJobs(allJobs);
   renderCLickedCard();
   renderSelectedCard();
@@ -880,16 +880,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Then load Firebase data in the background
   try {
     const firebaseJobs = await fetchJobs();
-    
+
     if (firebaseJobs.length > 0) {
       // Remove duplicates (jobs that might be in both localStorage and Firebase)
       const existingIds = new Set(allJobs.map(job => job.id));
       const newFirebaseJobs = firebaseJobs.filter(job => !existingIds.has(job.id));
-      
+
       if (newFirebaseJobs.length > 0) {
         // Add only new Firebase jobs
         allJobs.push(...newFirebaseJobs);
-        
+
         // Re-render with all data
         renderJobs(allJobs);
         renderCLickedCard();
@@ -902,8 +902,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Keep using static data if Firebase fails
   }
 })
-  
-  
+
+
 
 
 

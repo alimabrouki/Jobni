@@ -6,7 +6,7 @@ export const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
 
 export function getJobs(jobId) {
   let matchingJobs;
-  jobs.forEach( job => {
+  jobs.forEach(job => {
     if (job.id === jobId) {
       matchingJobs = job
     }
@@ -257,7 +257,7 @@ export const jobs = [
 
 export function getNewJobs(jobId) {
   let matchingJobs;
-  newJobs.forEach( job => {
+  newJobs.forEach(job => {
     if (job.id === jobId) {
       matchingJobs = job
     }
@@ -471,4 +471,4 @@ export const locations = [
   { location: "Dubai, UAE" },
   { location: "Toronto, Canada" }
 ];
-export const allJobs = [...jobs , ...newJobs , ...addedJobs];
+export const allJobs = [...jobs, ...newJobs, ...addedJobs];

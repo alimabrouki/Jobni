@@ -1,11 +1,11 @@
 import { jobs } from "../data/jobs-data.js";
-import { saveButton,searchLocation, toggleMenu, searchWindow,searchBar,mobileSearch} from "./shared.js";
+import { saveButton, searchLocation, toggleMenu, searchWindow, searchBar, mobileSearch } from "./shared.js";
 toggleMenu()
 
 function renderHomeJobs(jobs) {
   const cards = document.querySelector('.cards')
   cards.innerHTML = '';
- jobs.forEach( job => {
+  jobs.forEach(job => {
     cards.innerHTML += `
     <a  href="jobs.html?id=${job.id}">
     <div class="card js-job-card " data-id="${job.id}">
@@ -20,10 +20,10 @@ function renderHomeJobs(jobs) {
           </div>
           </a>
     `
-    
+
   })
 }
-document.addEventListener('DOMContentLoaded',() => {
+document.addEventListener('DOMContentLoaded', () => {
   renderHomeJobs(jobs);
   searchWindow();
   searchLocation();

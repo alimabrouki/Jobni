@@ -163,24 +163,22 @@ ul {
   transition: width var(--main-transition) ease;
 }
 
-/* .step .one::before { 
-  width: 33%; 
-  
-} */
 .progress-bar.two::before {
   width: 66%;
-
 }
 
 .progress-bar.three::before {
   width: 100%;
+}
 
+@media (width >=700px) {
+  .next,
+  .back,
+  .submit {
+    padding: 10px 90px !important;
+  }
 }
-@media (width >= 700px) {
-  .next, .back, .submit {
-  padding: 10px 90px !important;
-}
-}
+
 .iti__selected-country {
   background: white !important;
   padding: 0 !important;
@@ -188,6 +186,7 @@ ul {
   left: -14px;
   border-radius: 8px !important;
 }
+
 .form input {
   border: 1px solid var(--hover-color);
   border-radius: 8px;
@@ -195,18 +194,13 @@ ul {
   padding: 15px !important;
   caret-color: var(--main-color);
   text-align: center;
-  
+
 
   @media (width >=700px) {
     width: 470px !important;
   }
 }
 
-/* @media (width <= 700px) {
-  .form input {
-    padding: unset;
-  }
-}*/
 @media (width <=500px) {
   .form input {
     padding: 12px 8px;
@@ -229,8 +223,6 @@ ul {
     width: 234px;
   }
 }
-
-
 
 .country-select.inside .selected-flag {
   border-radius: 50% !important;
@@ -261,8 +253,6 @@ ul {
 .iti__search-icon-svg {
   width: 25px !important;
 }
-
-@media (width <=700px) {}
 
 @media (width <=500px) {
   .iti input.iti__tel-input {
@@ -345,13 +335,11 @@ button:hover {
 @media (width <=700px) {
   .job {
     width: 380px;
-
   }
 }
 
 @media (width <=500px) {
   .job {
     width: 300px;
-
   }
 }

@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <link rel="icon" type="image" href="imgs/favicon.ico" >
+  <link rel="icon" type="image" href="imgs/favicon.ico">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/apply.css">
   <link rel="stylesheet" href="css/all.min.css">
   <link rel="stylesheet" href="country-select-js-master/build/css/countrySelect.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/css/intlTelInput.css">
   <!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-<!-- Font Awesome -->
- 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <!-- Font Awesome -->
+
   <title>Apply Now</title>
 </head>
+
 <body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/country-select-js-master/build/js/countrySelect.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/js/intlTelInput.min.js"></script>
-     <div class="header">
+  <script src="/country-select-js-master/build/js/countrySelect.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.11.0/build/js/intlTelInput.min.js"></script>
+  <div class="header">
     <div class="container">
       <div class="logo"><a href="index.html"><img src="imgs/logo1.png" alt=""></a></div>
-      <div class="nav" id="navi" >
-         <div id="close-menu">
+      <div class="nav" id="navi">
+        <div id="close-menu">
           <i class="fa-solid fa-xmark"></i>
         </div>
         <ul id="menu">
@@ -42,61 +45,62 @@
         </ul>
       </div>
       <div class="sign-up">
-          <a href="#"><span>Sign Up</span></a>
-          </div>
-          
-        <div id="bars"><i class="fa-solid fa-bars"></i></div>
-    </div>
-   </div>
- <!-- Start Form -->
-  <div class="form">
-    
-    <div class="container">
-      <div class="job"></div>
-          <div class="progress-bar"></div>
-        <form action="" class="apply-form">
-  <!-- Step 1 -->
-   
-   <div class="step active">
-    
-    <h2>Step 1: Personal Info</h2>
-    <input type="text" name="firstName" placeholder="First Name" required> <br>
-    <input type="text" name="lastName" placeholder="Last Name" required> <br>
-    <input type="text" name="email" placeholder="Email" required> <br>
-    <input class="phone"  name="phoneNumber" placeholder="Phone Number" required> <br>
-    <button class="next" type="button">Next</button>
-   </div>
-   <!-- Step 2 -->
-    
-    <div class="step">
-    <div class="two"></div>
-     <h2>Step 2: Location</h2>
-     <input id="country" type="text" name="country" placeholder="Country" required> 
-     <br>
-     <input type="text" name="city" placeholder="City" required> 
-     <br>
-     <input type="text" name="postalCode" placeholder="Postal Code" required> 
-     <br>
-     <button class="back" type="button">Back</button>
-     <button class="next" type="button">Next</button>
-    </div>
-    <!-- Step 3 -->
-     
-     <div class="step">
-    <div class="three"></div>
-      <h2>Step 3: Resume</h2>
-      <button type="button" class="btn">Upload you resume 
-        <span>Accepted files types are PDF(recommended),DOCX or DOC</span>
-      </button> 
-      <input class="resume-input" type="file" name="resume" accept=".pdf,.doc.docx" required > <br>
-      <button class="back" type="button" onclick="prevStep()">Back</button>
-      <button class="submit" type="submit">Submit</button>
-     </div>
- </form>
+        <a href="#"><span>Sign Up</span></a>
+      </div>
+
+      <div id="bars"><i class="fa-solid fa-bars"></i></div>
     </div>
   </div>
-   <script src="https://cdn.jsdelivr.net/gh/rick-liruixin/body-scroll-lock-upgrade@v1.1.0/lib/index.umd.js"></script>
+  <!-- Start Form -->
+  <div class="form">
 
- <script type="module" src="js/apply.js"></script>
+    <div class="container">
+      <div class="job"></div>
+      <div class="progress-bar"></div>
+      <form action="" class="apply-form">
+        <!-- Step 1 -->
+
+        <div class="step active">
+
+          <h2>Step 1: Personal Info</h2>
+          <input type="text" name="firstName" placeholder="First Name" required> <br>
+          <input type="text" name="lastName" placeholder="Last Name" required> <br>
+          <input type="text" name="email" placeholder="Email" required> <br>
+          <input class="phone" name="phoneNumber" placeholder="Phone Number" required> <br>
+          <button class="next" type="button">Next</button>
+        </div>
+        <!-- Step 2 -->
+
+        <div class="step">
+          <div class="two"></div>
+          <h2>Step 2: Location</h2>
+          <input id="country" type="text" name="country" placeholder="Country" required>
+          <br>
+          <input type="text" name="city" placeholder="City" required>
+          <br>
+          <input type="text" name="postalCode" placeholder="Postal Code" required>
+          <br>
+          <button class="back" type="button">Back</button>
+          <button class="next" type="button">Next</button>
+        </div>
+        <!-- Step 3 -->
+
+        <div class="step">
+          <div class="three"></div>
+          <h2>Step 3: Resume</h2>
+          <button type="button" class="btn">Upload you resume
+            <span>Accepted files types are PDF(recommended),DOCX or DOC</span>
+          </button>
+          <input class="resume-input" type="file" name="resume" accept=".pdf,.doc.docx" required> <br>
+          <button class="back" type="button" onclick="prevStep()">Back</button>
+          <button class="submit" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/gh/rick-liruixin/body-scroll-lock-upgrade@v1.1.0/lib/index.umd.js"></script>
+
+  <script type="module" src="js/apply.js"></script>
 </body>
+
 </html>

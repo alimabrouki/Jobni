@@ -595,10 +595,7 @@
         gap: 20px;
 
         @media (width <=700px) {
-
             flex-direction: column;
-
-
         }
 
         .us-map {
