@@ -1,22 +1,5 @@
 import { newJobs } from "../data/jobs-data.js";
 import { toggleMenu } from "./shared.js";
-import { collection, addDoc, getFirestore } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCB6MN_ZLk9K6YAFgDsvrpcawpA3fBqZ70",
-  authDomain: "jobni-b6718.firebaseapp.com",
-  projectId: "jobni-b6718",
-  storageBucket: "jobni-b6718.firebasestorage.app",
-  messagingSenderId: "797237390993",
-  appId: "1:797237390993:web:4d2e6c7b617b9c9c83d930",
-  measurementId: "G-XHJ84JQ4LM"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 function showForm() {
   const hero = document.querySelector('.hero');
   const postJobBtn = document.querySelector('.post-job');
@@ -237,7 +220,7 @@ function phoneInput() {
 export function postJob() {
   const form = document.querySelector('.job-post-form');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const companyName = document.querySelector('.company-name').value;
     const jobTitle = document.querySelector('.job-title').value;
@@ -289,47 +272,11 @@ export function postJob() {
       email: email.charAt(0).toUpperCase() + email.slice(1)
     };
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Posting...';
-    submitBtn.disabled = true;
-
-    try {
-      // Add to Firebase
-      console.log('Attempting to save job to Firebase...');
-      await addDoc(collection(db, "jobs"), newAddedJob);
-      console.log('Job saved to Firebase successfully!');
-
-      // Also add to localStorage for immediate local access
-      const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
-      addedJobs.push(newAddedJob);
-      localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
-
-      // Clear form
-      form.reset();
-
-      // Show success message briefly
-      submitBtn.textContent = 'Posted !';
-      submitBtn.style.backgroundColor = '#4CAF50';
-
-      // Redirect after short delay
-      setTimeout(() => {
-        console.log('Redirecting to jobs.html...');
-        window.location.href = "jobs.html";
-      }, 500);
-
-    } catch (error) {
-      console.error('Error adding a job:', error);
-      submitBtn.textContent = 'Error - Try Again';
-      submitBtn.style.backgroundColor = '#f44336';
-      submitBtn.disabled = false;
-
-      // Reset button after 3 seconds
-      setTimeout(() => {
-        submitBtn.textContent = originalText;
-        submitBtn.style.backgroundColor = '';
-      }, 3000);
-    }
+       const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+    addedJobs.push(newAddedJob);
+    localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
+    newJobs.push(newAddedJob);
+    window.location.href = 'jobs.html';
   })
 }
 
