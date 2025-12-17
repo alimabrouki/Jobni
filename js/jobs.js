@@ -787,30 +787,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   descriptionWindow();
   displayJobs();
 
-  // Then load Firebase data in the background
-  try {
-    const firebaseJobs = await fetchJobs();
-
-    if (firebaseJobs.length > 0) {
-      // Remove duplicates (jobs that might be in both localStorage and Firebase)
-      const existingIds = new Set(allJobs.map(job => job.id));
-      const newFirebaseJobs = firebaseJobs.filter(job => !existingIds.has(job.id));
-
-      if (newFirebaseJobs.length > 0) {
-        // Add only new Firebase jobs
-        allJobs.push(...newFirebaseJobs);
-
-        // Re-render with all data
-        renderJobs(allJobs);
-        renderCLickedCard();
-        selectedCardColor();
-        btnsRenderJobs();
-      }
-    }
-  } catch (error) {
-    console.error('Error loading Firebase jobs:', error);
-    // Keep using static data if Firebase fails
-  }
+ 
 })
 
 
