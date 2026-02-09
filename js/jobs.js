@@ -219,9 +219,9 @@ function btnsRenderJobs() {
     deleteJob()
   });
 };
-// ...existing code...
+
 export function saveButton() {
-  // set visual state for any existing save buttons (runs every call)
+
   const saveButtons = document.querySelectorAll('.save-button');
   const savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
   saveButtons.forEach(btn => {
@@ -229,7 +229,7 @@ export function saveButton() {
     btn.classList.toggle('active', savedJobs.includes(jobId));
   });
 
-  // attach delegated listener only once
+
   if (saveButton._initialized) return;
   saveButton._initialized = true;
 
@@ -241,17 +241,16 @@ export function saveButton() {
     e.stopPropagation();
 
     const jobId = btn.getAttribute('data-id');
-    // read fresh copy from localStorage to avoid stale closure state
+
     let saved = JSON.parse(localStorage.getItem('savedJobs')) || [];
 
     const willActivate = !saved.includes(jobId);
 
-    // update DOM: toggle every save-button with same data-id (card + description)
+
     document.querySelectorAll(`.save-button[data-id="${jobId}"]`).forEach(b => {
       b.classList.toggle('active', willActivate);
     });
 
-    // update saved array and persist
     if (willActivate) {
       if (!saved.includes(jobId)) saved.push(jobId);
     } else {
@@ -650,96 +649,38 @@ export function deleteJob() {
       console.log(yesNoMsg)
     })
     if (yesBtn) {
-      yesBtn.addEventListener('click', async () => {
-        // Show loading state
-        yesBtn.textContent = 'Deleting..';
-        yesBtn.disabled = true;
+      yesBtn.addEventListener('click', () => {
+        const deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
 
-        try {
-          // Delete from Firebase if it exists there
-          const deletedFromFirebase = await deleteJobFromFirebase(jobId);
 
-          // Add to deleted jobs list (for static jobs)
-          const deletedJobs = JSON.parse(localStorage.getItem('deletedJobs')) || [];
-          if (!deletedJobs.includes(jobId)) {
-            deletedJobs.push(jobId);
-            localStorage.setItem('deletedJobs', JSON.stringify(deletedJobs));
-          }
-
-          // Remove from localStorage addedJobs if it exists there
-          const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
-          const updatedAddedJobs = addedJobs.filter(job => job.id !== jobId);
-          localStorage.setItem('addedJobs', JSON.stringify(updatedAddedJobs));
-
-          // Check if we're in des-window.html (mobile)
-          const isDesWindow = window.location.pathname.includes('des-window.html');
-
-          if (isDesWindow) {
-            // On mobile, redirect to jobs page after deletion
-            yesBtn.textContent = 'Deleted!';
-            yesBtn.style.backgroundColor = '#4CAF50';
-
-            setTimeout(() => {
-              window.location.href = "jobs.html";
-            }, 1000);
-            return;
-          }
-
-          // Update allJobs array (desktop version)
-          const remainJobs = allJobs.filter(job => {
-            const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
-            return !deleted.includes(job.id);
-          });
-
-          // Update the global allJobs array
-          allJobs.length = 0;
-          allJobs.push(...remainJobs);
-
-          // Re-render the page
-          renderJobs(remainJobs);
-          const btn1 = document.querySelector('.js-btn1');
-          const btn2 = document.querySelector('.js-btn2');
-          const jobCard = document.querySelector(`.js-job-card-${jobId}`)
-          if (jobCard) jobCard.remove();
-
-          const jobDesContainer = document.querySelector('.job-description');
-          if (jobDesContainer) {
-            const firstRemain = remainJobs.length ? remainJobs[0] : null
-            if (firstRemain) {
-              jobDesContainer.innerHTML = jobDescriptionHtml(firstRemain)
-              btn1.classList.add('btn1');
-              btn2.classList.add('btn2');
-              deleteJob();
-            } else {
-              jobDesContainer.innerHTML = '';
-            }
-          }
-          renderCLickedCard();
-          selectedCardColor();
-          descriptionWindow();
-
-          // Show success message
-          yesBtn.textContent = 'Deleted!';
-          yesBtn.style.backgroundColor = '#4CAF50';
-
-          // Close the alert after a short delay
-          setTimeout(() => {
-            const yesNoMsg = document.querySelector('.delete-alert');
-            if (yesNoMsg) yesNoMsg.classList.remove('active');
-          }, 1000);
-
-        } catch (error) {
-          console.error('Error deleting job:', error);
-          yesBtn.textContent = 'Error - Try Again';
-          yesBtn.style.backgroundColor = '#f44336';
-
-          // Reset button after 3 seconds
-          setTimeout(() => {
-            yesBtn.textContent = 'Yes';
-            yesBtn.style.backgroundColor = '';
-            yesBtn.disabled = false;
-          }, 3000);
+        if (!deletedJobs.includes(jobId)) {
+          deletedJobs.push(jobId);
+          localStorage.setItem('deletedJobs', JSON.stringify(deletedJobs));
         }
+        const remainJobs = allJobs.filter(job => {
+          const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
+          return !deleted.includes(job.id);
+        })
+        renderJobs(remainJobs);
+        const btn1 = document.querySelector('.js-btn1');
+        const btn2 = document.querySelector('.js-btn2');
+        const jobCard = document.querySelector(`.js-job-card-${jobId}`)
+        if (jobCard) jobCard.remove();
+        const jobDesContainer = document.querySelector('.job-description');
+        if (jobDesContainer) {
+          const firstRemain = remainJobs.length ? remainJobs[0] : null
+          if (firstRemain) {
+            jobDesContainer.innerHTML = jobDescriptionHtml(firstRemain)
+            btn1.classList.add('btn1');
+            btn2.classList.add('btn2');
+            deleteJob();
+          } else {
+            jobDesContainer.innerHTML = '';
+          }
+        }
+        renderCLickedCard();
+        selectedCardColor();
+        descriptionWindow();
       })
     }
     if (noBtn) {
@@ -762,13 +703,6 @@ export function deleteJob() {
   })
 }
 document.addEventListener('DOMContentLoaded', async () => {
-  // First, render static data + localStorage data immediately for fast initial load
-  const localAddedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
-  const initialJobs = [...jobs, ...newJobs, ...localAddedJobs];
-
-  // Update allJobs with initial data
-  allJobs.length = 0;
-  allJobs.push(...initialJobs);
 
   renderJobs(allJobs);
   renderCLickedCard();
@@ -787,7 +721,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   descriptionWindow();
   displayJobs();
 
- 
+
 })
 
 

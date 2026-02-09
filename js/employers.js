@@ -272,7 +272,7 @@ export function postJob() {
       email: email.charAt(0).toUpperCase() + email.slice(1)
     };
 
-       const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
+    const addedJobs = JSON.parse(localStorage.getItem('addedJobs')) || [];
     addedJobs.push(newAddedJob);
     localStorage.setItem('addedJobs', JSON.stringify(addedJobs));
     newJobs.push(newAddedJob);
