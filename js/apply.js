@@ -74,7 +74,12 @@ function applyForJob() {
   const jobInfo = document.querySelector('.job');
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id')
-  const job = allJobs.find(job => job.id === jobId);
+  const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
+  const job = allJobs.find(job => job.id === jobId && !deleted.includes(job.id));
+  if (!job) {
+    jobInfo.innerHTML = `Job not found or has been removed.`;
+    return;
+  }
   jobInfo.innerHTML = `
     ${job.jobTitle} | ${job.location}
    `;

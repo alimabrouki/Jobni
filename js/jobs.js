@@ -118,7 +118,8 @@ export function renderSelectedCard() {
   const jobsContainer = document.querySelector('.job-description');
   const param = new URLSearchParams(window.location.search);
   const jobId = param.get('id');
-  const job = allJobs.find(job => job.id === jobId) || jobs[0];
+  const job = getActiveJobs().find(job => job.id === jobId) || jobs[0];
+  
   if (jobsContainer && job) {
     jobsContainer.innerHTML = jobDescriptionHtml(job);
 
@@ -144,13 +145,17 @@ function renderJobs(allJobs) {
 
   });
 };
+function getActiveJobs() {
+  const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
+  return allJobs.filter(job => !deleted.includes(job.id));
+}
 export function renderCLickedCard() {
   const jobCards = document.querySelectorAll('.js-job-card');
   const jobDes = document.querySelector('.job-description');
   jobCards.forEach(card => {
     const jobId = card.getAttribute('data-id');
 
-    const job = allJobs.find(job => job.id === jobId) || allJobs[0];
+    const job = getActiveJobs().find(job => job.id === jobId) || getActiveJobs()[0];
     card.addEventListener('click', () => {
       if (jobDes && job) {
         jobDes.innerHTML = jobDescriptionHtml(job);
@@ -177,7 +182,7 @@ function selectedCardColor() {
 function btnsRenderJobs() {
   const btn1 = document.querySelector('.js-btn1')
   btn1.addEventListener('click', () => {
-    renderJobs(allJobs);
+    renderJobs(getActiveJobs());
     renderCLickedCard();
     selectedCardColor();
     renderSelectedCard();
@@ -190,7 +195,10 @@ function btnsRenderJobs() {
     const cards = document.querySelector('.cards');
 
     cards.innerHTML = '';
-    newJobs.forEach(job => {
+    const deleted = JSON.parse(localStorage.getItem('deletedJobs') || '[]');
+    const visibleNewJobs = newJobs.filter(job => !deleted.includes(job.id));
+
+    visibleNewJobs.forEach(job => {
       const jobId = job.id
       cards.innerHTML += `
     
@@ -209,7 +217,7 @@ function btnsRenderJobs() {
       descriptionWindow();
     });
     const jobDes = document.querySelector('.job-description');
-    const firstJob = newJobs[0];
+    const firstJob = visibleNewJobs[0];
     if (jobDes && firstJob) {
       jobDes.innerHTML = jobDescriptionHtml(firstJob)
     };
@@ -329,11 +337,11 @@ export function searchBar() {
     };
 
 
-    const startWithJobs = (allJobs).filter(job =>
+    const startWithJobs = (getActiveJobs()).filter(job =>
 
       job.jobTitle.toLowerCase().startsWith(input)
     );
-    const includesJobs = (allJobs).filter(job =>
+    const includesJobs = (getActiveJobs()).filter(job =>
       !job.jobTitle.toLowerCase().startsWith(input) &&
       job.jobTitle.toLowerCase().includes(input)
     );
@@ -417,7 +425,7 @@ export function searchBar() {
       locationSrchRslt.innerHTML = '';
       return;
     }
-    const matchedJobs = allJobs.filter(loc =>
+    const matchedJobs = getActiveJobs().filter(loc =>
       loc.location.toLowerCase().startsWith(input)
     );
     if (matchedJobs.length > 0) {
@@ -475,13 +483,13 @@ export function searchBar() {
       const locInput = searchLocation.value.trim().toLowerCase();
 
 
-      let match = allJobs.find(job =>
+      let match = getActiveJobs().find(job =>
         job.jobTitle.toLowerCase() === jobInput &&
         job.location.toLowerCase() === locInput
       );
 
       if (!match) {
-        match = allJobs.find(job =>
+        match = getActiveJobs().find(job =>
           job.jobTitle.toLowerCase() === jobInput
         )
       }
@@ -537,11 +545,11 @@ export function mobileSearch() {
     };
 
 
-    const startWithJobs = (allJobs).filter(job =>
+    const startWithJobs = (getActiveJobs()).filter(job =>
 
       job.jobTitle.toLowerCase().startsWith(input)
     );
-    const includesJobs = (allJobs).filter(job =>
+    const includesJobs = (getActiveJobs()).filter(job =>
       !job.jobTitle.toLowerCase().startsWith(input) &&
       job.jobTitle.toLowerCase().includes(input)
     );
@@ -587,7 +595,7 @@ export function mobileSearch() {
       locationWindRslt.innerHTML = '';
       return;
     }
-    const matchedJobs = allJobs.filter(loc =>
+    const matchedJobs = getActiveJobs().filter(loc =>
       loc.location.toLowerCase().startsWith(input)
     );
     if (matchedJobs.length > 0) {
@@ -703,8 +711,7 @@ export function deleteJob() {
   })
 }
 document.addEventListener('DOMContentLoaded', async () => {
-
-  renderJobs(allJobs);
+  renderJobs(getActiveJobs());
   renderCLickedCard();
   renderSelectedCard();
   btnsRenderJobs();
