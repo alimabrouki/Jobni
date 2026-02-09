@@ -1,4 +1,3 @@
-
 export function toggleMenu() {
   const bars = document.getElementById('bars');
   const naviMenu = document.getElementById('navi');
@@ -27,7 +26,6 @@ export function searchLocation() {
   const locationIcon = document.querySelector('.location-icon')
   const searchBar = document.querySelector('.search-bar')
 
-
   if (!searchLocation || !searchContainer || !locationIcon || !searchBar) return;
 
   locationIcon.addEventListener('click', () => {
@@ -36,8 +34,6 @@ export function searchLocation() {
     searchBar.classList.add('active')
   })
 }
-
-
 
 export function searchWindow() {
   const searchWindow = document.querySelector('.search-window');
@@ -61,9 +57,41 @@ export function searchWindow() {
     bodyScrollLockUpgrade.enableBodyScroll(body);
   })
 };
+
+function _parseRelativeToTimestamp(str) {
+  if (!str) return null;
+  const s = String(str).trim().toLowerCase();
+  const m = s.match(/^(\d+)\s*([a-zA-Z]+)$/);
+  if (!m) return null;
+  const value = parseInt(m[1], 10);
+  const unit = m[2];
+  let seconds = 0;
+  if (unit.startsWith('s')) seconds = value;
+  else if (unit === 'm' || unit.startsWith('min')) seconds = value * 60;
+  else if (unit.startsWith('h') || unit.startsWith('hr')) seconds = value * 3600;
+  else if (unit.startsWith('d')) seconds = value * 86400;
+  else if (unit.startsWith('w')) seconds = value * 604800;
+  else if (unit.startsWith('mo')) seconds = value * 2592000;
+  else if (unit.startsWith('y')) seconds = value * 31536000;
+  else return null;
+  return Date.now() - seconds * 1000;
+}
+
 export function timeAgo(timestamp) {
+  // accept either a numeric timestamp or a relative string like '3hrs', '1d', '2w', '1mo'
+  let ts = timestamp;
+  if (typeof ts === 'string') {
+    const parsed = _parseRelativeToTimestamp(ts);
+    if (parsed) ts = parsed;
+    else {
+      const parsedDate = Date.parse(ts);
+      if (!isNaN(parsedDate)) ts = parsedDate;
+      else return ts; // unparseable string, return as-is
+    }
+  }
+
   const now = Date.now();
-  const diff = Math.floor((now - timestamp) / 1000);
+  const diff = Math.floor((now - ts) / 1000);
 
   if (diff < 60) return 'Just Now';
   if (diff < 3600) return `${Math.floor(diff / 60)} min`;
@@ -71,7 +99,7 @@ export function timeAgo(timestamp) {
   if (diff < 604800) return `${Math.floor(diff / 86400)}d`;
   if (diff < 2592000) return `${Math.floor(diff / 604800)}w`;
   if (diff < 31536000) return `${Math.floor(diff / 2592000)}m`;
-  return `${Math.floor(diff / 31536000)}y`
+  return `${Math.floor(diff / 31536000)}y`;
 }
 export function saveButton() {
   const saveButtons = document.querySelectorAll('.save-button');
